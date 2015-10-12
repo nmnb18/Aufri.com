@@ -1,0 +1,271 @@
+
+.noMargin {
+    margin: 0px !important;
+}
+
+.itineraryList {
+    margin-bottom: 10px;
+}
+.btnClass  {
+    width: 30%;
+}
+
+.noPadding {
+    padding: 0px !important;
+}
+.greyColor {
+    background-color: #99CCFF;
+    vertical-align: middle;
+}
+.itineraryList {
+    padding: 5px 15px;
+}
+#btn-login {
+    float: right;
+    margin-bottom: 10px;
+    width: 100%
+}
+
+.loginRow {
+    width: 100%;
+}
+.alignCenter {
+    text-align: center
+}
+.alignLeft {
+    text-align: left
+}
+.titleNo {
+    padding-left: 20px !important;
+}
+.signup-div{
+    text-align: center;
+}
+.textareaMargin {
+    margin-bottom: 15px;
+}
+
+.attractionView {
+    margin-top: 10px;
+
+}
+
+.margin9{
+    margin-bottom: 9px;
+}
+.bold {
+    font-weight: bold;
+}
+.alignRightMarginTop{
+    float: right;
+    margin-top: -244px;
+}
+.pd22{
+    padding-left: 22px;
+    display: inline-block;
+}
+.displayInline{
+    display: inline-block;
+}
+/* Styling for typehead autocomplete */
+.bs-example{
+    font-family: sans-serif;
+    position: relative;
+}
+.typeahead, .tt-query, .tt-hint {
+    width: 270px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size:14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.typeahead {
+    background-color: #FFFFFF;
+}
+.typeahead:focus {
+    border: 2px solid #0097CF;
+}
+.tt-query {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.tt-hint {
+    color: #999999;
+}
+.tt-dropdown-menu {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 2px;
+    padding: 8px 0;
+    width: 270px;
+}
+.tt-suggestion {
+    font-size: 14px;
+    line-height: 24px;
+    padding: 3px 20px;
+}
+.tt-suggestion.tt-is-under-cursor {
+    background-color: #0097CF;
+    color: #FFFFFF;
+}
+.tt-suggestion p {
+    margin: 0;
+}
+.searchTypeAhead {
+    padding: 0px 5px !important;
+}
+.twitter-typeahead {
+    width: 100%;
+}
+.margin25 {
+    margin-left: 25px;
+}
+.margin10 {
+    margin-left: 10px;
+}
+.attrSelect {
+    width: 75% !important;
+    display: inline-block !important;
+}
+#tourAutoComplete , #attrAutoComplete{
+    width: 100%;
+}
+/* Model Css */
+/* line 1, ../../app/styles/components/utils.scss */
+.modal-content {
+  border-radius: 0px;
+  background: #eceff1;
+
+}
+
+/* line 7, ../../app/styles/components/utils.scss */
+.c-modal-heading {
+  font-size: 36px;
+  color: #455a64;
+  font-weight: 300;
+  line-height: 1;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  top: -3px;
+  margin-bottom: 23px;
+}
+
+/* line 18, ../../app/styles/components/utils.scss */
+.c-close-modal {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: 31px;
+  top: 20px;
+  z-index: 1;
+  opacity: 1;
+  outline: none;
+}
+/* line 27, ../../app/styles/components/utils.scss */
+.c-close-modal span {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background: url("/images/cross-modal.png") center center no-repeat;
+}
+/* line 35, ../../app/styles/components/utils.scss */
+.c-close-modal:hover {
+  opacity: 1;
+}
+
+/* line 39, ../../app/styles/components/utils.scss */
+.c-modalText {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #263238;
+  height: 36px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 30px;
+}
+
+/* line 50, ../../app/styles/components/utils.scss */
+.c-green-link, .c-green-link:hover, .c-green-link:active {
+  color: #689f38;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+/* line 55, ../../app/styles/components/utils.scss */
+.c-button {
+  width: 15.2%;
+  outline: none;
+  background: none;
+  border: none;
+  color: #455a64;
+  text-align: center;
+  font-size: 14px;
+  background: #cfd8dc;
+  height: 36px;
+  padding-top: 7px;
+}
+
+/* line 68, ../../app/styles/components/utils.scss */
+.c-fleft {
+  float: left;
+}
+
+/* line 71, ../../app/styles/components/utils.scss */
+.c-fright {
+  float: right;
+}
+
+/* line 74, ../../app/styles/components/utils.scss */
+.c-submit-button {
+  background: #689f38;
+  color: #fff;
+}
+
+/* line 78, ../../app/styles/components/utils.scss */
+.c-continue {
+  text-align: center;
+}
+button.close {
+-webkit-appearance: none;
+padding: 0;
+cursor: pointer;
+background: transparent;
+border: 0;
+}
+.c-close-modal span {
+height: 100%;
+width: 100%;
+position: absolute;
+left: 0px;
+top: 0px;
+background: url("/images/cross-modal.png") center center no-repeat;
+}
+.right{
+    right: 16%;
+}
+.check-input {
+    display: inline-block !important;
+    margin-right: 5px !important;
+    width: 15px !important;
+    vertical-align: middle;
+}
+.select-check label {
+    margin-right: 15px;
+}
+/* End */

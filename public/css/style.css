@@ -1,0 +1,556 @@
+/********** _BOOTSTRAP_ **********/
+/* bootstrap sticky footer styles */
+html,
+body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -41px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+    height: 40px;
+}
+
+#wrap > .container, #wrap > .container-fluid {
+    /* navbar fix */
+    padding-bottom: 20px;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+    #footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/* Navbar */
+.navbar-inverse .brand, .navbar-inverse .brand:hover {
+    color: #999;
+}
+
+/* sidebar affix styles */
+body.with-sidebar {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    height: auto;
+}
+
+body.with-sidebar > .container,
+body.with-sidebar > .container-fluid {
+    padding-bottom: 20px;
+}
+
+@media (max-width: 979px) {
+    body.with-sidebar {
+        padding-top: 0;
+    }
+}
+
+/*
+body.with-sidebar #footer {
+    margin-top: 60px;
+}*/
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+/********** _SHELL_ **********/
+
+/* login form */
+.form-signin {
+    max-width: 300px;
+    padding: 19px 29px 29px;
+    margin: 80px auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin input[type="text"],
+.form-signin input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+}
+
+.form-signin p {
+    margin: 1em 0 0;
+}
+
+/********** _FOOTER_ **********/
+#footer {
+    color: #999999;
+    font-weight: 200;
+    font-size: 13px;
+}
+
+#footer p {
+    margin: 0.5em 0 0;
+}
+
+/********** _SHELL_ **********/
+
+/* General */
+@media (max-width: 940px) {
+    #wrap > .container {
+        padding-top: 0;
+    }
+}
+
+.page-header h1 {
+    font-weight: 200;
+    font-size: 1.9em;
+    line-height: 1em;
+}
+
+.overdue {
+    color: rgb(168, 0, 0);
+    font-weight: bold;
+}
+
+/* Sections */
+#mainContent section {
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+#mainContent section header {
+    -webkit-border-top-left-radius: 4px;
+    -webkit-border-top-right-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    -moz-border-radius-topright: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    background: #3180c3;
+    padding: 10px 15px;
+}
+
+#mainContent section header h1,
+#mainContent section header h2 {
+    color: #fff;
+    font-size: 1.2em;
+    line-height: 135%;
+    margin: 0;
+    font-weight: 200;
+}
+
+#mainContent section header .row-fluid [class*="span"] {
+    min-height: 0;
+}
+
+#mainContent section header.alternate {
+    background: #5dc251;
+}
+
+#mainContent section header.callout {
+    background: #e1544f;
+}
+
+#mainContent section .content {
+    padding: 5px 15px;
+}
+
+#mainContent section form {
+    margin: 0;
+}
+
+#mainContent section footer {
+    background: #f7f7f9;
+    border-top: 1px solid #ddd;
+    padding: 15px;
+}
+
+#mainContent .page-header {
+    padding-bottom: 0;
+    margin: 0 0 15px;
+}
+
+/* responsive sections emulating bootstrap-responsive */
+@media (min-width: 1200px) {
+    #mainContent section {
+        margin-bottom: 30px;
+    }
+}
+
+/* override classes*/
+#mainContent section.no-background {
+    background: none;
+}
+
+#mainContent section.no-padding .content {
+    padding: 0;
+}
+
+#mainContent section.no-border {
+    border: 0;
+}
+
+/* Tables */
+#mainContent .table thead {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+#mainContent section.no-padding .table thead tr td:nth-of-type(1), #mainContent section.no-padding .table tbody tr td:nth-of-type(1) {
+    padding-left: 15px;
+}
+
+
+/* Callouts */
+.inner-copy, .well {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.inner-copy p, .well p {
+    margin: 5px 0 5px;
+}
+
+.alert p {
+    line-height: 30px;
+    margin: 0;
+}
+
+.inner-btn {
+    text-align: right;
+}
+
+.inner-btn .btn {
+    margin-left: 15px;
+}
+
+.inner-btn .btn:nth-of-type(1) {
+    margin-left: 0;
+}
+
+section.callout-single {
+    /* override section default squared bottom corners */
+    background-color: #f7f7f9;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    padding: 15px;
+}
+
+/* Forms */
+
+span.required {
+    color: red;
+    margin-right: 0.3em;
+}
+
+/* horizontal form Bootstrap overrides */
+/*.form-horizontal legacy classes included after first selector will be removed and we'll later just apply .form-static instead */
+.form-static .control-group {
+    margin-bottom: 5px;
+}
+
+.form-static .control-label {
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+.form-horizontal .static {
+    line-height: 30px;
+    font-weight: bold;
+}
+
+.form-static .static {
+    line-height: 1em;
+}
+
+.form-static label {
+    cursor: default;
+}
+
+/********** Dashboard ***********/
+/* layout */
+#wrap #mainContent.page-dashboard {
+    padding-top: 84px;
+}
+
+@media (max-width: 767px) {
+    #wrap #dashboard-container {
+        padding-top: 0;
+    }
+}
+
+section.list-widget table {
+    margin-bottom:0;
+}
+
+
+section.list-widget .content {
+    min-height:230px;
+}
+
+section.list-widget .loading {
+    padding-top:25px;
+}
+
+/* tables - will leave page-dashboard unique styles, but these will likely be based on a progress bar table.  */
+.table td {
+    vertical-align: middle;
+}
+
+#mainContent .table .progress {
+    margin-bottom: 0;
+}
+
+/******** _WIDGETS_ ********/
+
+/* STATUS WIDGET */
+/* layout */
+.status-item {
+    background: #f0f0f0;
+    border-radius: 5px;
+    display: table;
+    width: 100%;
+}
+
+a.status-item:hover {
+    text-decoration: none;
+}
+
+.status-spacer {
+    height: 10px;
+}
+
+.status-num {
+    width: 84px;
+    height: 60px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 200;
+    color: white;
+}
+
+.status-num div {
+    position: relative; /*needed for abs. positioning of diamonds (.status-cover) can't apply to .status-num because display: table-cell FF issue */
+}
+
+.status-item .status-cover {
+    font-size: 65px;
+    vertical-align: middle;
+    position: absolute;
+    right: -15px;
+    top: -20px;
+}
+
+.status-item .status-label {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* typography */
+.status-item .status-label h2 {
+    font-size: 1.3em;
+    font-weight: 200;
+    line-height: 150%;
+    margin: 5px 5px 5px 25px;
+    color: #333333;
+}
+
+/* colours */
+#status-new .status-num {
+    background: #5dc251;
+}
+
+#status-new .status-cover {
+    color: #5dc251;
+}
+
+#status-active .status-num {
+    background: #3180c3;
+}
+
+#status-active .status-cover {
+    color: #3180c3;
+}
+
+#status-overdue .status-num {
+    background: #e1544f;
+}
+
+#status-overdue .status-cover {
+    color: #e1544f;
+}
+
+.display-name .company {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* responsive form fix for tablet browsers */
+@media (max-width: 979px) {
+    .form-horizontal .row-fluid [class*="span"] {
+        float: none;
+        width: 100%;
+    }
+    .form-horizontal .row-fluid [class*="span"] {
+        margin-left: 0;
+    }
+}
+
+/*Overlay Styles*/
+.overlay {
+    background: #ddd 50% 50%;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
+
+.loading {
+    z-index: 1001;
+}
+
+.validationException {
+    color: #e1544f;
+}
+.itineraryHeading {
+    padding: 10px;
+    background: #666;
+    font-weight: bold;
+    color: #000;
+}
+
+.itineraryRowHeading {
+    padding: 20px;
+}
+
+.addButtonClass {
+    padding: 5px;
+}
+
+.alignLeft{
+    float: left;
+}
+
+.alignRight{
+    float: right;
+    margin-top: -32px;
+}
+
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    overflow: auto;
+}
+
+.pd20{
+    padding: 20px;
+}
+
+.pd10{
+    padding: 20px;
+}
+
+.pd2 {
+    padding: 2px !important;
+}
+
+.pd5 {
+    padding: 5px !important;
+}
+
+.btnSmall {
+    width : 20%;
+}
+
+.btnLarge {
+    width : 35%;
+}
+
+.rightMargin {
+    margin-right: 55px;
+}
+
+.ml20 {
+    margin-left: 20px;
+}
+
+.mr5 {
+    margin-right: 5px;
+}
+
+.btnWidth {
+    width: 24%;
+}
+
+.borderRight {
+    border-right: 1px solid #ddd;
+}
+.tpd10 {
+    padding-top: 10px;
+}
+
+/*.fieldRows:nth-child(odd) {
+    background: #e0e0e0;
+}*/
+
+.widthNarrow{
+    padding: 0px 20px;
+}
+
+.lPd20 {
+    padding-left: 20px;
+}
+
+.word-wrap{
+	word-wrap:break-word !important;
+}
+.faq-label label:nth-of-type(2) .faqRadio {
+    margin-left: 50px;
+    margin-right: 5px;
+}
+.faq-label label:nth-of-type(1) .faqRadio {
+	margin-right: 5px;
+}
+.searchFaq  {
+	margin-right: 5px !important;
+}

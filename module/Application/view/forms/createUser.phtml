@@ -1,0 +1,146 @@
+<?php 
+if(trim($this->type) == 'sales.rep')
+{
+    echo $form->getOpeningTag(array("callback"=>"createUsers"));
+    ?>
+<input
+	type="hidden" name="type" id="type"
+	value="<?php echo htmlentities($this->type);?>" />
+<input
+	type="hidden" name="name" id="name"
+	value="<?php echo htmlentities($this->name);?>" />
+<div class="errorDiv"></div>
+<p class="controls">
+	<em> <small>* Required Information</small>
+	</em>
+</p>
+<!--/.controls (needed to align to input)-->
+<div class="row-fluid">
+	<div class="span6">
+		<div class="control-group">
+			<?php echo $form['Profile']['EmailAddress']->getLabel();?>
+			<div class="controls">
+				<?php echo $form['Profile']['EmailAddress']->getInputHtml(array("id"=>"email"));?>
+			</div>
+		</div>
+		<div class="control-group">
+			<?php echo $form['Profile']['FirstName']->getLabel();?>
+
+			<div class="controls">
+				<?php echo $form['Profile']['FirstName']->getInputHtml(array("id"=>"first"));?>
+			</div>
+		</div>
+		<div class="control-group">
+			<?php echo $form['Profile']['LastName']->getLabel();?>
+
+			<div class="controls">
+				<?php echo $form['Profile']['LastName']->getInputHtml(array("id"=>"last"));?>
+			</div>
+		</div>
+	</div>
+	<!--/span-->
+
+	<div class="span6">
+		<div class="control-group">
+			<?php echo $form['Profile']['PrimaryIdentifier']->getLabel();?>
+
+			<div class="controls">
+				<?php echo $form['Profile']['PrimaryIdentifier']->getInputHtml(array("id"=>"id"));?>
+			</div>
+		</div>
+		<div class="control-group">
+			<?php echo $form['Profile']['TelephoneNumber']->getLabel();?>
+
+			<div class="controls">
+				<?php echo $form['Profile']['TelephoneNumber']->getInputHtml(array("id"=>"phone"));?>
+			</div>
+		</div>
+		<div class="control-group">
+			<?php echo $form['Profile']['state']->getLabel();?>
+
+			<div class="controls">
+				<?php  echo $form['Profile']['state']->getSelectHtml();?>
+			</div>
+		</div>
+	</div>
+	<!--/span-->
+</div>
+<!--row-->
+<button class="btn btn-primary btn-large pull-right" id="createUser-btn"
+	data-loading-text="Creating..." type="submit">Create Sales Rep</button>
+<?php 		
+echo $form->getClosingTag();
+?>
+<!--</form>-->
+<?php
+}
+if(trim($this->type) == 'program.admin')
+{
+    echo $form->getOpeningTag(array("callback"=>"createUsers"));
+    ?>
+<input
+	type="hidden" name="type" id="type"
+	value="<?php echo htmlentities($this->type);?>" />
+<input
+	type="hidden" name="name" id="name"
+	value="<?php echo htmlentities($this->name);?>" />
+
+<div class="errorDiv"></div>
+<p class="controls">
+	<em> <small>* Required Information</small>
+	</em>
+</p>
+<!--/.controls (needed to align to input)-->
+<div class="row-fluid">
+	<div class="span6">
+		<div class="control-group">
+			<?php echo $form['User Profile']['EmailAddress']->getLabel();?>
+			<div class="controls">
+				<?php echo $form['User Profile']['EmailAddress']->getInputHtml(array("id"=>"email"));?>
+			</div>
+		</div>
+		<div class="control-group">
+			<?php echo $form['User Profile']['FirstName']->getLabel();?>
+
+			<div class="controls">
+				<?php echo $form['User Profile']['FirstName']->getInputHtml(array("id"=>"first"));?>
+			</div>
+		</div>
+		<div class="control-group">
+			<?php echo $form['User Profile']['LastName']->getLabel();?>
+
+			<div class="controls">
+				<?php echo $form['User Profile']['LastName']->getInputHtml(array("id"=>"last"));?>
+			</div>
+		</div>
+	</div>
+	<!--/span-->
+
+	<div class="span6">
+		<div class="control-group">
+			<?php echo $form['User Profile']['PrimaryIdentifier']->getLabel();?>
+
+			<div class="controls">
+				<?php echo $form['User Profile']['PrimaryIdentifier']->getInputHtml(array("id"=>"id"));?>
+			</div>
+		</div>
+		<div class="control-group">
+			<?php echo $form['User Profile']['TelephoneNumber']->getLabel();?>
+
+			<div class="controls">
+				<?php echo $form['User Profile']['TelephoneNumber']->getInputHtml(array("id"=>"phone"));?>
+			</div>
+		</div>
+	</div>
+	<!--/span-->
+</div>
+<!--row-->
+<button class="btn btn-primary btn-large pull-right" id="createUser-btn"
+	data-loading-text="Creating..." type="submit">Create Program
+	Administrator</button>
+<?php 		
+echo $form->getClosingTag();
+
+}
+?>
+

@@ -1,0 +1,69 @@
+
+<?php
+echo $this->partial('menu', array('active' => 'products'));
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+<label class="alert-danger"></label>
+
+<div class="wrapper">
+    <div class="panel panel-info pd20" >
+
+        <div class="row">
+            <div class ="col-sm-4">
+                <label>Name *:</label>
+                <?php echo $this->formElement($form->get('name')); ?>
+                <span class="alert-danger"><?php echo $this->formElementerrors($form->get('name')); ?></span>
+            </div>
+            <div class ="col-sm-4">
+                <label>Price :</label>
+                <?php echo $this->formElement($form->get('price')); ?>
+                <span class="alert-danger"><?php echo $this->formElementerrors($form->get('price')); ?></span>
+            </div>
+            <div class ="col-sm-4">
+                <label>Category :</label>
+                <?php echo $this->formElement($form->get('category')); ?>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class ="col-sm-4 select-check">
+                <label>Product Size *:</label>
+                <?php echo $this->formElement($form->get('size')); ?>
+            </div>
+            <div class ="col-sm-4">
+                <label>Product Length:</label>
+                <?php echo $this->formElement($form->get('sleeve')); ?>
+            </div>
+            <div class ="col-sm-4">
+                <label>Product Fitting :</label>
+                <?php echo $this->formElement($form->get('fit')); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class ="col-sm-4">
+                <label>Product Image :</label>
+                <?php echo $this->formElement($form->get('image'));
+                if (empty($this->productsImage)) {
+                    $this->productsImage = 'default.png';
+                }?>
+                 <img src="<?php echo '/upload/Products/' . $this->productsImage ?>" height="100px" width="100px" class="tpd10">
+
+                <span class="alert-danger"><?php echo $this->formElementerrors($form->get('image')); ?></span>
+            </div>
+            <div class ="col-sm-8">
+                <label>Description *:</label>
+                <?php echo $this->formElement($form->get('description')); ?>
+                <span class="alert-danger"><?php echo $this->formElementerrors($form->get('description')); ?></span>
+            </div>
+
+        </div>
+          <a href="/tour/view" class="btn btn-warning" value="Cancel">
+              Cancel
+          </a>
+        <?php echo $this->formRow($form->get('submit')); ?>
+
+    </div>
+</div>
+
+<?php echo $this->form()->closeTag(); ?>

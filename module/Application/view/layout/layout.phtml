@@ -1,0 +1,103 @@
+<?php echo $this->doctype(); ?>
+<?php
+if (isset($this->viewModel()->getCurrent()->getChildren()[0]->session)) {
+    $session = $this->viewModel()->getCurrent()->getChildren()[0]->session;
+}
+?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->layout()->getParameter)->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0')->appendHttpEquiv('X-UA-Compatible', 'IE=edge') ?>
+
+        <!-- Le styles -->
+        <?php
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                ->prependStylesheet($this->basePath() . '/bootstrap/css/bootstrap.min.css')
+                ->prependStylesheet($this->basePath() . '/bootstrap/css/bootstrap-responsive.min.css')
+                ->prependStylesheet($this->basePath() . '/bootstrap/css/datepicker.css')
+                ->prependStylesheet($this->basePath() . '/css/style.css')
+                ->prependStylesheet($this->basePath() . '/css/reset.css')
+                ->prependStylesheet($this->basePath() . '/css/ie.css', 'text/css', array('conditional' => 'lt IE 9',))
+        ?>
+
+        <!-- Scripts -->
+        <?php
+        echo $this->headScript()
+                ->prependFile($this->basePath() . '/js/typeahead.js')
+                ->prependFile($this->basePath() . '/bootstrap/js/bootstrap-datepicker.js')
+                ->prependFile($this->basePath() . '/bootstrap/js/bootstrap-datepicker.js')
+                ->prependFile($this->basePath() . '/bootstrap/js/bootstrap.min.js')
+                ->prependFile($this->basePath() . '/js/modernizr-2.6.2.min.js')
+                ->prependFile($this->basePath() . '/js/api/test.js')
+                ->prependFile($this->basePath() . '/js/main.js')
+                ->prependFile($this->basePath() . '/js/city.js')
+                ->prependFile('//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+				->prependFile('//tinymce.cachefly.net/4.1/tinymce.min.js')
+
+
+//            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+//            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+        ;
+        ?>
+
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="row noMargin">
+                <div class="col-md-12 col-sm-12">
+                    <?php
+                    $tmpArray = array(
+                        'messages_error' => 'alert-danger',
+                        'messages_info' => 'alert-info',
+                        'messages_default' => 'alert-warning',
+                        'messages_success' => 'alert-success',
+                    );
+                    foreach ($tmpArray as $type => $class) {
+                        if (isset($session[$type]) && count($session[$type]) > 0) {
+                            echo '<div class="alert alert-dismissable ' . $class . '"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><ul>';
+                            foreach ($session[$type] as $key => $message) {
+                                echo '<li>' . $this->translate($message) . '</li>';
+                                unset($session[$type][$key]);
+                            }
+                            echo '</ul></div>';
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="container-fluid"
+                 id="mainContent">
+<?php echo $this->content; ?>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <footer id="footer">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <p>
+                            &copy;
+<?= date('Y') ?>
+                            Paridhan
+                        </p>
+                    </div>
+                    <!--/span-->
+                    <div class="span6">
+                        <p class="text-right">
+                            Paridhan<sup>&trade;</sup> Portal v1.1
+                        </p>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+            </footer>
+        </div>
+<?php echo $this->inlineScript() ?>
+
+        <script src="/js/js-webshim-min/polyfiller.js"></script>
+        <script>
+            $.webshims.polyfill('forms');
+        </script>
+    </body>
+</html>

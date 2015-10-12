@@ -1,0 +1,71 @@
+<!--This file created to replaced the createAccountForm.jsp file -->
+<?php
+echo $accountform->getOpeningTag(array("callback"=>"submitCreateAccountForm"));
+?>
+
+<!--<input type="hidden" name="memberId" value="<?php if(!empty($memberId)) { echo $memberId;}?>" disabled="disabled">-->
+<input type="hidden" name="memberId" value="<?php if(!empty($memberId)) { echo $memberId;}?>">
+<div class="content form-horizontal">
+	<p class="controls">
+		<small><em><span class="required">*</span>Required Information</em> </small>
+	</p>
+	<div class="row-fluid">
+		<div class="span6">
+			<div class="control-group">
+				<?php echo $accountform['Account']['PrimaryIdentifier']->getLabel();?>
+				<div class="controls">
+					<?php echo $accountform['Account']['PrimaryIdentifier']->getInputHtml(array("id"=>"customer_account"));?>
+				</div>
+			</div>
+            <?php if(!empty($params['account.is.purchase'])){?>
+			<div class="control-group">
+				<?php echo $accountform['Account']['acct.value']->getLabel();?>
+				<div class="controls">
+					<?php echo $accountform['Account']['acct.value']->getInputHtml(array("id"=>"acct_value"));?>
+				</div>
+			</div>
+            <?php }?>
+		</div>
+		<!--/span-->
+
+		<div class="span6">
+			<div class="control-group">
+				<?php echo $accountform['Account']['TransactionDate']->getLabel();?>
+				<div class="controls">
+					<div class="input-append date" data-date=""
+						data-date-format="yyyy/mm/dd">
+						<input name="12096000000018#TransactionDate"
+							id="customer_date_created" type="text" value=""
+							disabled="disabled"> <span class="add-on"><i
+							class="icon-calendar"></i> </span>
+
+					</div>
+				</div>
+			</div>
+            <?php if(!empty($params['account.is.purchase'])){?>
+			<div class="control-group">
+				<?php echo $accountform['Account']['product']->getLabel();?>
+				<div class="controls">
+					<?php echo $accountform['Account']['product']->getSelectHtml();?>
+				</div>
+			</div>
+           <?php }?>
+		</div>
+		<!--/span-->
+	</div>
+</div>
+<footer class="text-right">
+	<button class="btn btn-primary" type="submit" id="createAccount-btn"
+		data-loading-text="Loading...">Create Account</button>
+</footer>
+<!--/.btn-container-->
+<!--</form>-->
+<?php 		
+echo $accountform->getClosingTag();
+?>
+
+<script>$('.date').datepicker({autoclose:true})</script>
+<script
+	src="/includes/js/RsDatePicker/RsDatePicker.nocache.js"></script>
+<script defer="defer">RsDatePicker.onInjectionDone('RsDatePicker')</script>
+<!--<div class="overlay"></div>-->

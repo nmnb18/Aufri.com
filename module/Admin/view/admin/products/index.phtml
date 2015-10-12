@@ -1,0 +1,52 @@
+<div class="alert alert-dismissable alert-danger tour hidden"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><ul><li></li></ul></div>
+<?php echo $this->partial('menu', array('active' => 'tour')); ?>
+<div class="row addButtonClass">
+    <div class="col-sm-5">
+        <a class="margin10"
+           href="<?php echo $this->url('admin_add_products'); ?>">
+            <button class="btn-primary btn">Add Products</button>
+        </a>
+    </div>
+</div>
+<div class="row itineraryRowHeading">
+    <div class="col-sm-12 itineraryHeading">
+        <div class="col-sm-2 noPadding">Products Name</div>
+        <div class="col-sm-2 noPadding">Image</div>
+        <div class="col-sm-2 noPadding">Category</div>
+        <div class="col-sm-2 noPadding">Price</div>
+        <div class="col-sm-4 alignCenter">Action</div>
+    </div>
+</div>
+<div class="">
+    <?php
+    $i = 1;
+    if (count($this->products) > 0) {
+        foreach ($this->products as $products) {
+            ?>
+            <div class="row attractionList widthNarrow ">
+                <div class="col-sm-12 post itineraryList <?php if($i%2==0) {echo "greyColor";}?>">
+                    <div class="col-sm-2 attrName"><?php echo $products['productName']; ?></div>
+                    <div class="col-sm-2 attrName"><img src="/upload/Products/<?php echo $products['productImage']; ?>" height="80" width="100" ></div>
+                    <div class="col-sm-2 noPadding"><?php echo $products['productCategory']; ?> </div>
+                    <div class="col-sm-2 noPadding"><?php echo $products['productPrice']; ?> </div>
+                    <div class="col-sm-4">
+                        <a class="margin25" href="<?php echo $this->url('admin_showdetails_products', array('id' => $products['productId'])) ?>">
+                            <button type="button" class="btn btn-success btnWidth" role="button">View</button></a>
+                        <a href="<?php echo $this->url('admin_edit_products', array('id' => $products['productId'])) ?>">
+                            <button type="button" class="btn btn-warning btnWidth">Edit</button></a>
+                        <a href="<?php echo $this->url('admin_delete_products', array('id' => $products['productId'])) ?>">
+                            <button type="button" class="btn btn-danger btnWidth">Delete</button></a>
+                    </div>
+                </div>
+            </div>
+            <?php $i++;
+        }
+    } else {
+        ?>
+        <div class="row pd5">
+            <div class="col-sm-12">No Tour To Display</div>
+        </div>
+        <?php
+    }
+    ?>
+</div>

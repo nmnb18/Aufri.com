@@ -1,0 +1,73 @@
+<div class="page-header">
+	<h1>
+		Find a
+		<?=$name;?>
+		- Search Form
+	</h1>
+</div>
+<div id="errorDiv"></div>
+<script>
+        $(function () {
+            var goback = false;
+            $('#findBtn').click(function () {
+                if (!goback) {
+                    if (checkEmptyForm($('#find-user'))) {
+                        findUser('<?php echo $type;?>', '<?php echo $name;?>', $('#find-user'), $(this));
+                        goback = true;
+                    } else {
+                        displayError({'Code':'All Fields Blank', 'Message':'At least one field is required'}, $('#errorDiv'));
+                    }
+                } else {
+                    $('#searchResults').empty();
+                    goback = false;
+                    $(this).button('reset');
+                    $(this).addClass('btn-primary');
+                    $('#search').show();
+                }
+            })
+        })
+    </script>
+
+<div id="search">
+	<form id="find-user" class="form-horizontal">
+		<p>
+			Search for a
+			<?=$name?>
+			by name, email address, or Employee ID:
+		</p>
+
+		<div class="control-group">
+			<label for="first" class="control-label">First Name:</label>
+
+			<div class="controls">
+				<input id="first" name="first" type="text" autofocus>
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="last" class="control-label">Last Name:</label>
+
+			<div class="controls">
+				<input id="last" name="last" type="text">
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="email" class="control-label">Email Address:</label>
+
+			<div class="controls">
+				<input id="email" name="email" type="email">
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="id" class="control-label">Employee ID:</label>
+
+			<div class="controls">
+				<input id="id" name="id" type="text">
+			</div>
+		</div>
+	</form>
+</div>
+<div id="searchResults"></div>
+<div class="controls">
+	<a href="javascript:" class="btn btn-primary btn-large" id="findBtn"
+		data-complete-text="Go Back" data-loading-text="Finding...">Find User</a>
+</div>

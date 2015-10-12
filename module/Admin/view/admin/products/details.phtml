@@ -1,0 +1,76 @@
+<?php
+echo $this->partial('menu', array('active' => 'products'));
+?>
+<div class="container pd20">
+    <div class="panel panel-info col-md-12 pd20">
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col-md-3">
+                    <label> Name</label>
+                </div>
+                <div class="col-md-1">
+                    <label>: </label>
+                </div>
+                <div class="col-md-5">
+                    <?php echo wordwrap($product->getProductName(), 65, "<br>\n", true); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Category </label>
+                </div>
+                <div class="col-md-1">
+                    <label>: </label>
+                </div>
+                <div class="col-md-8 word-wrap">
+                    <?php echo $product->getProductCategory(); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Price</label>
+                </div>
+                <div class="col-md-1">
+                    <label>: </label>
+                </div>
+                <div class="col-md-5">
+                    <?php
+                    if ($product->getProductPrice() == 0) {
+                        echo 'Not Specified';
+                    } else {
+                        echo $product->getProductPrice();
+                    }
+                    ?>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Description </label>
+                </div>
+                <div class="col-md-1">
+                    <label>: </label>
+                </div>
+                <div class="col-md-8 word-wrap">
+                    <?php echo $product->getProductDescription(); ?>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-5 alignCenter">
+            <?php
+            $productImage = $product->getProductImage();
+            if (empty($productImage)) {
+                $productImage = 'default.png';
+            }
+            ?>
+            <img src="<?php echo '/upload/Products/' . $productImage; ?>" height="auto" width="100%">
+        </div>
+    </div>
+</div>
+<div class="row col-md-3 col-md-offset-4">
+    <a href="<?php echo $this->url('admin_view_products');?>" class="btn btn-primary btnWidth">Back</a>
+    <a href="<?php echo $this->url('admin_edit_products', array('id' => $product->getId()));?>"
+       class="btn btn-warning btnWidth">Edit</a>
+
+</div>

@@ -1,0 +1,24 @@
+
+.status-item, .status-num, .status-item .status-label {
+    display: block;
+}
+
+.status-item {
+    height: 84px;
+    overflow-y: hidden;
+}
+
+.status-num {
+    float: left;
+    height: 84px;
+    margin-bottom: 0;
+}
+
+.status-item .status-label h2 {
+    line-height: 140%;
+    margin: 30px 0 0 110px;
+}
+
+.overlay {
+    filter: alpha(opacity=50);
+}
