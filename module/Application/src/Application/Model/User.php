@@ -1,63 +1,95 @@
 <?php
-/**
-* User file contains functions to get and set data from/to user table
-* @author Deepika Verma <deepika.verma@optimusinfo.com>
-*/
 namespace Application\Model;
 
 use Application\Model\AbstractDbModel;
-/**
-* User file contains functions to get and set data from/to user table
-* @author Deepika Verma <deepika.verma@optimusinfo.com>
-*/
+
 class User extends AbstractDbModel
 {
 
-    protected $id;
-    protected $email;
-    protected $name;
-    protected $password;
+    protected $aufriUsersId;
+    protected $aufriUsersEmail;
+    protected $aufriUsersPhoneNo;
+    protected $aufriUsersName;
+    protected $aufriUsersGender;
+    protected $aufriUsersAddressIdFk;
+    protected $aufriUsersPassword;
+    protected $aufriUsersAcctStatus;
+    protected $aufriUsersAcctCreatedOn;
+    protected $aufriUsersLastModifiedOn;
+    protected $aufriUsersActivationCode;
 
-    public function getId()
+    public function getUserId()
     {
-        return $this->id;
+        return $this->aufriUsersId;
+    }
+    public function getUserEmail()
+    {
+        return $this->aufriUsersEmail;
+    }
+    public function getUserPhoneNo()
+    {
+        return $this->aufriUsersPhoneNo;
+    }
+    public function getUserName()
+    {
+        return $this->aufriUsersName;
+    }
+    public function getUserGender()
+    {
+        return $this->aufriUsersGender;
+    }
+    public function getUserAddressIdFk()
+    {
+        return $this->aufriUsersAddressIdFk;
+    }
+    public function getUserPassword()
+    {
+        return $this->aufriUsersPassword;
+    }
+    public function getUserAcctStatus()
+    {
+        return $this->aufriUsersAcctStatus;
+    }
+    public function getUserActivationCode()
+    {
+        return $this->aufriUsersActivationCode;
     }
 
-    public function getEmail()
+    public function setUserId($aufriUsersId)
     {
-        return $this->email;
+        return $this->aufriUsersId = $aufriUsersId;
     }
-
-    public function getPassword()
+    public function setUserEmail($aufriUsersEmail)
     {
-        return $this->password;
+        return $this->aufriUsersEmail = $aufriUsersEmail;
     }
-
-    public function getName()
+    public function setUserPhoneNo($aufriUsersPhoneNo)
     {
-        return $this->name;
+        return $this->aufriUsersPhoneNo = $aufriUsersPhoneNo;
     }
-
-
-
-    public function setId($id)
+    public function setUserName($aufriUsersName)
     {
-        return $this->id = $id;
+        return $this->aufriUsersName = $aufriUsersName;
     }
-
-    public function setEmail($email)
+    public function setUserGender($aufriUsersGender)
     {
-        $this->email = $email;
+        return $this->aufriUsersGender = $aufriUsersGender;
     }
-
-    public function setName($name)
+    public function setUserAddressIdFk($aufriUsersAddressIdFk)
     {
-        $this->name = $name;
+        return $this->aufriUsersAddressIdFk = $aufriUsersAddressIdFk;
     }
-
-    public function setPassword($password)
+    public function setUserPassword($aufriUsersPassword)
     {
-        $this->password = $password;
+        return $this->aufriUsersPassword = $aufriUsersPassword;
+    }
+    public function setUserAcctStatus($aufriUsersAcctStatus)
+    {
+        return $this->aufriUsersAcctStatus = $aufriUsersAcctStatus;
+    }
+    public function setUserActivationCode($aufriUsersActivationCode)
+    {
+        return $this->aufriUsersActivationCode = $aufriUsersActivationCode;
     }
 
 }

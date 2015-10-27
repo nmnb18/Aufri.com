@@ -3,14 +3,14 @@
 namespace Application\Model;
 
 use Application\Model\AbstractDbTable;
-use Application\Model\User;
+use Application\Model\Shopkeeper;
 use Zend\Db\Sql\Select;
 use Zend\Db\Sql\Expression;
 use Zend\Db\Sql\Predicate;
 
-class UserTable extends AbstractDbTable {
+class ShopkeeperTable extends AbstractDbTable {
 
-    const TABLE_NAME = 'aufri_users';
+    const TABLE_NAME = 'aufri_shopkeeper';
 
     public function getOne($where = array()) {
         $row = $this->tableGateway->select($where)->current();
@@ -31,17 +31,17 @@ class UserTable extends AbstractDbTable {
         return $this->tableGateway->selectWith($select);
     }
 
-    public function save(User $user) {
-        $data = $user->getRawData();
-        if ($user->getUserId() > 0) {
-            $id = $user->getUserId();
-            $this->tableGateway->update($data, array('aufri_users_id' => $id));
+    public function save(Shopkeeper $shopkeeper) {
+        $data = $shopkeeper->getRawData();
+        if ($shopkeeper->getShopkeeperId() > 0) {
+            $id = $shopkeeper->getShopkeeperId();
+            $this->tableGateway->update($data, array('aufri_shopkeeper_id' => $id));
         } else {
             if (!$this->tableGateway->insert($data)) {
                 throw new \Exception("Could not new row $id");
             }
             $id = (int) $this->tableGateway->lastInsertValue;
         }
-        return $this->getOne(array('aufri_users_id' => $id));
+        return $this->getOne(array('aufri_shopkeeper_id' => $id));
     }
 }

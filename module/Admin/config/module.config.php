@@ -82,6 +82,68 @@ return array(
                     )
                 )
             ),
+            'admin_view_shopkeepers' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/admin/shopkeepers',
+                    'defaults' => array(
+                        'controller' => 'Admin\Controller\Shopkeeper',
+                        'action' => 'index'
+                    )
+                )
+            ),
+            'admin_add_shopkeepers' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/admin/shopkeepers/add',
+                    'defaults' => array(
+                        'controller' => 'Admin\Controller\Shopkeeper',
+                        'action' => 'add'
+                    )
+                )
+            ),
+            'admin_edit_shopkeepers' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/admin/shopkeepers/edit/:id',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                        'type' => '[0-9]+'
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Admin\Controller\Shopkeeper',
+                        'action' => 'edit'
+                    )
+                )
+            ),
+            'admin_delete_shopkeepers' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/admin/shopkeepers/delete/:id',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                        'type' => '[0-9]+'
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Admin\Controller\Shopkeeper',
+                        'action' => 'delete'
+                    )
+                )
+            ),
+            'admin_showdetails_shopkeepers' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/admin/shopkeepers/details/:id',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                        'type' => '[0-9]+'
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Admin\Controller\Shopkeeper',
+                        'action' => 'details'
+                    )
+                )
+            ),
             'admin_view_orders' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
@@ -92,12 +154,79 @@ return array(
                     )
                 )
             ),
-            'admin_view_request' => array(
+
+            'admin_view_coupons' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route' => '/admin/request',
+                    'route' => '/admin/coupons',
                     'defaults' => array(
-                        'controller' => 'Admin\Controller\Products',
+                        'controller' => 'Admin\Controller\Coupon',
+                        'action' => 'index'
+                    )
+                )
+            ),
+            'admin_add_coupons' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/admin/coupons/add',
+                    'defaults' => array(
+                        'controller' => 'Admin\Controller\Coupon',
+                        'action' => 'add'
+                    )
+                )
+            ),
+            'admin_edit_coupons' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/admin/coupons/edit/:id',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                        'type' => '[0-9]+'
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Admin\Controller\Coupon',
+                        'action' => 'edit'
+                    )
+                )
+            ),
+            'admin_delete_coupons' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/admin/coupons/delete/:id',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                        'type' => '[0-9]+'
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Admin\Controller\Coupon',
+                        'action' => 'delete'
+                    )
+                )
+            ),
+            'admin_showdetails_coupons' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/admin/coupons/details/:id',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                        'type' => '[0-9]+'
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Admin\Controller\Coupon',
+                        'action' => 'details'
+                    )
+                )
+            ),
+            'admin_view_orders' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin/orders/',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                        'type' => '[0-9]+'
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Admin\Controller\Order',
                         'action' => 'index'
                     )
                 )
@@ -118,6 +247,9 @@ return array(
         'invokables' => array(
             'Admin\Controller\Index' => 'Admin\Controller\IndexController',
             'Admin\Controller\Products' => 'Admin\Controller\ProductsController',
+            'Admin\Controller\Shopkeeper' => 'Admin\Controller\ShopkeeperController',
+            'Admin\Controller\Coupon' => 'Admin\Controller\CouponController',
+            'Admin\Controller\Order' => 'Admin\Controller\OrderController'
         )
     ),
     'view_manager' => array(

@@ -3,14 +3,14 @@
 namespace Application\Model;
 
 use Application\Model\AbstractDbTable;
-use Application\Model\Size;
+use Application\Model\Address;
 use Zend\Db\Sql\Select;
 use Zend\Db\Sql\Expression;
 use Zend\Db\Sql\Predicate;
 
-class SizeTable extends AbstractDbTable {
+class AddressTable extends AbstractDbTable {
 
-    const TABLE_NAME = 'paridhan_item_size';
+    const TABLE_NAME = 'aufri_address';
 
     public function getOne($where = array()) {
         $row = $this->tableGateway->select($where)->current();
@@ -23,7 +23,6 @@ class SizeTable extends AbstractDbTable {
     public function getMany($where = array(), $params = array()) {
         $select = new Select(self::TABLE_NAME);
         $select->where($where);
-        $select->order("id DESC");
         if (!empty($params)) {
             foreach ($params as $key => $value) {
                 $select->{$key}($value);
@@ -32,17 +31,17 @@ class SizeTable extends AbstractDbTable {
         return $this->tableGateway->selectWith($select);
     }
 
-    public function save(Size $size) {
-        $data = $size->getRawData();
-        if ($size->getId() > 0) {
-            $id = $size->getId();
-            $this->tableGateway->update($data, array('id' => $id));
+    public function save(Address $address) {
+        $data = $address->getRawData();
+        if ($address->getAddressId() > 0) {
+            $id = $address->getAddressId();
+            $this->tableGateway->update($data, array('aufri_address_id' => $id));
         } else {
             if (!$this->tableGateway->insert($data)) {
                 throw new \Exception("Could not new row $id");
             }
             $id = (int) $this->tableGateway->lastInsertValue;
         }
-        return $this->getOne(array('id' => $id));
+        return $this->getOne(array('aufri_address_id' => $id));
     }
 }

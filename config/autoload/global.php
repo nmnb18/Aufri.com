@@ -18,7 +18,7 @@ return array(
         'adapters' => array(
             'dbAdapter' => array(
                 'driver' => 'Pdo_mysql',
-                'database' => 'paridhan',
+                'database' => 'aufri',
                 'hostname' => 'localhost',
                 'port' => 3306,
                 'username' => 'tvp',
@@ -41,12 +41,16 @@ return array(
                 'route' => 'admin_view_products',
             ),
             array(
-                'label' => 'Orders',
-                'route' => 'admin_view_orders',
+                'label' => 'Shopkeepers',
+                'route' => 'admin_view_shopkeepers',
             ),
             array(
-                'label' => 'Contact Request',
-                'route' => 'admin_view_request',
+                'label' => 'Coupons',
+                'route' => 'admin_view_coupons',
+            ),
+            array(
+                'label' => 'Orders',
+                'route' => 'admin_view_orders',
             ),
         ),
 

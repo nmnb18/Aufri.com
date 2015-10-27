@@ -1,0 +1,58 @@
+<?php
+echo $this->partial('menu', array('active' => 'products'));
+$form->setAttribute('action', $this->url('admin_add_shopkeepers'));
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+<label class="alert-danger"></label>
+
+<div class="wrapper">
+    <div class="panel panel-info pd20" >
+
+        <div class="row">
+            <div class ="col-sm-4">
+                <label>Shopkeeper Name *:</label>
+                <?php echo $this->formElement($form->get('name')); ?>
+                <span class="alert-danger"><?php echo $this->formElementerrors($form->get('name')); ?></span>
+            </div>
+            <div class ="col-sm-4">
+                <label>Shopkeeper Email :</label>
+                <?php echo $this->formElement($form->get('email')); ?>
+            </div>
+            <div class ="col-sm-4">
+                <label>Shopkeeper Phone :</label>
+                <?php echo $this->formElement($form->get('phoneno')); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class ="col-sm-4">
+                <label>City :</label>
+                <?php echo $this->formElement($form->get('city')); ?>
+            </div>
+            <div class ="col-sm-4">
+                <label>Pincode:</label>
+                <?php echo $this->formElement($form->get('pincode')); ?>
+            </div>
+
+            <div class ="col-sm-4">
+                <label>LandMark:</label>
+                <?php echo $this->formElement($form->get('landmark')); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class ="col-sm-4 select-check">
+                <label>Address *:</label>
+                <?php echo $this->formElement($form->get('address')); ?>
+            </div>
+            <div class ="col-sm-8">
+                <label>Details *:</label>
+                <?php echo $this->formElement($form->get('details')); ?>
+            </div>
+        </div>
+          <a href="<?php echo $this->url('admin_view_shopkeepers');?>" class="btn btn-warning">Back</a>
+        <?php echo $this->formRow($form->get('submit')); ?>
+
+    </div>
+</div>
+
+<?php echo $this->form()->closeTag(); ?>

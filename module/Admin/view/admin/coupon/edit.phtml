@@ -1,0 +1,64 @@
+<?php
+echo $this->partial('menu', array('active' => 'products'));
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+<label class="alert-danger"></label>
+
+<div class="wrapper">
+    <div class="panel panel-info pd20" >
+
+        <div class="row">
+            <div class ="col-sm-3">
+                <label>Coupon Name *:</label>
+                <?php echo $this->formElement($form->get('name')); ?>
+            </div>
+            <div class ="col-sm-3">
+                <label>Coupon Code *:</label>
+                <?php echo $this->formElement($form->get('code')); ?>
+            </div>
+            <div class ="col-sm-3">
+                <label>Coupon Start Date :</label>
+                <?php echo $this->formElement($form->get('startdate')); ?>
+            </div>
+            <div class ="col-sm-3">
+                <label>Coupon End date :</label>
+                <?php echo $this->formElement($form->get('enddate')); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class ="col-sm-4">
+                <label>Coupon discount :</label>
+                <?php echo $this->formElement($form->get('discount')); ?>
+            </div>
+            <div class ="col-sm-4">
+                <label>Coupon avail for:</label>
+                <?php echo $this->formElement($form->get('availfor')); ?>
+            </div>
+
+            <div class ="col-sm-4">
+                <label>Coupon type:</label>
+                <?php echo $this->formElement($form->get('type')); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class ="col-sm-4 select-check">
+                <label>Coupon minorder *:</label>
+                <?php echo $this->formElement($form->get('minorder')); ?>
+            </div>
+            <div class ="col-sm-4">
+                <label>Coupon count for any customer *:</label>
+                <?php echo $this->formElement($form->get('anycount')); ?>
+            </div>
+            <div class ="col-sm-4">
+                <label>Coupon count for single customer *:</label>
+                <?php echo $this->formElement($form->get('singlecount')); ?>
+            </div>
+        </div>
+          <a href="<?php echo $this->url('admin_view_coupons');?>" class="btn btn-warning">Back</a>
+        <?php echo $this->formRow($form->get('submit')); ?>
+
+    </div>
+</div>
+
+<?php echo $this->form()->closeTag(); ?>

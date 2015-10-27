@@ -1,0 +1,50 @@
+<div class="alert alert-dismissable alert-danger tour hidden"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><ul><li></li></ul></div>
+<?php echo $this->partial('menu', array('active' => 'tour')); ?>
+<div class="row addButtonClass">
+    <div class="col-sm-5">
+        <a class="margin10"
+           href="<?php echo $this->url('admin_add_shopkeepers'); ?>">
+            <button class="btn-primary btn">Add Shopkeeper</button>
+        </a>
+    </div>
+</div>
+<div class="row itineraryRowHeading">
+    <div class="col-sm-12 itineraryHeading">
+        <div class="col-sm-2 noPadding">Shopkeeper Name</div>
+        <div class="col-sm-3 noPadding">Shopkeeper Email</div>
+        <div class="col-sm-3 noPadding">Shopkeeper Phone</div>
+        <div class="col-sm-4 alignCenter">Action</div>
+    </div>
+</div>
+<div class="">
+    <?php
+    $i = 1;
+    if (count($this->shopkeepers) > 0) {
+        foreach ($this->shopkeepers as $shopkeepers) {
+            ?>
+            <div class="row attractionList widthNarrow ">
+                <div class="col-sm-12 post itineraryList <?php if($i%2==0) {echo "greyColor";}?>">
+                    <div class="col-sm-2 attrName"><?php echo $shopkeepers['aufriShopkeeperName']; ?></div>
+                    <div class="col-sm-3 noPadding"><?php echo $shopkeepers['aufriShopkeeperEmail']; ?> </div>
+                    <div class="col-sm-3 noPadding"><?php echo $shopkeepers['aufriShopkeeperPhone']; ?> </div>
+                    <div class="col-sm-4">
+                        <a class="margin25" href="<?php echo $this->url('admin_showdetails_shopkeepers', array('id' => $shopkeepers['aufriShopkeeperId'])) ?>">
+                            <button type="button" class="btn btn-success btnWidth" role="button">View</button></a>
+                        <a href="<?php echo $this->url('admin_edit_shopkeepers', array('id' => $shopkeepers['aufriShopkeeperId'])) ?>">
+                            <button type="button" class="btn btn-warning btnWidth">Edit</button></a>
+                        <a href="<?php echo $this->url('admin_delete_shopkeepers', array('id' => $shopkeepers['aufriShopkeeperId'])) ?>">
+                            <button type="button" class="btn btn-danger btnWidth">Delete</button></a>
+                    </div>
+                </div>
+            </div>
+            <?php $i++;
+        }
+    } else {
+        ?>
+        <div class="row pd5">
+            <div class="col-sm-12">No Shopkeepers To Display</div>
+        </div>
+        <?php
+    }
+    ?>
+</div>

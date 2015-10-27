@@ -12,18 +12,16 @@ class ProductsForm extends Form {
     public function __construct(Products $products) {
         // we want to ignore the name passed
         parent::__construct('products');
-
-
-
-
         $this->add(array(
             'name' => 'id',
             'type' => 'hidden',
             'attributes' => array(
                 'class' => 'form-control',
-                'value' => $products->getId()
+                'value' => $products->getProductId(),
+                'required' => 'required'
             ),
         ));
+
         $this->add(array(
             'name' => 'name',
             'type' => 'Text',
@@ -31,44 +29,33 @@ class ProductsForm extends Form {
                 'class' => 'form-control',
                 'Placeholder' => 'Enter Product Name',
                 'maxlength' => 100,
-                'value' => $products->getProductName()
-            ),
-        ));
-        $this->add(array(
-            'name' => 'price',
-            'type' => 'Text',
-            'attributes' => array(
-                'class' => 'form-control',
-                'Placeholder' => 'Enter Product Price',
-                'maxlength' => 15,
-                'value' => $products->getProductPrice()
+                'value' => $products->getProductName(),
+                'required' => 'required'
             ),
         ));
 
         $this->add(array(
             'type' => 'Zend\Form\Element\Select',
-            'name' => 'category',
+            'name' => 'gender',
             'options' => array(
-                'empty_option' => 'Please choose category',
+                'empty_option' => 'Please choose gender',
                 'value_options' => array(
-                    '4' => 'Mumbaiya',
-                    '5' => 'Hyderabadi',
-                    '2' => 'Indorie',
-                    '3' => 'Retro',
-                    '1' => 'Bollywood',
-                    '6' => 'Delhi 6',
-                    '7' => 'Suit Boot'
+                    'Male' => 'Male',
+                    'Female' => 'Female',
+
                 ),
             ),
             'attributes' => array(
                 'class' => 'form-control country-select',
-                'value' => $products->getProductCategory()
+                'value' => $products->getProductGender(),
+                'required' => 'required'
             )
         ));
         $this->add(array(
-            'type' => 'Zend\Form\Element\MultiCheckbox',
+            'type' => 'Zend\Form\Element\Select',
             'name' => 'size',
             'options' => array(
+                'empty_option' => 'Please choose Size',
                 'value_options' => array(
                     'S' => 'S',
                     'M' => 'M',
@@ -78,41 +65,76 @@ class ProductsForm extends Form {
                 ),
             ),
             'attributes' => array(
-                'class' => 'form-control check-input',
+                'class' => 'form-control',
                 'value' => $products->getProductSize(),
-                'multiple' => 'multiple'
+                'required' => 'required'
             )
         ));
         $this->add(array(
             'type' => 'Zend\Form\Element\Select',
-            'name' => 'sleeve',
+            'name' => 'waist',
             'options' => array(
-                'empty_option' => 'Please choose Sleeve Length',
+                'empty_option' => 'Please choose Waist',
                 'value_options' => array(
-                    'Half' => 'Half',
-                    'Full' => 'Full'
+                    '28' => '28',
+                    '30' => '30'
                 ),
             ),
             'attributes' => array(
                 'class' => 'form-control country-select',
-                'value' => $products->getProductLength()
+                'value' => $products->getProductWaist(),
+                'required' => 'required'
             )
         ));
         $this->add(array(
             'type' => 'Zend\Form\Element\Select',
-            'name' => 'fit',
+            'name' => 'category',
             'options' => array(
-                'empty_option' => 'Please choose fit',
+                'empty_option' => 'Please choose Category',
                 'value_options' => array(
-                    'Slim' => 'Slim Fit',
-                    'Regular' => 'Regular Fit'
+                    'test' => 'test',
+                    'test1' => 'Test 1'
                 ),
             ),
             'attributes' => array(
                 'class' => 'form-control country-select',
-                'value' => $products->getProductFit()
+                'value' => $products->getProductCategory(),
+                'required' => 'required'
             )
         ));
+        $this->add(array(
+            'name' => 'rent',
+            'type' => 'Text',
+            'attributes' => array(
+                'class' => 'form-control',
+                'Placeholder' => 'Enter Rent',
+                'maxlength' => 100,
+                'value' => $products->getProductRent()
+            ),
+        ));
+        $this->add(array(
+            'name' => 'security',
+            'type' => 'Text',
+            'attributes' => array(
+                'class' => 'form-control',
+                'Placeholder' => 'Enter Security Amount',
+                'maxlength' => 100,
+                'value' => $products->getProductSecurity(),
+                'required' => 'required'
+            ),
+        ));
+        $this->add(array(
+            'name' => 'stock',
+            'type' => 'Text',
+            'attributes' => array(
+                'class' => 'form-control',
+                'Placeholder' => 'Enter Product Stock',
+                'maxlength' => 100,
+                'value' => $products->getProductStock(),
+                'required' => 'required'
+            ),
+        ));
+
         $this->add(array(
             'name' => 'description',
             'type' => 'Zend\Form\Element\Textarea',
@@ -120,15 +142,18 @@ class ProductsForm extends Form {
                 'class' => 'form-control textareaMargin template tinyMCE',
                 'maxlength' => 5000,
                 'rows' => 7, // THIS CHANGES THE NUMBER OF ROWS
-                'value' => $products->getProductDescription()
+                'value' => $products->getProductDescription(),
+                'required' => 'required'
             ),
         ));
+
         $this->add(array(
             'name' => 'image',
             'type' => 'File',
             'attributes' => array(
                 'class' => '',
-                'value' => $products->getProductImage()
+                'value' => $products->getProductImage(),
+                'required' => 'required'
             ),
         ));
 
@@ -141,7 +166,7 @@ class ProductsForm extends Form {
                 'class' => 'btn btn-success'
             ),
         ));
-        $this->setInputFilter(new ProductsInputFilter());
+        //$this->setInputFilter(new ProductsInputFilter());
     }
 
 }

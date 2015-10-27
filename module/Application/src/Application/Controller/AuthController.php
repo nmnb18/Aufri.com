@@ -66,9 +66,9 @@ class AuthController extends AbstractAppController
         $user = new User();
         $bcrypt = new Bcrypt();
         $userTable = $this->getServiceLocator()->get('UserTable');
-        $user = $userTable->getOne(array('email' => $data['email']));
+        $user = $userTable->getOne(array('aufri_users_email' => $data['email']));
         if (!empty($user) && !empty($data['password'])) {
-            if ($bcrypt->verify($data['password'], $user->getPassword())) {
+            if ($bcrypt->verify($data['password'], $user->getUserPassword())) {
                 $this->updateSessionWithUser($user, false);
                 return $this->redirect()->toRoute('admin_home');
             }
@@ -87,8 +87,8 @@ class AuthController extends AbstractAppController
     protected function updateSessionWithUser($user, $facebook = false, $user_profile = null)
     {
         $session = $this->getSession();
-        $session['user_id'] = $user->getId();
-        $session['user_email'] = $user->getEmail();
+        $session['user_id'] = $user->getUserId();
+        $session['user_email'] = $user->getUserEmail();
     }
 
 }

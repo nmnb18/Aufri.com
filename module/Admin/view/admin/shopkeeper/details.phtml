@@ -12,105 +12,85 @@ echo $this->partial('menu', array('active' => 'products'));
                     <label>: </label>
                 </div>
                 <div class="col-md-5">
-                    <?php echo wordwrap($product->getProductName(), 65, "<br>\n", true); ?>
+                    <?php echo wordwrap($shopkeeper->getShopkeeperName(), 65, "<br>\n", true); ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label>Category </label>
+                    <label>Email </label>
                 </div>
                 <div class="col-md-1">
                     <label>: </label>
                 </div>
                 <div class="col-md-5 word-wrap">
-                    <?php echo $product->getProductCategory(); ?>
+                    <?php echo $shopkeeper->getShopkeeperEmail(); ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label>Rent</label>
+                    <label>Phone no</label>
                 </div>
                 <div class="col-md-1">
                     <label>: </label>
                 </div>
                 <div class="col-md-5">
                     <?php
-                        echo $product->getProductRent();
+                        echo $shopkeeper->getShopkeeperPhone();
                     ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label>Security </label>
+                    <label>City </label>
                 </div>
                 <div class="col-md-1">
                     <label>: </label>
                 </div>
                 <div class="col-md-8 word-wrap">
-                    <?php echo $product->getProductSecurity(); ?>
+                    <?php echo $address->getAddressCity(); ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label>Size </label>
+                    <label>Pincode </label>
                 </div>
                 <div class="col-md-1">
                     <label>: </label>
                 </div>
                 <div class="col-md-8 word-wrap">
-                    <?php echo $product->getProductSize(); ?>
+                    <?php echo $address->getAddressPincode(); ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label>Waist </label>
+                    <label>LandMark </label>
                 </div>
                 <div class="col-md-1">
                     <label>: </label>
                 </div>
                 <div class="col-md-8 word-wrap">
-                    <?php echo $product->getProductWaist(); ?>
+                    <?php echo $address->getAddressLandmark(); ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label>Stock </label>
+                    <label>Address </label>
                 </div>
                 <div class="col-md-1">
                     <label>: </label>
                 </div>
                 <div class="col-md-8 word-wrap">
-                    <?php echo $product->getProductStock(); ?>
+                    <?php echo $address->getAddressAddress(); ?>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-3">
-                    <label>Description </label>
-                </div>
-                <div class="col-md-1">
-                    <label>: </label>
-                </div>
-                <div class="col-md-8 word-wrap">
-                    <?php echo $product->getProductDescription(); ?>
-                </div>
-            </div>
 
-        </div>
-        <div class="col-md-5 alignCenter">
-            <?php
-            $productImage = $product->getProductImage();
-            if (empty($productImage)) {
-                $productImage = 'default.png';
-            }
-            ?>
-            <img src="<?php echo '/upload/Products/' . $productImage; ?>" height="auto" width="100%">
         </div>
     </div>
 </div>
 <div class="row col-md-3 col-md-offset-4">
-    <a href="<?php echo $this->url('admin_view_products');?>" class="btn btn-primary btnWidth">Back</a>
-    <a href="<?php echo $this->url('admin_edit_products', array('id' => $product->getProductId()));?>"
+    <a href="<?php echo $this->url('admin_view_shopkeepers');?>" class="btn btn-primary btnWidth">Back</a>
+    <a href="<?php echo $this->url('admin_edit_shopkeepers', array('id' => $shopkeeper->getShopkeeperId()));?>"
        class="btn btn-warning btnWidth">Edit</a>
 
 </div>

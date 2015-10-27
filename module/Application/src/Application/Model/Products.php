@@ -6,77 +6,98 @@ use Application\Model\AbstractDbModel;
 
 class Products extends AbstractDbModel {
 
-    protected $id;
-    protected $name;
-    protected $price;
-    protected $description;
-    protected $image;
-    protected $category;
-    protected $size;
-    protected $fit;
-    protected $length;
+    protected $aufriProductsId;
+    protected $aufriProductsName;
+    protected $aufriProductsImageIdFk;
+    protected $aufriProductsShopkeeperIdFk;
+    protected $aufriProductsGender;
+    protected $aufriProductsSize;
+    protected $aufriProductsWaist;
+    protected $aufriProductsRent;
+    protected $aufriProductsSecurity;
+    protected $aufriProductsCategory;
+    protected $aufriProductsStock;
+    protected $aufriProductsStatus;
+    protected $aufriProductsDescription;
 
-    public function getId() {
-        return $this->id;
+    public function getProductId() {
+        return $this->aufriProductsId;
     }
-
     public function getProductName() {
-        return $this->name;
+        return $this->aufriProductsName;
     }
-
-    public function getProductDescription() {
-        return $this->description;
-    }
-
     public function getProductImage() {
-        return $this->image;
+        return $this->aufriProductsImageIdFk;
     }
-
-    public function getProductPrice() {
-        return $this->price;
+    public function getProductShopkeeper() {
+        return $this->aufriProductsShopkeeperIdFk;
     }
-    public function getProductCategory() {
-        return $this->category;
+    public function getProductGender() {
+        return $this->aufriProductsGender;
     }
     public function getProductSize() {
-        return $this->size;
+        return $this->aufriProductsSize;
     }
-    public function getProductFit() {
-        return $this->fit;
+    public function getProductWaist() {
+        return $this->aufriProductsWaist;
     }
-    public function getProductLength() {
-        return $this->length;
+    public function getProductRent() {
+        return $this->aufriProductsRent;
+    }
+    public function getProductSecurity() {
+        return $this->aufriProductsSecurity;
+    }
+    public function getProductStatus() {
+        return $this->aufriProductsStatus;
+    }
+    public function getProductCategory() {
+        return $this->aufriProductsCategory;
+    }
+    public function getProductStock() {
+        return $this->aufriProductsStock;
+    }
+    public function getProductDescription() {
+        return $this->aufriProductsDescription;
     }
 
-    public function setId($id) {
-        return $this->id = $id;
+    public function setProductId($aufriProductsId) {
+        return $this->aufriProductsId = $aufriProductsId;
+    }
+    public function setProductName($aufriProductsName) {
+        return $this->aufriProductsName = $aufriProductsName;
+    }
+    public function setProductImage($aufriProductsImageIdFk) {
+        return $this->aufriProductsImageIdFk = $aufriProductsImageIdFk;
+    }
+    public function setProductShopkeeper($aufriProductsShopkeeperIdFk) {
+        return $this->aufriProductsShopkeeperIdFk = $aufriProductsShopkeeperIdFk;
+    }
+    public function setProductGender($aufriProductsGender) {
+        return $this->aufriProductsGender = $aufriProductsGender;
+    }
+    public function setProductSize($aufriProductsSize) {
+        return $this->aufriProductsSize = $aufriProductsSize;
+    }
+    public function setProductWaist($aufriProductsWaist) {
+        return $this->aufriProductsWaist = $aufriProductsWaist;
+    }
+    public function setProductRent($aufriProductsRent) {
+        return $this->aufriProductsRent = $aufriProductsRent;
+    }
+    public function setProductSecurity($aufriProductsSecurity) {
+        return $this->aufriProductsSecurity = $aufriProductsSecurity;
+    }
+    public function setProductStatus($aufriProductsStatus) {
+        return $this->aufriProductsStatus = $aufriProductsStatus;
+    }
+    public function setProductCategory($aufriProductsCategory) {
+        return $this->aufriProductsCategory = $aufriProductsCategory;
+    }
+    public function setProductStock($aufriProductsStock) {
+        return $this->aufriProductsStock = $aufriProductsStock;
+    }
+    public function setProductDescription($aufriProductsDescription) {
+        return $this->aufriProductsDescription = $aufriProductsDescription;
     }
 
-    public function setProductName($name) {
-        return $this->name = $name;
-    }
-
-    public function setProductPrice($price) {
-        return $this->price = $price;
-    }
-
-    public function setProductImage($image) {
-        return $this->image = $image;
-    }
-
-    public function setProductDescription($description) {
-        return $this->description = $description;
-    }
-    public function setProductCategory($category) {
-        return $this->category = $category;
-    }
-    public function setProductSize($size) {
-        return $this->size = $size;
-    }
-    public function setProductLength($length) {
-        return $this->length = $length;
-    }
-    public function setProductFit($fit) {
-        return $this->fit = $fit;
-    }
 }

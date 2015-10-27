@@ -98,7 +98,7 @@ abstract class AbstractAppController extends AbstractActionController
     	if ($this->getSession()['user_id'] > 0) {
     		$userTable = $this->getServiceLocator()->get('UserTable');
     		$user = $userTable->getOne(array(
-    				'id' => $this->getSession()['user_id'],
+    				'aufri_users_id' => $this->getSession()['user_id'],
     		));
     		if (!$user) {
     			return 'guest';
@@ -127,21 +127,8 @@ abstract class AbstractAppController extends AbstractActionController
     	}
     }
 
-    public function isAgent()
-    {
-
-    	if (in_array($this->getRole(), array('Travel Agent'))) {
-    		return true;
-    	} else {
-    		return false;
-    	}
-    }
-
-
-
     public function getPreviousLink()
     {
-
     	return $this->previousLink;
     }
 
@@ -395,28 +382,11 @@ abstract class AbstractAppController extends AbstractActionController
         return $dateTime->format('Y-m-d H:i:s');
     }
 
-    public function getDefaultAvatar($type = 'user')
-    {
-        switch ($type) {
-            case 'user':
-                return '/images/avatar.png';
-            case 'team':
-                return '/images/avatar_team.png';
-            case 'group':
-                return '/images/avatar.png';
-            default:
-                return '/images/avatar.png';
-        }
-    }
-
     public function translate($string)
     {
         $translator = $this->getServiceLocator()->get('translator');
         return $translator->translate($string);
     }
-
-
-
     public function getLanguage()
     {
         return $this->language;
@@ -426,16 +396,6 @@ abstract class AbstractAppController extends AbstractActionController
     {
         $this->language = $language;
         return $this;
-    }
-
-    public function redirectToReferer($defaultRoute) {
-    	$request = $this->getRequest();
-    	$referer = $request->getHeader('referer');
-    	if (isset($referer)) {
-    		return $this->redirect()->toUrl($referer->uri()->getPath());
-    	} else {
-    		return $this->redirect()->toRoute($defaultRoute);
-    	}
     }
 
     public function setLogs($message) {
@@ -462,26 +422,6 @@ abstract class AbstractAppController extends AbstractActionController
         return $paginatorObject;
     }
 
-    /**
-     *  Function to get country list
-     *  @return OBJECT
-     * */
-
-    public function getCountryList() {
-        $countryTable = $this->serviceLocator->get('CountryTable');
-        $countryArray = $countryTable->getMany()->toArray();
-        $country = array();
-        foreach ($countryArray as $countryVal) {
-            $country [$countryVal ['tpodCountryId']] = $countryVal ['tpodCountryName'];
-}
-        return $country;
-    }
-
-    
-      /*
-     * Function to get form data
-     * Merge file data with post data
-     */
 
     public function getPostData() {
         $request = $this->serviceLocator->get('request');

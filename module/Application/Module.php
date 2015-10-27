@@ -53,27 +53,49 @@ class Module {
                     $resultSetPrototype->setArrayObjectPrototype(new Model\Products());
                     return new \Zend\Db\TableGateway\TableGateway(Model\ProductsTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
                 },
-                'CategoryTable' => function ($sm) {
-                    $tableGateway = $sm->get('CategoryTableGateway');
-                    $table = new Model\CategoryTable($tableGateway);
+                'ShopkeeperTable' => function ($sm) {
+                    $tableGateway = $sm->get('ShopkeeperTableGateway');
+                    $table = new Model\ShopkeeperTable($tableGateway);
                     return $table;
                 },
-                'CategoryTableGateway' => function ($sm) {
+                'ShopkeeperTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('dbAdapter');
                     $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new Model\Category());
-                    return new \Zend\Db\TableGateway\TableGateway(Model\CategoryTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\Shopkeeper());
+                    return new \Zend\Db\TableGateway\TableGateway(Model\ShopkeeperTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
                 },
-                'SizeTable' => function ($sm) {
-                    $tableGateway = $sm->get('SizeTableGateway');
-                    $table = new Model\SizeTable($tableGateway);
+                'AddressTable' => function ($sm) {
+                    $tableGateway = $sm->get('AddressTableGateway');
+                    $table = new Model\AddressTable($tableGateway);
                     return $table;
                 },
-                'SizeTableGateway' => function ($sm) {
+                'AddressTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('dbAdapter');
                     $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new Model\Size());
-                    return new \Zend\Db\TableGateway\TableGateway(Model\SizeTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\Address());
+                    return new \Zend\Db\TableGateway\TableGateway(Model\AddressTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
+                },
+                'CouponTable' => function ($sm) {
+                    $tableGateway = $sm->get('CouponTableGateway');
+                    $table = new Model\CouponTable($tableGateway);
+                    return $table;
+                },
+                'CouponTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('dbAdapter');
+                    $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\Coupon());
+                    return new \Zend\Db\TableGateway\TableGateway(Model\CouponTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
+                },
+                'OrderTable' => function ($sm) {
+                    $tableGateway = $sm->get('OrderTableGateway');
+                    $table = new Model\OrderTable($tableGateway);
+                    return $table;
+                },
+                'OrderTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('dbAdapter');
+                    $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\Order());
+                    return new \Zend\Db\TableGateway\TableGateway(Model\OrderTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
                 },
             )
         );

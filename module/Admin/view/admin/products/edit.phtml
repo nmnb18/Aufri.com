@@ -10,57 +10,59 @@ echo $this->form()->openTag($form);
     <div class="panel panel-info pd20" >
 
         <div class="row">
-            <div class ="col-sm-4">
-                <label>Name *:</label>
+            <div class ="col-sm-3">
+                <label>Product Name *:</label>
                 <?php echo $this->formElement($form->get('name')); ?>
                 <span class="alert-danger"><?php echo $this->formElementerrors($form->get('name')); ?></span>
             </div>
-            <div class ="col-sm-4">
-                <label>Price :</label>
-                <?php echo $this->formElement($form->get('price')); ?>
-                <span class="alert-danger"><?php echo $this->formElementerrors($form->get('price')); ?></span>
+            <div class ="col-sm-3">
+                <label>Product Stock :</label>
+                <?php echo $this->formElement($form->get('stock')); ?>
             </div>
-            <div class ="col-sm-4">
-                <label>Category :</label>
-                <?php echo $this->formElement($form->get('category')); ?>
+            <div class ="col-sm-3">
+                <label>Product Rent :</label>
+                <?php echo $this->formElement($form->get('rent')); ?>
+            </div>
+            <div class ="col-sm-3">
+                <label>Product Security :</label>
+                <?php echo $this->formElement($form->get('security')); ?>
+            </div>
 
-            </div>
         </div>
         <div class="row">
-            <div class ="col-sm-4 select-check">
+            <div class ="col-sm-3">
+                <label>Category :</label>
+                <?php echo $this->formElement($form->get('category')); ?>
+            </div>
+            <div class ="col-sm-3">
+                <label>Gender:</label>
+                <?php echo $this->formElement($form->get('gender')); ?>
+                <span class="alert-danger"><?php echo $this->formElementerrors($form->get('gender')); ?></span>
+            </div>
+            <div class ="col-sm-3 select-check">
                 <label>Product Size *:</label>
                 <?php echo $this->formElement($form->get('size')); ?>
             </div>
-            <div class ="col-sm-4">
-                <label>Product Length:</label>
-                <?php echo $this->formElement($form->get('sleeve')); ?>
-            </div>
-            <div class ="col-sm-4">
-                <label>Product Fitting :</label>
-                <?php echo $this->formElement($form->get('fit')); ?>
+            <div class ="col-sm-3">
+                <label>Product Waist:</label>
+                <?php echo $this->formElement($form->get('waist')); ?>
             </div>
         </div>
-        <div class="row">
-            <div class ="col-sm-4">
-                <label>Product Image :</label>
-                <?php echo $this->formElement($form->get('image'));
-                if (empty($this->productsImage)) {
-                    $this->productsImage = 'default.png';
-                }?>
-                 <img src="<?php echo '/upload/Products/' . $this->productsImage ?>" height="100px" width="100px" class="tpd10">
 
+        <div class="row">
+            <div class ="col-sm-3">
+                <label>Product Image:</label>
+                <?php echo $this->formElement($form->get('image')); ?>
                 <span class="alert-danger"><?php echo $this->formElementerrors($form->get('image')); ?></span>
             </div>
-            <div class ="col-sm-8">
-                <label>Description *:</label>
+            <div class ="col-sm-9">
+                <label>Details *:</label>
                 <?php echo $this->formElement($form->get('description')); ?>
                 <span class="alert-danger"><?php echo $this->formElementerrors($form->get('description')); ?></span>
             </div>
 
         </div>
-          <a href="/tour/view" class="btn btn-warning" value="Cancel">
-              Cancel
-          </a>
+          <a href="<?php echo $this->url('admin_view_products');?>" class="btn btn-warning">Back</a>
         <?php echo $this->formRow($form->get('submit')); ?>
 
     </div>

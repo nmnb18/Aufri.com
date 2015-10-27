@@ -12,105 +12,116 @@ echo $this->partial('menu', array('active' => 'products'));
                     <label>: </label>
                 </div>
                 <div class="col-md-5">
-                    <?php echo wordwrap($product->getProductName(), 65, "<br>\n", true); ?>
+                    <?php echo wordwrap($coupon->getCouponName(), 65, "<br>\n", true); ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label>Category </label>
+                    <label>Code </label>
                 </div>
                 <div class="col-md-1">
                     <label>: </label>
                 </div>
                 <div class="col-md-5 word-wrap">
-                    <?php echo $product->getProductCategory(); ?>
+                    <?php echo $coupon->getCouponCode(); ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label>Rent</label>
+                    <label>Start Date</label>
                 </div>
                 <div class="col-md-1">
                     <label>: </label>
                 </div>
                 <div class="col-md-5">
                     <?php
-                        echo $product->getProductRent();
+                        echo $coupon->getCouponStartdate();
                     ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label>Security </label>
+                    <label>End Date </label>
                 </div>
                 <div class="col-md-1">
                     <label>: </label>
                 </div>
                 <div class="col-md-8 word-wrap">
-                    <?php echo $product->getProductSecurity(); ?>
+                    <?php echo $coupon->getCouponEnddate(); ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label>Size </label>
+                    <label>Discount </label>
                 </div>
                 <div class="col-md-1">
                     <label>: </label>
                 </div>
                 <div class="col-md-8 word-wrap">
-                    <?php echo $product->getProductSize(); ?>
+                    <?php echo $coupon->getCouponDiscount(); ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label>Waist </label>
+                    <label>Avail For </label>
                 </div>
                 <div class="col-md-1">
                     <label>: </label>
                 </div>
                 <div class="col-md-8 word-wrap">
-                    <?php echo $product->getProductWaist(); ?>
+                    <?php echo $coupon->getCouponAvailFor(); ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label>Stock </label>
+                    <label>Minimum Order </label>
                 </div>
                 <div class="col-md-1">
                     <label>: </label>
                 </div>
                 <div class="col-md-8 word-wrap">
-                    <?php echo $product->getProductStock(); ?>
+                    <?php echo $coupon->getCouponMinorder(); ?>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-3">
-                    <label>Description </label>
+                    <label>Coupon Type</label>
                 </div>
                 <div class="col-md-1">
                     <label>: </label>
                 </div>
                 <div class="col-md-8 word-wrap">
-                    <?php echo $product->getProductDescription(); ?>
+                    <?php echo $coupon->getCouponType(); ?>
                 </div>
             </div>
-
-        </div>
-        <div class="col-md-5 alignCenter">
-            <?php
-            $productImage = $product->getProductImage();
-            if (empty($productImage)) {
-                $productImage = 'default.png';
-            }
-            ?>
-            <img src="<?php echo '/upload/Products/' . $productImage; ?>" height="auto" width="100%">
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Coupon count for any customer </label>
+                </div>
+                <div class="col-md-1">
+                    <label>: </label>
+                </div>
+                <div class="col-md-8 word-wrap">
+                    <?php echo $coupon->getCouponCountForAnyCustomer(); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Coupon count for single customer </label>
+                </div>
+                <div class="col-md-1">
+                    <label>: </label>
+                </div>
+                <div class="col-md-8 word-wrap">
+                    <?php echo $coupon->getCouponForSingleCustomer(); ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <div class="row col-md-3 col-md-offset-4">
-    <a href="<?php echo $this->url('admin_view_products');?>" class="btn btn-primary btnWidth">Back</a>
-    <a href="<?php echo $this->url('admin_edit_products', array('id' => $product->getProductId()));?>"
+    <a href="<?php echo $this->url('admin_view_coupons');?>" class="btn btn-primary btnWidth">Back</a>
+    <a href="<?php echo $this->url('admin_edit_coupons', array('id' => $coupon->getCouponId()));?>"
        class="btn btn-warning btnWidth">Edit</a>
 
 </div>

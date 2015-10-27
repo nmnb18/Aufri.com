@@ -25,16 +25,16 @@
             ?>
             <div class="row attractionList widthNarrow ">
                 <div class="col-sm-12 post itineraryList <?php if($i%2==0) {echo "greyColor";}?>">
-                    <div class="col-sm-2 attrName"><?php echo $products['productName']; ?></div>
-                    <div class="col-sm-2 attrName"><img src="/upload/Products/<?php echo $products['productImage']; ?>" height="80" width="100" ></div>
-                    <div class="col-sm-2 noPadding"><?php echo $products['productCategory']; ?> </div>
-                    <div class="col-sm-2 noPadding"><?php echo $products['productPrice']; ?> </div>
+                    <div class="col-sm-2 attrName"><?php echo $products['aufriProductsName']; ?></div>
+                    <div class="col-sm-2 attrName"><img src="/upload/Products/<?php echo $products['aufriProductsImageIdFk']; ?>" height="80" width="100" ></div>
+                    <div class="col-sm-2 noPadding"><?php echo $products['aufriProductsCategory']; ?> </div>
+                    <div class="col-sm-2 noPadding"><?php echo $products['aufriProductsRent']; ?> </div>
                     <div class="col-sm-4">
-                        <a class="margin25" href="<?php echo $this->url('admin_showdetails_products', array('id' => $products['productId'])) ?>">
+                        <a class="margin25" href="<?php echo $this->url('admin_showdetails_products', array('id' => $products['aufriProductsId'])) ?>">
                             <button type="button" class="btn btn-success btnWidth" role="button">View</button></a>
-                        <a href="<?php echo $this->url('admin_edit_products', array('id' => $products['productId'])) ?>">
+                        <a href="<?php echo $this->url('admin_edit_products', array('id' => $products['aufriProductsId'])) ?>">
                             <button type="button" class="btn btn-warning btnWidth">Edit</button></a>
-                        <a href="<?php echo $this->url('admin_delete_products', array('id' => $products['productId'])) ?>">
+                        <a href="<?php echo $this->url('admin_delete_products', array('id' => $products['aufriProductsId'])) ?>">
                             <button type="button" class="btn btn-danger btnWidth">Delete</button></a>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
     } else {
         ?>
         <div class="row pd5">
-            <div class="col-sm-12">No Tour To Display</div>
+            <div class="col-sm-12">No Products To Display</div>
         </div>
         <?php
     }
