@@ -1,11 +1,27 @@
 <div class="alert alert-dismissable alert-danger tour hidden"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><ul><li></li></ul></div>
 <?php echo $this->partial('menu', array('active' => 'tour')); ?>
 <div class="row addButtonClass">
-    <div class="col-sm-5">
+    <div class="col-sm-2">
         <a class="margin10"
            href="<?php echo $this->url('admin_add_products'); ?>">
             <button class="btn-primary btn">Add Products</button>
         </a>
+    </div>
+    <div class="col-sm-5">
+        <form action="#" method="post">
+            <select class="form-control col-sm-7" name="sortby" style="width:50%; margin-right: 10px">
+                <option vlaue="">Sort by Rent</option>
+                <option value="DESC">High to low</option>
+                <option value="ASC">Low to high</option>
+            </select>
+            <input type="submit" value="Sort" class="col-sm-4 btn btn-primary">
+        </form>
+    </div>
+    <div class="col-sm-5">
+        <form action="#" method="post">
+            <input type="text" name="productName" class="form-control col-sm-8" Placeholder="Search by name"  style="width:50%; margin-right: 10px">
+            <input type="submit" value="Search" class="col-sm-4 btn-primary btn">
+        </form>
     </div>
 </div>
 <div class="row itineraryRowHeading">
@@ -13,7 +29,7 @@
         <div class="col-sm-2 noPadding">Products Name</div>
         <div class="col-sm-2 noPadding">Image</div>
         <div class="col-sm-2 noPadding">Category</div>
-        <div class="col-sm-2 noPadding">Price</div>
+        <div class="col-sm-2 noPadding">Rent</div>
         <div class="col-sm-4 alignCenter">Action</div>
     </div>
 </div>

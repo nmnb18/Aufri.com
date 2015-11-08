@@ -63,17 +63,6 @@ echo $this->partial('menu', array('active' => 'products'));
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label>Waist </label>
-                </div>
-                <div class="col-md-1">
-                    <label>: </label>
-                </div>
-                <div class="col-md-8 word-wrap">
-                    <?php echo $product->getProductWaist(); ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
                     <label>Stock </label>
                 </div>
                 <div class="col-md-1">
@@ -83,7 +72,94 @@ echo $this->partial('menu', array('active' => 'products'));
                     <?php echo $product->getProductStock(); ?>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Actual Cost </label>
+                </div>
+                <div class="col-md-1">
+                    <label>: </label>
+                </div>
+                <div class="col-md-8 word-wrap">
+                    <?php echo $product->getProductActualcost(); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Brand </label>
+                </div>
+                <div class="col-md-1">
+                    <label>: </label>
+                </div>
+                <div class="col-md-8 word-wrap">
+                    <?php echo $product->getProductBrand(); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Designer </label>
+                </div>
+                <div class="col-md-1">
+                    <label>: </label>
+                </div>
+                <div class="col-md-8 word-wrap">
+                    <?php echo $product->getProductDesigner(); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Occassion </label>
+                </div>
+                <div class="col-md-1">
+                    <label>: </label>
+                </div>
+                <div class="col-md-8 word-wrap">
+                    <?php echo $product->getProductOccassion(); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Color </label>
+                </div>
+                <div class="col-md-1">
+                    <label>: </label>
+                </div>
+                <div class="col-md-8 word-wrap">
+                    <?php echo $product->getProductColor(); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Available from </label>
+                </div>
+                <div class="col-md-1">
+                    <label>: </label>
+                </div>
+                <div class="col-md-8 word-wrap">
+                    <?php echo $product->getProductFromdate(); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Available To </label>
+                </div>
+                <div class="col-md-1">
+                    <label>: </label>
+                </div>
+                <div class="col-md-8 word-wrap">
+                    <?php echo $product->getProductTodate(); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Seo tags </label>
+                </div>
+                <div class="col-md-1">
+                    <label>: </label>
+                </div>
+                <div class="col-md-8 word-wrap">
+                    <?php echo $product->getProductSeotags(); ?>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-3">
                     <label>Description </label>
@@ -95,7 +171,6 @@ echo $this->partial('menu', array('active' => 'products'));
                     <?php echo $product->getProductDescription(); ?>
                 </div>
             </div>
-
         </div>
         <div class="col-md-5 alignCenter">
             <?php

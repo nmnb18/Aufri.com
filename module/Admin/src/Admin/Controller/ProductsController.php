@@ -19,6 +19,16 @@ class ProductsController extends AbstractAppController {
         }
         $productsTable = $this->getServiceLocator()->get('ProductsTable');
         $products = $productsTable->getMany()->toArray();
+        $request = $this->serviceLocator->get('request');
+        $data = $request->getPost()->toArray();
+        if ($request->isPost()) {
+            if(!empty($data['sortby'])) {
+                $filter = 'aufri_products_rent ' . $data['sortby'];
+                $products = $productsTable->getMany(array(), array('order' => $filter))->toArray();
+            } else if(!empty($data['productName'])) {
+                $products = $productsTable->getMany(array('aufri_products_name' => $data['productName']))->toArray();
+            }
+        }
         $view = array(
             'products' => $products,
         );
@@ -105,9 +115,7 @@ class ProductsController extends AbstractAppController {
         $imgUpload = new \Zend\File\Transfer\Adapter\Http();
         $extension = new \Zend\Validator\File\Extension(array('extension' => array('png', 'jpg', 'jpeg')));
         $imgUpload->setValidators(array($extension), $data['image']['name']);
-        if (!$productsForm->isValid()) {
-            return false;
-        } elseif (!$imgUpload->isValid() && $data['image']['name'] != '') {
+        if (!$imgUpload->isValid() && $data['image']['name'] != '') {
             $this->setErrorMessage("Only png, jpeg and jpg files are allowed");
         } else {
             try {
@@ -121,8 +129,15 @@ class ProductsController extends AbstractAppController {
                 $products->setProductCategory($data['category']);
                 $products->setProductGender($data['gender']);
                 $products->setProductSize($data['size']);
-                $products->setProductWaist($data['waist']);
                 $products->setProductDescription($data['description']);
+                $products->setProductActualcost($data['actualcost']);
+                $products->setProductBrand($data['brand']);
+                $products->setProductOccassion($data['occassion']);
+                $products->setProductDesigner($data['designer']);
+                $products->setProductColor($data['color']);
+                $products->setProductFromdate($data['fromdate']);
+                $products->setProductTodate($data['todate']);
+                $products->setProductSeotags($data['seotags']);
                 if ($data['image']['name'] != '') {
                     $products->setProductImage($data['image']['name']);
                 }

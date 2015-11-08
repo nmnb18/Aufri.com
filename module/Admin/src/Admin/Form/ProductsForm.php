@@ -103,6 +103,22 @@ class ProductsForm extends Form {
             )
         ));
         $this->add(array(
+            'type' => 'Zend\Form\Element\Select',
+            'name' => 'color',
+            'options' => array(
+                'empty_option' => 'Please choose Color',
+                'value_options' => array(
+                    'Multi color' => 'Multi color',
+                    'Red' => 'Red'
+                ),
+            ),
+            'attributes' => array(
+                'class' => 'form-control country-select',
+                'value' => $products->getProductColor(),
+                'required' => 'required'
+            )
+        ));
+        $this->add(array(
             'name' => 'rent',
             'type' => 'Text',
             'attributes' => array(
@@ -147,6 +163,77 @@ class ProductsForm extends Form {
             ),
         ));
 
+        $this->add(array(
+            'name' => 'seotags',
+            'type' => 'Zend\Form\Element\Textarea',
+            'attributes' => array(
+                'class' => 'form-control textareaMargin template tinyMCE',
+                'maxlength' => 5000,
+                'rows' => 7, // THIS CHANGES THE NUMBER OF ROWS
+                'value' => $products->getProductSeotags(),
+                'required' => 'required'
+            ),
+        ));
+
+        $this->add(array(
+            'name' => 'actualcost',
+            'type' => 'Text',
+            'attributes' => array(
+                'class' => 'form-control',
+                'value' => $products->getProductActualcost(),
+                'required' => 'required'
+            ),
+        ));
+
+        $this->add(array(
+            'name' => 'brand',
+            'type' => 'Text',
+            'attributes' => array(
+                'class' => 'form-control',
+                'value' => $products->getProductBrand(),
+                'required' => 'required'
+            ),
+        ));
+
+        $this->add(array(
+            'name' => 'designer',
+            'type' => 'Text',
+            'attributes' => array(
+                'class' => 'form-control',
+                'value' => $products->getProductDesigner(),
+                'required' => 'required'
+            ),
+        ));
+
+        $this->add(array(
+            'name' => 'occassion',
+            'type' => 'Text',
+            'attributes' => array(
+                'class' => 'form-control',
+                'value' => $products->getProductOccassion(),
+                'required' => 'required'
+            ),
+        ));
+
+        $this->add(array(
+            'name' => 'fromdate',
+            'type' => 'date',
+            'attributes' => array(
+                'class' => 'form-control',
+                'value' => $products->getProductFromdate(),
+                'required' => 'required'
+            ),
+        ));
+
+        $this->add(array(
+            'name' => 'todate',
+            'type' => 'date',
+            'attributes' => array(
+                'class' => 'form-control',
+                'value' => $products->getProductTodate(),
+                'required' => 'required'
+            ),
+        ));
         $this->add(array(
             'name' => 'image',
             'type' => 'File',

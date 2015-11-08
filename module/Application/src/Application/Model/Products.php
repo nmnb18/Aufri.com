@@ -19,6 +19,15 @@ class Products extends AbstractDbModel {
     protected $aufriProductsStock;
     protected $aufriProductsStatus;
     protected $aufriProductsDescription;
+    protected $aufriProductsActualcost;
+    protected $aufriProductsBrand;
+    protected $aufriProductsDesigner;
+    protected $aufriProductsOccassion;
+    protected $aufriProductsColor;
+    protected $aufriProductsFromdate;
+    protected $aufriProductsTodate;
+    protected $aufriProductsOrdercount;
+    protected $aufriProductsSeotags;
 
     public function getProductId() {
         return $this->aufriProductsId;
@@ -58,6 +67,33 @@ class Products extends AbstractDbModel {
     }
     public function getProductDescription() {
         return $this->aufriProductsDescription;
+    }
+    public function getProductActualcost() {
+        return $this->aufriProductsActualcost;
+    }
+    public function getProductBrand() {
+        return $this->aufriProductsBrand;
+    }
+    public function getProductDesigner() {
+        return $this->aufriProductsDesigner;
+    }
+    public function getProductOccassion() {
+        return $this->aufriProductsOccassion;
+    }
+    public function getProductColor() {
+        return $this->aufriProductsColor;
+    }
+    public function getProductFromdate() {
+        return $this->aufriProductsFromdate;
+    }
+    public function getProductTodate() {
+        return $this->aufriProductsTodate;
+    }
+    public function getProductOrdercount() {
+        return $this->aufriProductsOrdercount;
+    }
+    public function getProductSeotags() {
+        return $this->aufriProductsSeotags;
     }
 
     public function setProductId($aufriProductsId) {
@@ -99,5 +135,31 @@ class Products extends AbstractDbModel {
     public function setProductDescription($aufriProductsDescription) {
         return $this->aufriProductsDescription = $aufriProductsDescription;
     }
-
+    public function setProductActualcost($aufriProductsActualcost) {
+        return $this->aufriProductsActualcost = $aufriProductsActualcost;
+    }
+    public function setProductBrand($aufriProductsBrand) {
+        return $this->aufriProductsBrand = $aufriProductsBrand;
+    }
+    public function setProductDesigner($aufriProductsDesigner) {
+        return $this->aufriProductsDesigner = $aufriProductsDesigner;
+    }
+    public function setProductOccassion($aufriProductsOccassion) {
+        return $this->aufriProductsOccassion = $aufriProductsOccassion;
+    }
+    public function setProductColor($aufriProductsColor) {
+        return $this->aufriProductsColor = $aufriProductsColor;
+    }
+    public function setProductFromdate($aufriProductsFromdate) {
+        return $this->aufriProductsFromdate = $aufriProductsFromdate;
+    }
+    public function setProductTodate($aufriProductsTodate) {
+        return $this->aufriProductsTodate = $aufriProductsTodate;
+    }
+    public function setProductOrdercount($aufriProductsOrdercount) {
+        return $this->aufriProductsOrdercount = $aufriProductsOrdercount;
+    }
+    public function setProductSeotags($aufriProductsSeotags) {
+        return $this->aufriProductsSeotags = $aufriProductsSeotags;
+    }
 }
