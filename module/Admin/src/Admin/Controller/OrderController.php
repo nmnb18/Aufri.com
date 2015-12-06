@@ -19,5 +19,15 @@ class OrderController extends AbstractAppController {
         $view = array('orderList' => $orderList);
         return $this->renderView($view);
     }
+    public function editAction() {
+        if (!$this->isLogin()) {
+            $this->setErrorMessage('Log in first then continue.');
+            $this->redirect()->toRoute('auth');
+        }
 
+        $request = $this->serviceLocator->get('request');
+        $id = $this->params('id', false);
+        
+        $this->renderView();
+    }
 }

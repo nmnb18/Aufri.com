@@ -144,16 +144,6 @@ return array(
                     )
                 )
             ),
-            'admin_view_orders' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route' => '/admin/orders',
-                    'defaults' => array(
-                        'controller' => 'Admin\Controller\Products',
-                        'action' => 'index'
-                    )
-                )
-            ),
 
             'admin_view_coupons' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
@@ -221,13 +211,23 @@ return array(
                 'type' => 'Literal',
                 'options' => array(
                     'route' => '/admin/orders/',
-                    'constraints' => array(
-                        'id' => '[0-9]+',
-                        'type' => '[0-9]+'
-                    ),
+
                     'defaults' => array(
                         'controller' => 'Admin\Controller\Order',
                         'action' => 'index'
+                    )
+                )
+            ),
+            'admin_edit_orders' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/admin/orders/edit/:id',
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Admin\Controller\Order',
+                        'action' => 'edit'
                     )
                 )
             ),

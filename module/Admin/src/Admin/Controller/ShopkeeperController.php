@@ -19,6 +19,13 @@ class ShopkeeperController extends AbstractAppController {
         }
         $shopkeeperTable = $this->getServiceLocator()->get('ShopkeeperTable');
         $shopekeepers = $shopkeeperTable->getMany()->toArray();
+        $request = $this->serviceLocator->get('request');
+        $data = $request->getPost()->toArray();
+        if ($request->isPost()) {
+            if(!empty($data['shopkeeperName'])) {
+                $shopekeepers = $shopkeeperTable->getMany(array('aufri_shopkeeper_name' => $data['shopkeeperName']))->toArray();
+            }
+        }
         $view = array(
             'shopkeepers' => $shopekeepers,
         );

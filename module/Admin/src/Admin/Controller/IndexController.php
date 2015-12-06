@@ -19,8 +19,18 @@ class IndexController extends AbstractAppController {
             $this->setErrorMessage('Log in first then continue.');
             return $this->redirect()->toRoute('home');
         }
-
-        return $this->renderView();
+        $orderTable = $this->getServiceLocator()->get('OrderTable');
+        $productsTable = $this->getServiceLocator()->get('ProductsTable');
+        $todaysOrder = $orderTable->getMany(array('aufri_orders_date'=> date('Y-m-d')))->toArray();
+        $totalOrders = $orderTable->getMany()->toArray();
+        $totalProducts = $productsTable->getMany()->toArray();
+        $outOfStock = $productsTable->getMany(array('aufri_products_stock' => 'Out of stock'))->toArray();
+        return $this->renderView(
+            array('todaysOrder' => $todaysOrder,
+                  'totalOrders' => $totalOrders,
+                  'totalProducts' => $totalProducts,
+                  'outOfStockProducts' => $outOfStock)
+        );
     }
 
 }

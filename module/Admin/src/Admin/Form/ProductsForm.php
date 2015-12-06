@@ -140,15 +140,20 @@ class ProductsForm extends Form {
             ),
         ));
         $this->add(array(
+            'type' => 'Zend\Form\Element\Select',
             'name' => 'stock',
-            'type' => 'Text',
+            'options' => array(
+                'empty_option' => 'Select stock',
+                'value_options' => array(
+                    'In stock' => 'In stock',
+                    'Out of stock' => 'Out of stock'
+                ),
+            ),
             'attributes' => array(
-                'class' => 'form-control',
-                'Placeholder' => 'Enter Product Stock',
-                'maxlength' => 100,
+                'class' => 'form-control country-select',
                 'value' => $products->getProductStock(),
                 'required' => 'required'
-            ),
+            )
         ));
 
         $this->add(array(

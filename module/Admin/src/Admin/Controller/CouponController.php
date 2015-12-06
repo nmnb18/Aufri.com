@@ -19,6 +19,13 @@ class CouponController extends AbstractAppController {
         }
         $couponTable = $this->getServiceLocator()->get('CouponTable');
         $coupons = $couponTable->getMany()->toArray();
+        $request = $this->serviceLocator->get('request');
+        $data = $request->getPost()->toArray();
+        if ($request->isPost()) {
+            if(!empty($data['couponCode'])) {
+                $coupons = $couponTable->getMany(array('aufri_coupons_code' => $data['couponCode']))->toArray();
+            }
+        }
         $view = array(
             'coupons' => $coupons,
         );

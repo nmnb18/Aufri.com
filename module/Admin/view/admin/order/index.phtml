@@ -16,3 +16,52 @@
         <div class="col-sm-1 noPadding alignCenter">Coupon Discount</div>
     </div>
 </div>
+<div class="">
+    <?php
+    $i = 1;
+    if (count($this->orderList) > 0) {
+        foreach ($this->orderList as $orderList) {
+            ?>
+            <div class="row attractionList widthNarrow ">
+                <div class="col-sm-12 post itineraryList <?php if($i%2==0) {echo "greyColor";}?>">
+                    <div class="col-sm-1 noPadding alignCenter">
+                        <a href="<?php echo $this->url('admin_edit_orders', array('id' => $orderList['orderId'])) ?>">
+                            <?php echo $orderList['orderId']; ?>
+                        </a>
+                    </div>
+                    <div class="col-sm-1 noPadding"><?php echo $orderList['orderDate']; ?></div>
+                    <div class="col-sm-1 noPadding"><?php echo $orderList['orderStatus']; ?></div>
+                    <div class="col-sm-1 noPadding alignCenter">
+                        <a href="<?php echo $this->url('admin_showdetails_products', array('id' => $orderList['productId'])) ?>">
+                            <?php echo $orderList['productName']; ?>
+                        </a>
+                    </div>
+                    <div class="col-sm-1 noPadding alignCenter"><?php echo $orderList['productRent']; ?></div>
+                    <div class="col-sm-1 noPadding alignCenter"><?php echo $orderList['productDeposit']; ?></div>
+                    <div class="col-sm-1 noPadding alignCenter">
+                        <a href="<?php echo $this->url('admin_showdetails_shopkeepers', array('id' => $orderList['shopkeeperId'])) ?>">
+                            <?php echo $orderList['shopkeeperName']; ?>
+                        </a>
+                    </div>
+                    <div class="col-sm-1 noPadding alignCenter"><?php echo $orderList['userName']; ?></div>
+                    <div class="col-sm-1 noPadding alignCenter"><?php echo $orderList['userAddress']; ?></div>
+                    <div class="col-sm-1 noPadding alignCenter"><?php echo $orderList['userPhone']; ?></div>
+                    <div class="col-sm-1 noPadding alignCenter">
+                        <a href="<?php echo $this->url('admin_showdetails_coupons', array('id' => $orderList['couponId'])) ?>">
+                            <?php echo $orderList['couponCode']; ?>
+                        </a>
+                    </div>
+                    <div class="col-sm-1 noPadding alignCenter"><?php echo $orderList['couponDiscount']; ?></div>
+                </div>
+            </div>
+            <?php $i++;
+        }
+    } else {
+        ?>
+        <div class="row pd5">
+            <div class="col-sm-12">No Orders To Display</div>
+        </div>
+        <?php
+    }
+    ?>
+</div>
