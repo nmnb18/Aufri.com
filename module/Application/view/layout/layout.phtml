@@ -3,6 +3,10 @@
 if (isset($this->viewModel()->getCurrent()->getChildren()[0]->session)) {
     $session = $this->viewModel()->getCurrent()->getChildren()[0]->session;
 }
+
+if (isset($this->viewModel()->getCurrent()->getChildren()[0]->navigation)) {
+    $navigation = $this->viewModel()->getCurrent()->getChildren()[0]->navigation;
+}
 ?>
 <html lang="en">
     <head>
@@ -10,94 +14,326 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->session)) {
         <?php echo $this->headTitle($this->layout()->getParameter)->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0')->appendHttpEquiv('X-UA-Compatible', 'IE=edge') ?>
-
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/animate.css'?>" />
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/bootstrap.css'?>" />
+        <!-- et line icon -->
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/et-line-icons.css'?>" />
+        <!-- font-awesome icon -->
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/font-awesome.min.css'?>" />
+        <!-- revolution slider -->
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/extralayers.css'?>" />
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/settings.css'?>" />
+        <!-- magnific popup -->
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/magnific-popup.css'?>" />
+        <!-- owl carousel -->
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/owl.carousel.css'?>" />
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/owl.transitions.css'?>" />
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/full-slider.css'?>" />
+        <!-- text animation -->
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/text-effect.css'?>" />
+        <!-- common -->
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/main.css'?>" />
+        <!-- responsive -->
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/responsive.css'?>" />
         <!-- Le styles -->
         <?php
         echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                ->prependStylesheet($this->basePath() . '/bootstrap/css/bootstrap.min.css')
-                ->prependStylesheet($this->basePath() . '/bootstrap/css/bootstrap-responsive.min.css')
-                ->prependStylesheet($this->basePath() . '/bootstrap/css/datepicker.css')
-                ->prependStylesheet($this->basePath() . '/css/style.css')
-                ->prependStylesheet($this->basePath() . '/css/reset.css')
-                ->prependStylesheet($this->basePath() . '/css/ie.css', 'text/css', array('conditional' => 'lt IE 9',))
+                // ->prependStylesheet($this->basePath() . '/css/style.css')
+                // ->prependStylesheet($this->basePath() . '/css/reset.css')
+                // ->prependStylesheet($this->basePath() . '/css/ie.css', 'text/css', array('conditional' => 'lt IE 9',))
+                // ->prependStylesheet($this->basePath() . '/css/responsive.css')
+                // ->prependStylesheet($this->basePath() . '/css/main.css')
+                // ->prependStylesheet($this->basePath() . '/css/text-effect.css')
+                // ->prependStylesheet($this->basePath() . '/css/full-slider.css')
+                // ->prependStylesheet($this->basePath() . '/css/owl.transitions.css')
+                // ->prependStylesheet($this->basePath() . '/css/owl.carousel.css')
+                // ->prependStylesheet($this->basePath() . '/css/magnific-popup.css')
+                // ->prependStylesheet($this->basePath() . '/css/settings.css')
+                // ->prependStylesheet($this->basePath() . '/css/extralayers.css')
+                // ->prependStylesheet($this->basePath() . '/css/font-awesome.min.css')
+                // ->prependStylesheet($this->basePath() . '/css/et-line-icons.css')
+                // // ->prependStylesheet($this->basePath() . '/bootstrap/css/bootstrap-responsive.min.css')
+                // ->prependStylesheet($this->basePath() . '/bootstrap/css/bootstrap.css')
+                // ->prependStylesheet($this->basePath() . '/css/animate.css')
         ?>
 
-        <!-- Scripts -->
-        <?php
-        echo $this->headScript()
-                ->prependFile($this->basePath() . '/js/typeahead.js')
-                ->prependFile($this->basePath() . '/bootstrap/js/bootstrap-datepicker.js')
-                ->prependFile($this->basePath() . '/bootstrap/js/bootstrap-datepicker.js')
-                ->prependFile($this->basePath() . '/bootstrap/js/bootstrap.min.js')
-                ->prependFile($this->basePath() . '/js/modernizr-2.6.2.min.js')
-                ->prependFile($this->basePath() . '/js/api/test.js')
-                ->prependFile($this->basePath() . '/js/main.js')
-                ->prependFile($this->basePath() . '/js/city.js')
-                ->prependFile('//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
-				->prependFile('//tinymce.cachefly.net/4.1/tinymce.min.js')
-
-
-//            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-//            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
-        ;
-        ?>
-
-    </head>
+        </head>
     <body>
-        <div id="wrap">
-            <div class="row noMargin">
-                <div class="col-md-12 col-sm-12">
-                    <?php
-                    $tmpArray = array(
-                        'messages_error' => 'alert-danger',
-                        'messages_info' => 'alert-info',
-                        'messages_default' => 'alert-warning',
-                        'messages_success' => 'alert-success',
-                    );
-                    foreach ($tmpArray as $type => $class) {
-                        if (isset($session[$type]) && count($session[$type]) > 0) {
-                            echo '<div class="alert alert-dismissable ' . $class . '"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><ul>';
-                            foreach ($session[$type] as $key => $message) {
-                                echo '<li>' . $this->translate($message) . '</li>';
-                                unset($session[$type][$key]);
-                            }
-                            echo '</ul></div>';
-                        }
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="container-fluid"
-                 id="mainContent">
-<?php echo $this->content; ?>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <footer id="footer">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <p>
-                            &copy;
-<?= date('Y') ?>
-                            Aufre
-                        </p>
-                    </div>
-                    <!--/span-->
-                    <div class="span6">
-                        <p class="text-right">
-                            Aufre<sup>&trade;</sup> Portal v1.1
-                        </p>
-                    </div>
-                    <!--/span-->
-                </div>
-                <!--/row-->
-            </footer>
-        </div>
-<?php echo $this->inlineScript() ?>
+            <!-- navigation panel -->
+            <nav class="navbar navbar-dark navbar-fixed-top nav-transparent overlay-nav sticky-nav nav-border-bottom bg-white shop-nav" role="navigation">
+                <div class="container">
+                    <div class="row">
+                        <!-- logo -->
+                        <div class="col-md-2 pull-left"><a class="logo-light" href="/"><img alt="" src="<?php echo $this->basePath(); ?>/images/aufrelogo.png" class="logo" /></a><a class="logo-dark" href="/"><img alt="" src="<?php echo $this->basePath(); ?>/images/aufrelogo.png" class="logo" /></a></div>
+                        <!-- end logo -->
+                        <!-- search and cart  -->
+                        <div class="col-md-2 no-padding-left search-cart-header pull-right">
+                            <div id="top-search">
+                                <!-- nav search -->
+                                <a href="#search-header" class="header-search-form"><i class="fa fa-search search-button"></i></a>
+                                <!-- end nav search -->
+                            </div>
+                            <!-- search input-->
+                            <form id="search-header" method="post" action="#" name="search-header" class="mfp-hide search-form-result">
+                                <div class="search-form position-relative">
+                                    <button type="submit" class="fa fa-search close-search search-button"></button>
+                                    <input type="text" name="search" class="search-input" placeholder="Search Aufre.com..." autocomplete="off">
+                                </div>
+                            </form>
+                            <!-- end search input -->
+                            <div class="top-cart">
+                                <!-- nav shopping bag -->
+                                <a href="#" class="shopping-cart">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <div class="subtitle">(1) Items</div>
+                                </a>
+                                <!-- end nav shopping bag -->
+                                <!-- shopping bag content -->
+                                <div class="cart-content">
+                                    <ul class="cart-list">
+                                        <li>
+                                            <a title="Remove item" class="remove" href="#">×</a>
+                                            <a href="#">
+                                                <img width="90" height="90" alt="" src="http://placehold.it/90x90">Leather Craft
+                                            </a>
+                                            <span class="quantity">1 × <span class="amount">$160</span></span>
+                                            <a href="#">Edit</a>
+                                        </li>
+                                    </ul>
+                                    <p class="total">Subtotal: <span class="amount">$160</span></p>
+                                    <p class="buttons">
+                                        <a href="shop-cart.html" class="btn btn-very-small-white no-margin-bottom margin-seven pull-left no-margin-lr">View Cart</a>
+                                        <a href="shop-checkout.html" class="btn btn-very-small-white no-margin-bottom margin-seven no-margin-right pull-right">Checkout</a>
+                                    </p>
+                                </div>
+                                <!-- end shopping bag content -->
+                            </div>
+                        </div>
+                        <!-- end search and cart  -->
+                        <!-- toggle navigation -->
+                        <div class="navbar-header col-sm-8 col-xs-2 pull-right">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                        </div>
+                        <!-- toggle navigation end -->
+                        <!-- main menu -->
+                        <div class="col-md-8 no-padding-right accordion-menu text-right">
+                            <div class="navbar-collapse collapse">
+                                <ul id="accordion" class="nav navbar-nav navbar-right panel-group">
 
-        <script src="/js/js-webshim-min/polyfiller.js"></script>
-        <script>
-            $.webshims.polyfill('forms');
-        </script>
+                                    <!-- menu item -->
+                                    <li class="dropdown panel"><a href="#collapse4" class="dropdown-toggle collapsed" data-toggle="collapse" data-parent="#accordion" data-hover="dropdown">Ethnic Wear <i class="fa fa-angle-down"></i></a>
+                                        <!-- sub menu -->
+                                        <ul id="collapse4" class="dropdown-menu mega-menu panel-collapse collapse mega-menu-full">
+                                            <!-- sub menu column  -->
+                                            <li class="mega-menu-column col-sm-3">
+                                                <!-- sub menu item  -->
+                                                <ul>
+                                                    <li class="dropdown-header">Men</li>
+                                                    <?php
+                                                        foreach($navigation['ethnicMen'] as $ethnicMen) {
+                                                    ?>
+                                                    <a href="<?php echo $this->url('category_landing', array('category' => 'Ethnic',
+                                                    'subCategory' => 'Men','subCategoryName' => $ethnicMen['aufriProductSubcategoryName'],
+                                                    'categoryId' => $ethnicMen['aufriProductSubcategoryId'])); ?>">
+                                                        <?php echo $ethnicMen['aufriProductSubcategoryName']; ?>
+                                                    </a>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </ul>
+                                                <!-- end sub menu item  -->
+                                            </li>
+                                            <!-- end sub menu column  -->
+                                            <!-- sub menu column  -->
+                                            <li class="mega-menu-column col-sm-3">
+                                                <!-- sub menu item  -->
+                                                <ul>
+                                                    <li class="dropdown-header">Women</li>
+                                                    <?php
+                                                        foreach($navigation['ethnicWomen'] as $ethnicWomen) {
+                                                    ?>
+                                                    <a href="<?php echo $this->url('category_landing', array('category' => 'Ethnic',
+                                                    'subCategory' => 'Women','subCategoryName' => $ethnicWomen['aufriProductSubcategoryName'],
+                                                    'categoryId' => $ethnicWomen['aufriProductSubcategoryId'])); ?>">
+                                                        <?php echo $ethnicWomen['aufriProductSubcategoryName']; ?>
+                                                    </a>
+                                                    <?php
+                                                        }
+                                                    ?>
+
+                                                </ul>
+                                                <!-- end sub menu item  -->
+                                            </li>
+                                            <!-- end sub menu column  -->
+                                            <!-- sub menu column  -->
+                                            <li class="mega-menu-column col-sm-3 banner">
+                                                <!-- banner image  -->
+                                                <ul>
+                                                    <li><a href="shop-with-sidebar.html"><img src="http://placehold.it/500x649" alt=""/></a></li>
+                                                </ul>
+                                                <!-- end banner image  -->
+                                            </li>
+                                            <!-- end sub menu column  -->
+                                            <!-- sub menu column  -->
+                                            <li class="mega-menu-column col-sm-3 banner">
+                                                <!-- banner image  -->
+                                                <ul>
+                                                    <li><a href="shop-with-sidebar.html"><img src="http://placehold.it/500x649" alt=""/></a></li>
+                                                </ul>
+                                                <!-- end banner image  -->
+                                            </li>
+                                            <!-- end sub menu column  -->
+                                        </ul>
+                                        <!-- end sub menu -->
+                                    </li>
+                                    <!-- end menu item -->
+                                    <!-- menu item -->
+                                    <li class="dropdown panel"><a href="#collapse3" class="dropdown-toggle collapsed" data-toggle="collapse" data-parent="#accordion" data-hover="dropdown">Western Wear<i class="fa fa-angle-down"></i></a>
+                                        <!-- sub menu -->
+                                        <ul id="collapse3" class="dropdown-menu mega-menu panel-collapse collapse mega-menu-full">
+                                            <!-- sub menu column  -->
+                                            <li class="mega-menu-column col-sm-3">
+                                                <!-- sub menu item  -->
+                                                <ul>
+                                                    <li class="dropdown-header">WOMEN</li>
+                                                    <?php
+                                                        foreach($navigation['westernWomen'] as $westernWomen) {
+                                                    ?>
+                                                    <li>
+                                                        <a href="<?php echo $this->url('category_landing', array('category' => 'Western',
+                                                        'subCategory' => 'Women','subCategoryName' => $westernWomen['aufriProductSubcategoryName'],
+                                                        'categoryId' => $westernWomen['aufriProductSubcategoryId'])); ?>">
+                                                            <?php echo $westernWomen['aufriProductSubcategoryName']; ?>
+                                                        </a>
+                                                    </li>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </ul>
+                                                <!-- end sub menu item  -->
+                                            </li>
+                                            <!-- end sub menu column  -->
+
+                                            <li class="mega-menu-column col-sm-6 banner">
+                                                <!-- banner image  -->
+                                                <ul>
+                                                    <li><a href="shop-with-sidebar.html"><img src="http://placehold.it/750x200" alt=""/></a></li>
+                                                    <li class="margin-five no-margin-bottom"><a href="shop-with-sidebar.html"><img src="http://placehold.it/750x200" alt=""/></a></li>
+                                                </ul>
+                                                <!-- end banner image  -->
+                                            </li>
+                                            <!-- end sub menu column  -->
+                                        </ul>
+                                        <!-- end sub menu -->
+                                    </li>
+                                    <!-- end menu item -->
+                                    <!-- menu item -->
+                                    <li class="dropdown panel"><a href="shop-with-sidebar.html">How It works</a></li>
+                                    <!-- end menu item -->
+                                    <!-- menu item -->
+                                    <li class="dropdown panel"><a href="shop-with-sidebar.html">FAQ</a></li>
+                                    <!-- end menu item -->
+                                    <!-- menu item -->
+                                    <li class="dropdown panel simple-dropdown"><a href="blog-right-sidebar.html" >Rent via US</a></li>
+                                    <!-- end menu item -->
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end main menu -->
+                    </div>
+                </div>
+            </nav>
+
+            <?php echo $this->content; ?>
+            <footer>
+                <div class=" bg-white footer-top">
+                    <div class="container">
+                        <div class="row margin-four">
+                            <!-- phone -->
+                            <div class="col-md-4 col-sm-4 text-center"><i class="icon-phone small-icon black-text"></i><h6 class="black-text margin-two no-margin-bottom">9972303048</h6></div>
+                            <!-- end phone -->
+                            <!-- address -->
+                            <div class="col-md-4 col-sm-4 text-center"><i class="icon-map-pin small-icon black-text"></i><h6 class="black-text margin-two no-margin-bottom">Delhi</h6></div>
+                            <!-- end address -->
+                            <!-- email -->
+                            <div class="col-md-4 col-sm-4 text-center"><i class="icon-envelope small-icon black-text"></i><h6 class="margin-two no-margin-bottom"><a href="mailto:no-reply@domain.com" class="black-text">hello@aufre.com</a></h6></div>
+                            <!-- end email -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container footer-middle">
+                    <div class="row margin-four no-margin-bottom no-margin-top">
+                        <div class="col-md-6 col-sm-12 sm-text-center sm-margin-bottom-four">
+                            <!-- link -->
+                            <ul class="list-inline footer-link text-uppercase">
+                                <li><a href="about-us.html">About Us</a></li>
+                                <li><a href="blog-masonry-3columns.html">Terms and Conditions</a></li>
+                                <li><a href="careers.html">PRivacy Policy</a></li>
+
+                                <li><a href="contact-us.html">Contact</a></li>
+                            </ul>
+                            <!-- end link -->
+                        </div>
+                        <div class="col-md-6 col-sm-12 footer-social text-right sm-text-center">
+                            <!-- social media link -->
+                            <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                            <a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+                            <a target="_blank" href="https://plus.google.com"><i class="fa fa-google-plus"></i></a>
+                            <a target="_blank" href="https://pinterest.com"><i class="fa fa-pinterest"></i></a>
+                            <a target="_blank" href="https://www.instagram.com"><i class="fa fa-instagram"></i></a>
+                            <!-- end social media link -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid bg-dark-gray footer-bottom">
+                    <div class="container">
+                        <div class="row margin-three">
+                            <!-- copyright -->
+                            <div class="col-md-6 col-sm-6 col-xs-12 copyright text-left letter-spacing-1 xs-text-center xs-margin-bottom-one">
+                                &copy; 2016 Aufre.com
+                            </div>
+                            <!-- end copyright -->
+                            <!-- logo -->
+                            <div class="col-md-6 col-sm-6 col-xs-12 footer-logo text-right xs-text-left">
+                                <a href="/"><img src="<?php echo $this->basePath(); ?>/images/aufrelogo.png" alt=""/></a>
+                            </div>
+                            <!-- end logo -->
+                        </div>
+                    </div>
+                </div>
+                <!-- scroll to top -->
+            <a href="javascript:;" class="scrollToTop"><i class="fa fa-angle-up"></i></a>
+                <!-- scroll to top End... -->
+        </footer>
+    <?php echo $this->inlineScript() ?>
+    <!-- Scripts -->
+    <?php
+    echo $this->headScript()
+            ->prependFile($this->basePath() . '/js/main.js')
+            ->prependFile($this->basePath() . '/js/imagesloaded.pkgd.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.fitvids.js')
+            ->prependFile($this->basePath() . '/js/counter.js')
+            ->prependFile($this->basePath() . '/js/jquery.revolution.js')
+            ->prependFile($this->basePath() . '/js/jquery.tools.min.js')
+            ->prependFile($this->basePath() . '/js/text-effect.js')
+            ->prependFile($this->basePath() . '/js/popup-gallery.js')
+            ->prependFile($this->basePath() . '/js/jquery.magnific-popup.min.js')
+            ->prependFile($this->basePath() . '/js/owl.carousel.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.isotope.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.parallax-1.1.3.js')
+            ->prependFile($this->basePath() . '/js/jquery.easypiechart.js')
+            ->prependFile($this->basePath() . '/js/page-scroll.js')
+            ->prependFile($this->basePath() . '/js/wow.min.js')
+            ->prependFile($this->basePath() . '/js/smooth-scroll.js')
+            ->prependFile($this->basePath() . '/js/skrollr.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.easing.1.3.js')
+            ->prependFile($this->basePath() . '/js/bootstrap-hover-dropdown.js')
+            ->prependFile($this->basePath() . '/bootstrap/js/bootstrap.min.js')
+            ->prependFile($this->basePath() . '/js/modernizr-2.6.2.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.min.js');
+    ?>
+
+
     </body>
 </html>

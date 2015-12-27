@@ -1,0 +1,85 @@
+<section>
+            <div class="container">
+                <div class="row">
+                    <!-- sidebar  -->
+                    <div class="col-md-2 col-sm-4 sidebar">
+                        <!-- widget  -->
+                        <div class="widget">
+                            <h5 class="widget-title font-alt">Categories</h5>
+                            <div class="thin-separator-line bg-dark-gray no-margin-lr margin-ten"></div>
+                            <div class="widget-body">
+                                <ul class="category-list">
+                                    <li class="active"><a href="#">Dresses</a></li>
+                                    <li><a href="#">Glasses</a></li>
+                                    <li><a href="#">Sweaters</a></li>
+                                    <li><a href="#">Skirts</a></li>
+                                    <li><a href="#">T-Shirts</a></li>
+                                    <li><a href="#">Watchers</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end widget  -->
+                                                <!-- widget  -->
+                        <div class="widget">
+                            <h5 class="widget-title font-alt">Shop By Size</h5>
+                            <div class="thin-separator-line bg-dark-gray no-margin-lr margin-ten"></div>
+                            <div class="widget-body">
+                                <ul class="size clearfix">
+                                    <li class="active"><a href="#">XS</a></li>
+                                    <li><a href="#">S</a></li>
+                                    <li><a href="#">M</a></li>
+                                    <li><a href="#">L</a></li>
+                                    <li><a href="#">XL</a></li>
+                                    <li><a href="#">XXL</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end widget  -->
+                        <!-- widget  -->
+                        <div class="widget">
+                            <h5 class="widget-title font-alt">Shop By Price</h5>
+                            <div class="thin-separator-line bg-dark-gray no-margin-lr margin-ten"></div>
+                            <div class="widget-body">
+                                <ul class="category-list shop-price">
+                                    <li class="active"><a href="#">$20.00 - $29.99</a></li>
+                                    <li><a href="#">$30.00 - $39.99</a></li>
+                                    <li><a href="#">$40.00 - $49.99</a></li>
+                                    <li><a href="#">$50.00 - $59.99</a></li>
+                                    <li><a href="#">$60.00 and above</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end widget  -->
+                                            </div>
+                    <!-- end sidebar  -->
+                    <div class="col-md-9 col-sm-8 col-md-offset-1">
+                        <div class="shorting clearfix xs-margin-top-three">
+                            <div class="col-md-8 col-sm-7 grid-nav">
+                                <a href="shop-with-sidebar-list.html"><i class="fa fa-bars"></i></a>
+                                <a href="shop-with-sidebar.html"><i class="fa fa-th"></i></a>
+                                <p class="text-uppercase letter-spacing-1 sm-display-none">
+                                    Home > <?php echo $prevoius['category'].' > '.$prevoius['subCategory'].' > '.$prevoius['subCategoryName']; ?>
+                                </p>
+                            </div>
+                            <div class="col-md-3 col-sm-5 pull-right">
+                                <div class="select-style input-round med-input shop-shorting no-border">
+                                    <select class="sortProduct" id="sortProduct" data-attr-category="<?php echo $prevoius['categoryId']; ?>">
+                                        <option value="">Select sort by</option>
+                                        <option value="popular">By popularity</option>
+                                        <option value="asc">Price: low to high</option>
+                                        <option value="desc">Price: high to low</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-listing margin-three" id="ajaxSortProducts">
+                            <?php
+                                echo $this->partial('ajax-product-sort',
+                                        array('products' => $products));
+                                ?>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>

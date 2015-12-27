@@ -6,17 +6,15 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractAppController
 {
+    public function renderView($variables = null, $options = null)
+    {
+        if (!isset($variables['navigation'])) {
+            $variables['navigation'] = $this->getNavigation();
+        }
+        return parent::renderView($variables, $options);
+    }
     public function indexAction()
     {
-        $loggedin = false;
-        if ($loggedin)
-        {
-            $this->redirect()->toRoute('dashboard');
-        }
-        else
-        {
-            $this->redirect()->toRoute('auth', array('action','login'));
-        }
-        
+        return $this->renderView();
     }
 }

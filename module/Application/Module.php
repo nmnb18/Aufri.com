@@ -53,16 +53,16 @@ class Module {
                     $resultSetPrototype->setArrayObjectPrototype(new Model\Products());
                     return new \Zend\Db\TableGateway\TableGateway(Model\ProductsTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
                 },
-                'ShopkeeperTable' => function ($sm) {
-                    $tableGateway = $sm->get('ShopkeeperTableGateway');
-                    $table = new Model\ShopkeeperTable($tableGateway);
+                'SubcategoryTable' => function ($sm) {
+                    $tableGateway = $sm->get('SubcategoryTableGateway');
+                    $table = new Model\SubcategoryTable($tableGateway);
                     return $table;
                 },
-                'ShopkeeperTableGateway' => function ($sm) {
+                'SubcategoryTableGateway' => function ($sm) {
                     $dbAdapter = $sm->get('dbAdapter');
                     $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
-                    $resultSetPrototype->setArrayObjectPrototype(new Model\Shopkeeper());
-                    return new \Zend\Db\TableGateway\TableGateway(Model\ShopkeeperTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\Subcategory());
+                    return new \Zend\Db\TableGateway\TableGateway(Model\SubcategoryTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
                 },
                 'AddressTable' => function ($sm) {
                     $tableGateway = $sm->get('AddressTableGateway');
@@ -96,6 +96,17 @@ class Module {
                     $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Model\Order());
                     return new \Zend\Db\TableGateway\TableGateway(Model\OrderTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
+                },
+                'UserRoleTable' => function ($sm) {
+                    $tableGateway = $sm->get('UserRoleTableGateway');
+                    $table = new Model\UserRoleTable($tableGateway);
+                    return $table;
+                },
+                'UserRoleTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('dbAdapter');
+                    $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\UserRole());
+                    return new \Zend\Db\TableGateway\TableGateway(Model\UserRoleTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
                 },
             )
         );

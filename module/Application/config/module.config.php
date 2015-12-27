@@ -47,28 +47,29 @@ return array(
                     )
                 )
             ),
-            'style_products' => array(
+            'category_landing' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
-                    'route' => '/productsList/:categoryId',
+                    'route' => '/shop/:category/:subCategory/:subCategoryName/:categoryId',
                     'constraints' => array(
                         'key' => '[a-zA-Z0-9_-]+'
                     ),
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Products'
+                        'controller' => 'Application\Controller\Category',
+                        'action' => 'index'
                     )
                 )
             ),
-            'item' => array(
+            'ajax_sort_product' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
-                    'route' => '/item/:itemId',
+                    'route' => '/shop/sort/products/:sortValue/:categoryId',
                     'constraints' => array(
                         'key' => '[a-zA-Z0-9_-]+'
                     ),
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Products',
-                        'action' => 'getItem'
+                        'controller' => 'Application\Controller\Category',
+                        'action' => 'ajaxSortProducts'
                     )
                 )
             ),
@@ -103,6 +104,7 @@ return array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Auth' => 'Application\Controller\AuthController',
             'Application\Controller\Products' => 'Application\Controller\ProductsController',
+            'Application\Controller\Category' => 'Application\Controller\CategoryController'
         )
     ),
     'view_manager' => array(
@@ -116,6 +118,7 @@ return array(
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',
+            'ajax-product-sort' => __DIR__ . '/../view/application/category/ajax-product-sort.phtml'
         ),
         'strategies' => array(
             'ViewJsonStrategy'

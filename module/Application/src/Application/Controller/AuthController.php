@@ -66,11 +66,18 @@ class AuthController extends AbstractAppController
         $user = new User();
         $bcrypt = new Bcrypt();
         $userTable = $this->getServiceLocator()->get('UserTable');
+        $shopkeeperTable = $this->getServiceLocator()->get('ShopkeeperTable');
+        $userRoleTable = $this->getServiceLocator()->get('UserRoleTable');
         $user = $userTable->getOne(array('aufri_users_email' => $data['email']));
+        $userPassword = $user->getUserPassword();
         if (!empty($user) && !empty($data['password'])) {
-            if ($bcrypt->verify($data['password'], $user->getUserPassword())) {
+            if ($bcrypt->verify($data['password'], $userPassword)) {
                 $this->updateSessionWithUser($user, false);
-                return $this->redirect()->toRoute('admin_home');
+                //if($role === 1) {
+                    return $this->redirect()->toRoute('admin_home');
+                //} else if($role === 2) {
+                //    return $this->redirect()->toRoute('shopkeeper_home');
+                //}
             }
         } else {
             $this->setErrorMessage('Invalid login credentials');

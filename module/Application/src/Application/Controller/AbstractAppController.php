@@ -10,6 +10,7 @@ use Zend\Session\Container;
 use Zend\Http\PhpEnvironment\RemoteAddress;
 use Zend\Http\Header\SetCookie;
 use Application\Model\Role;
+use Application\Model\Subcategory;
 use Zend\Paginator\Paginator;
 use Zend\Paginator\Adapter\ArrayAdapter;
 use Zend\Db\Adapter\Adapter;
@@ -29,6 +30,23 @@ abstract class AbstractAppController extends AbstractActionController
     /**
      * @return AbstractAppController
      */
+    public function getNavigation() {
+        $productSubcategory = $this->getServiceLocator()->get('SubcategoryTable');
+        //Ethnic and men
+        $ethnicMen = $productSubcategory->getMany(array('aufri_product_subcategory_category_id_fk' => 2,
+        'aufri_product_subcategory_gender' => Subcategory::GENDER_MALE))->toArray();
+        //Ethnic and Women
+        $ethnicWomen = $productSubcategory->getMany(array('aufri_product_subcategory_category_id_fk' => 2,
+        'aufri_product_subcategory_gender' => Subcategory::GENDER_FEMALE))->toArray();
+        //Western and women
+        $westernWomen = $productSubcategory->getMany(array('aufri_product_subcategory_category_id_fk' => 1,
+        'aufri_product_subcategory_gender' => Subcategory::GENDER_FEMALE))->toArray();
+        return $navigation = array(
+            'ethnicMen' => $ethnicMen,
+            'ethnicWomen' => $ethnicWomen,
+            'westernWomen' => $westernWomen
+        );
+    }
     public static function getInstance()
     {
         return self::$instance;

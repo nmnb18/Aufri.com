@@ -34,26 +34,40 @@ return array(
         'admin' => array(
             array(
                 'label' => 'Home',
-                'route' => 'admin_home',
+                'route' => 'main_home',
             ),
             array(
-                'label' => 'Products',
-                'route' => 'admin_view_products',
-            ),
-            array(
-                'label' => 'Shopkeepers',
-                'route' => 'admin_view_shopkeepers',
-            ),
-            array(
-                'label' => 'Coupons',
-                'route' => 'admin_view_coupons',
+                'label' => 'Users',
+                'route' => 'admin_users',
             ),
             array(
                 'label' => 'Orders',
-                'route' => 'admin_view_orders',
+                'route' => 'admin_orders',
+            ),
+            array(
+                'label' => 'Products',
+                'route' => 'admin_products',
+            ),
+            array(
+                'label' => 'Coupons',
+                'route' => 'admin_coupons',
+            ),
+            array(
+                'label' => 'Shopkeepers',
+                'route' => 'admin_shopkeepers',
             ),
         ),
-
+        // navigation for shopkeeper
+        'agent' => array(
+            array(
+                'label' => 'Home',
+                'route' => 'home',
+            ),
+            array(
+                'label' => 'Products',
+                'route' => 'products',
+            ),
+        ),
     ),
     'service_manager' => array(
         'abstract_factories' => array(
