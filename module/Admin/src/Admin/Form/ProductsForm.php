@@ -40,8 +40,8 @@ class ProductsForm extends Form {
             'options' => array(
                 'empty_option' => 'Please choose gender',
                 'value_options' => array(
-                    'Male' => 'Male',
-                    'Female' => 'Female',
+                    '1' => 'Male',
+                    '2' => 'Female',
 
                 ),
             ),
@@ -92,13 +92,43 @@ class ProductsForm extends Form {
             'options' => array(
                 'empty_option' => 'Please choose Category',
                 'value_options' => array(
-                    'test' => 'test',
-                    'test1' => 'Test 1'
+                    '1' => 'Western',
+                    '2' => 'Ethnic'
                 ),
             ),
             'attributes' => array(
                 'class' => 'form-control country-select',
                 'value' => $products->getProductCategory(),
+                'required' => 'required'
+            )
+        ));
+        $this->add(array(
+            'type' => 'Zend\Form\Element\Select',
+            'name' => 'subcategory',
+            'options' => array(
+                'empty_option' => 'Please choose Sub-Category',
+                'value_options' => array(
+                    '1' => 'Jump Suits',
+                    '2' => 'Maxis',
+                    '3' => 'One piece',
+                    '4' => 'Gowns',
+                    '5' => 'Skirts',
+                    '6' => 'Coat',
+                    '7' => 'Sherwani',
+                    '8' => 'Indo-Western',
+                    '9' => 'Waist-Coat',
+                    '10' => 'Kurta-Pyajama',
+                    '11' => 'Lehenga',
+                    '12' => 'Gowns',
+                    '13' => 'Suits-Kurtis',
+                    '14' => 'Sarees',
+                    '15' => 'Anarkalis',
+                    '16' => 'Indo-Western'
+                ),
+            ),
+            'attributes' => array(
+                'class' => 'form-control country-select',
+                'value' => $products->getProductSubcategory(),
                 'required' => 'required'
             )
         ));

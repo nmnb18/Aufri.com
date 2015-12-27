@@ -138,6 +138,7 @@ class ProductsController extends AbstractAppController {
                 $products->setProductFromdate($data['fromdate']);
                 $products->setProductTodate($data['todate']);
                 $products->setProductSeotags($data['seotags']);
+                $products->setProductSubcategory($data['subcategory']);
                 if ($data['image']['name'] != '') {
                     $products->setProductImage($data['image']['name']);
                 }

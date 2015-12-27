@@ -9,6 +9,7 @@ class Shopkeeper extends AbstractDbModel {
     protected $aufriShopkeeperId;
     protected $aufriShopkeeperName;
     protected $aufriShopkeeperEmail;
+    protected $aufriShopkeeperPassword;
     protected $aufriShopkeeperPhone;
     protected $aufriShopkeeperDetails;
     protected $aufriShopkeeperAddressIdFk;
@@ -22,6 +23,9 @@ class Shopkeeper extends AbstractDbModel {
     }
     public function getShopkeeperEmail() {
         return $this->aufriShopkeeperEmail;
+    }
+    public function getShopkeeperPassword() {
+        return $this->aufriShopkeeperPassword;
     }
     public function getShopkeeperPhone() {
         return $this->aufriShopkeeperPhone;
@@ -44,6 +48,9 @@ class Shopkeeper extends AbstractDbModel {
     }
     public function setShopkeeperEmail($aufriShopkeeperEmail) {
         return $this->aufriShopkeeperEmail = $aufriShopkeeperEmail;
+    }
+    public function setShopkeeperPassword($aufriShopkeeperPassword) {
+        return $this->aufriShopkeeperPassword = $aufriShopkeeperPassword;
     }
     public function setShopkeeperPhone($aufriShopkeeperPhone) {
         return $this->aufriShopkeeperPhone = $aufriShopkeeperPhone;

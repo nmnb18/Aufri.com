@@ -28,6 +28,7 @@ class Products extends AbstractDbModel {
     protected $aufriProductsTodate;
     protected $aufriProductsOrdercount;
     protected $aufriProductsSeotags;
+    protected $aufriProductsSubcategory;
 
     public function getProductId() {
         return $this->aufriProductsId;
@@ -95,6 +96,9 @@ class Products extends AbstractDbModel {
     public function getProductSeotags() {
         return $this->aufriProductsSeotags;
     }
+    public function getProductSubcategory() {
+        return $this->aufriProductsSubcategory;
+    }
 
     public function setProductId($aufriProductsId) {
         return $this->aufriProductsId = $aufriProductsId;
@@ -161,5 +165,8 @@ class Products extends AbstractDbModel {
     }
     public function setProductSeotags($aufriProductsSeotags) {
         return $this->aufriProductsSeotags = $aufriProductsSeotags;
+    }
+    public function setProductSubcategory($aufriProductsSubcategory) {
+        return $this->aufriProductsSubcategory = $aufriProductsSubcategory;
     }
 }

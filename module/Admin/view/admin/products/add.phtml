@@ -35,6 +35,10 @@ echo $this->form()->openTag($form);
                 <?php echo $this->formElement($form->get('category')); ?>
             </div>
             <div class ="col-sm-3">
+                <label>Sub Category :</label>
+                <?php echo $this->formElement($form->get('subcategory')); ?>
+            </div>
+            <div class ="col-sm-3">
                 <label>Gender:</label>
                 <?php echo $this->formElement($form->get('gender')); ?>
                 <span class="alert-danger"><?php echo $this->formElementerrors($form->get('gender')); ?></span>
@@ -43,13 +47,13 @@ echo $this->form()->openTag($form);
                 <label>Product Size *:</label>
                 <?php echo $this->formElement($form->get('size')); ?>
             </div>
+        </div>
+
+        <div class="row">
             <div class ="col-sm-3">
                 <label>Product Actual cost:</label>
                 <?php echo $this->formElement($form->get('actualcost')); ?>
             </div>
-        </div>
-
-        <div class="row">
             <div class ="col-sm-3">
                 <label>Available from :</label>
                 <?php echo $this->formElement($form->get('fromdate')); ?>

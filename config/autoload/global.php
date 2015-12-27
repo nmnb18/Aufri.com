@@ -53,7 +53,20 @@ return array(
                 'route' => 'admin_view_orders',
             ),
         ),
-
+        'shopkeeper' => array(
+            array(
+                'label' => 'Home',
+                'route' => 'shopkeeper_home',
+            ),
+            array(
+                'label' => 'Products',
+                'route' => 'shopkeeper_view_products',
+            ),
+            array(
+                'label' => 'Orders',
+                'route' => 'shopkeeper_view_orders',
+            ),
+        ),
     ),
     'service_manager' => array(
         'abstract_factories' => array(
