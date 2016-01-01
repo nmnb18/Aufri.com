@@ -2,9 +2,13 @@
     foreach($products as $product) {
 ?>
 <!-- shop item -->
-    <div class="col-md-6 col-sm-6">
+    <div class="col-md-6 col-sm-6"> 
         <div class="home-product text-center position-relative overflow-hidden margin-ten no-margin-top">
-             <a href="shop-single-product.html"><img src="http://www.tattooset.com/images/tattoo/2012/05/31/3920-clothing-fashion-tattoo-photography-style-favim_large.jpg" alt=""/></a>
+             <a href="<?php echo $this->url('product_landing', array('category' => $prevoius['category'],
+                'subCategory' => $prevoius['subCategory'], 'subCategoryName' => $prevoius['subCategoryName'],
+                'productId' => $product['aufriProductsId']));?>">
+                <img src="http://www.tattooset.com/images/tattoo/2012/05/31/3920-clothing-fashion-tattoo-photography-style-favim_large.jpg" alt=""/>
+            </a>
              <br><br>
             <span class="product-name text-uppercase"><a href="shop-single-product.html"><?php echo $product['aufriProductsName']; ?></a></span>
             <span class="price black-text"><span>&#8377;&nbsp;</span><?php echo $product['aufriProductsRent']; ?></span>

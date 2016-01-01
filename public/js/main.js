@@ -8,9 +8,13 @@ $(document).ready(function () {
     $('#sortProduct').change(function() {
         var $sortOption = $(this);
         var sortValue = $sortOption.val();
-        var categoryId = $sortOption.attr('data-attr-category');
+        var categoryId = $sortOption.attr('data-attr-category-id');
+        var category = $sortOption.attr('data-attr-category');
+        var subCategory = $sortOption.attr('data-attr-subcategory');
+        var subCategoryName = $sortOption.attr('data-attr-subcategory-name');
+        var size = $sortOption.attr('data-attr-size');
         $.ajax({
-            url: '/shop/sort/products/'+ sortValue + '/' + categoryId,
+            url: '/shop/sort/products/'+ sortValue + '/' + categoryId + '/' + category + '/' + subCategory +'/' + subCategoryName + '/' size,
             type: 'GET',
                 success: function(products) {
             	    //called when successful

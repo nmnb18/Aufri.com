@@ -108,6 +108,17 @@ class Module {
                     $resultSetPrototype->setArrayObjectPrototype(new Model\UserRole());
                     return new \Zend\Db\TableGateway\TableGateway(Model\UserRoleTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
                 },
+                'CategoryTable' => function ($sm) {
+                    $tableGateway = $sm->get('CategoryTableGateway');
+                    $table = new Model\CategoryTable($tableGateway);
+                    return $table;
+                },
+                'CategoryTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('dbAdapter');
+                    $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\Category());
+                    return new \Zend\Db\TableGateway\TableGateway(Model\CategoryTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
+                },
             )
         );
     }

@@ -50,7 +50,7 @@ return array(
             'category_landing' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
-                    'route' => '/shop/:category/:subCategory/:subCategoryName/:categoryId',
+                    'route' => '/shop/:category/:subCategory/:subCategoryName/:categoryId[/:size]',
                     'constraints' => array(
                         'key' => '[a-zA-Z0-9_-]+'
                     ),
@@ -60,10 +60,23 @@ return array(
                     )
                 )
             ),
+            'product_landing' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/shop/product/:category/:subCategory/:subCategoryName/:productId',
+                    'constraints' => array(
+                        'key' => '[a-zA-Z0-9_-]+'
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Product',
+                        'action' => 'index'
+                    )
+                )
+            ),
             'ajax_sort_product' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
-                    'route' => '/shop/sort/products/:sortValue/:categoryId',
+                    'route' => '/shop/sort/products/:sortValue/:categoryId/:category/:subCategory/:subCategoryName/:size',
                     'constraints' => array(
                         'key' => '[a-zA-Z0-9_-]+'
                     ),
@@ -103,7 +116,7 @@ return array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Auth' => 'Application\Controller\AuthController',
-            'Application\Controller\Products' => 'Application\Controller\ProductsController',
+            'Application\Controller\Product' => 'Application\Controller\ProductController',
             'Application\Controller\Category' => 'Application\Controller\CategoryController'
         )
     ),
