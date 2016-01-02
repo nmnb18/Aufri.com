@@ -197,7 +197,7 @@ abstract class AbstractAppController extends AbstractActionController
         $sessionManager = $this->getSessionManager();
         $sessionManager->start();
         Container::setDefaultManager($sessionManager);
-        return new Container('tvp_session');
+        return new Container('aufre_session');
     }
 
     public function getSessionManager()

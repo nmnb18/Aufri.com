@@ -14,7 +14,7 @@ $(document).ready(function () {
         var subCategoryName = $sortOption.attr('data-attr-subcategory-name');
         var size = $sortOption.attr('data-attr-size');
         $.ajax({
-            url: '/shop/sort/products/'+ sortValue + '/' + categoryId + '/' + category + '/' + subCategory +'/' + subCategoryName + '/' size,
+            url: '/shop/sort/products/'+ sortValue + '/' + categoryId + '/' + category + '/' + subCategory +'/' + subCategoryName + '/' + size,
             type: 'GET',
                 success: function(products) {
             	    //called when successful
@@ -27,6 +27,15 @@ $(document).ready(function () {
                 }
         });
     });
+
+    // // Date picker
+    // $(function() {
+    //     $( "#eventStartDate" ).datepicker({
+    //         minDate: new Date(2016, 0, 10)
+    //     });
+    //     set
+    //     $('#ui-datepicker-div').prepend('<div class="cal_header">Pick a delivery date 1-2 days before your event.</div>');
+    // });
     // Show Animated Counters
     animatecounters();
     /*==============================================================*/

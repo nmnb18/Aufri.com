@@ -36,6 +36,8 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->navigation)) {
         <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/main.css'?>" />
         <!-- responsive -->
         <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/responsive.css'?>" />
+
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/datepicker.css'?>">
         <!-- Le styles -->
         <?php
         echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
@@ -86,7 +88,7 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->navigation)) {
                                 <!-- nav shopping bag -->
                                 <a href="#" class="shopping-cart">
                                     <i class="fa fa-shopping-cart"></i>
-                                    <div class="subtitle">(1) Items</div>
+                                    <div class="subtitle">(<?php echo $session['cart_count'];?>) Items</div>
                                 </a>
                                 <!-- end nav shopping bag -->
                                 <!-- shopping bag content -->
@@ -331,6 +333,7 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->navigation)) {
             ->prependFile($this->basePath() . '/js/bootstrap-hover-dropdown.js')
             ->prependFile($this->basePath() . '/bootstrap/js/bootstrap.min.js')
             ->prependFile($this->basePath() . '/js/modernizr-2.6.2.min.js')
+            ->prependFile($this->basePath() . '/js/jquery-ui.js')
             ->prependFile($this->basePath() . '/js/jquery.min.js');
     ?>
 

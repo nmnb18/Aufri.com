@@ -36,6 +36,9 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->navigation)) {
         <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/main.css'?>" />
         <!-- responsive -->
         <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/responsive.css'?>" />
+
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/reset.css'?>">
         <!-- Le styles -->
         <?php
         echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
@@ -65,7 +68,7 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->navigation)) {
                 <div class="container">
                     <div class="row">
                         <!-- logo -->
-                        <div class="col-md-2 pull-left"><a class="logo-light" href="/"><img alt="" src="<?php echo $this->basePath(); ?>/images/aufrelogo.png" class="logo" /></a><a class="logo-dark" href="/"><img alt="" src="<?php echo $this->basePath(); ?>/images/aufrelogo.png" class="logo" /></a></div>
+                        <div class="col-md-2 pull-left"><a class="logo-light" href="index.html"><img alt="" src="images/aufrelogo.png" class="logo" /></a><a class="logo-dark" href="index.html"><img alt="" src="images/aufrelogo.png" class="logo" /></a></div>
                         <!-- end logo -->
                         <!-- search and cart  -->
                         <div class="col-md-2 no-padding-left search-cart-header pull-right">
@@ -86,7 +89,7 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->navigation)) {
                                 <!-- nav shopping bag -->
                                 <a href="#" class="shopping-cart">
                                     <i class="fa fa-shopping-cart"></i>
-                                    <div class="subtitle">(1) Items</div>
+                                    <div class="subtitle">(<?php echo $session['cart_count'];?>) Items</div>
                                 </a>
                                 <!-- end nav shopping bag -->
                                 <!-- shopping bag content -->
@@ -296,7 +299,7 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->navigation)) {
                             <!-- end copyright -->
                             <!-- logo -->
                             <div class="col-md-6 col-sm-6 col-xs-12 footer-logo text-right xs-text-left">
-                                <a href="/"><img src="<?php echo $this->basePath(); ?>/images/aufrelogo.png" alt=""/></a>
+                                <a href="index.html"><img src="images/aufrelogo.png" alt=""/></a>
                             </div>
                             <!-- end logo -->
                         </div>
@@ -310,6 +313,7 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->navigation)) {
     <!-- Scripts -->
     <?php
     echo $this->headScript()
+            ->prependFile($this->basePath() . '/js/datepicker-customize.js')
             ->prependFile($this->basePath() . '/js/main.js')
             ->prependFile($this->basePath() . '/js/imagesloaded.pkgd.min.js')
             ->prependFile($this->basePath() . '/js/jquery.fitvids.js')
@@ -331,6 +335,7 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->navigation)) {
             ->prependFile($this->basePath() . '/js/bootstrap-hover-dropdown.js')
             ->prependFile($this->basePath() . '/bootstrap/js/bootstrap.min.js')
             ->prependFile($this->basePath() . '/js/modernizr-2.6.2.min.js')
+            ->prependFile($this->basePath() . '/js/jquery-ui.js')
             ->prependFile($this->basePath() . '/js/jquery.min.js');
     ?>
 

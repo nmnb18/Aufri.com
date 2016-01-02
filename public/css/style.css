@@ -554,3 +554,10 @@ a.status-item:hover {
 .searchFaq  {
 	margin-right: 5px !important;
 }
+
+.cal_header {
+    background: #000;
+    color: #fff;
+    font-size: 9px;
+    padding: 4px;
+}

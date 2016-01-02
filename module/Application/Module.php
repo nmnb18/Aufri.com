@@ -119,6 +119,28 @@ class Module {
                     $resultSetPrototype->setArrayObjectPrototype(new Model\Category());
                     return new \Zend\Db\TableGateway\TableGateway(Model\CategoryTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
                 },
+                'SizeTable' => function ($sm) {
+                    $tableGateway = $sm->get('SizeTableGateway');
+                    $table = new Model\SizeTable($tableGateway);
+                    return $table;
+                },
+                'SizeTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('dbAdapter');
+                    $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\Size());
+                    return new \Zend\Db\TableGateway\TableGateway(Model\SizeTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
+                },
+                'SizeBookingTable' => function ($sm) {
+                    $tableGateway = $sm->get('SizeBookingTableGateway');
+                    $table = new Model\SizeBookingTable($tableGateway);
+                    return $table;
+                },
+                'SizeBookingTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('dbAdapter');
+                    $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\SizeBooking());
+                    return new \Zend\Db\TableGateway\TableGateway(Model\SizeBookingTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
+                },
             )
         );
     }

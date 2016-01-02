@@ -22,7 +22,7 @@
 <!-- end head section -->
 
 <!-- content section -->
-<section>
+<section class="page-title-small">
     <div class="container">
         <div class="row">
             <!-- product images -->
@@ -38,40 +38,63 @@
             <div class="col-md-5 col-sm-12 col-md-offset-1">
 
                 <!-- product name -->
-                <span class="product-name-details text-uppercase font-weight-600 letter-spacing-2 black-text">FUSCHIA SARI WITH GOLD DABKA BORDER</span>
+                <span class="product-name-details text-uppercase font-weight-600 letter-spacing-2 black-text">
+                    <?php echo $product->getProductName(); ?>
+                </span>
                 <!-- end product name -->
                 <!-- product stock -->
                 <p class="text-uppercase letter-spacing-2 margin-two"><mark class="label-success white-text">In Stock / Free Shipping / Dry Cleaned and Ironed</mark></p>
                 <!-- end product stock -->
                 <div class="separator-line bg-black no-margin-lr margin-five"></div>
                 <!-- product short description -->
-              <p>This silk crepe stunner is set apart by its wide border in Jade's signature gold dabka work. It's a striking gorgeous pink shade which is lifted by the aroyal blue lining and trim on the border. You'll never blend in with this one.  Enough said.</p>
+                <p>
+                    <?php echo $product->getProductDescription();?>
+                </p>
                 <!-- end product short description -->
-                <span class="price black-text"><del>Retail : 7000</del><h2>Rent: 750</h2></span>
+                <span class="price black-text"><del>Retail : <?php echo $product->getProductActualcost();?></del><h2>Rent: <?php echo $product->getProductRent();?></h2></span>
                 <div>
                     <!-- product color -->
                     <br>
                     <!-- end product color -->
                     <!-- product size -->
                     <ul class="size clearfix size-details">
-                        <li class="active"><a href="#">S</a></li>
-                        <li><a href="#">M</a></li>
-                        <li><a href="#">L</a></li>
-                        <li class="size-chart"><a href="#">Size Chart</a></li>
+                        <input type="hidden" value=<?php echo $bookedDates;?> id="bookedDates"/>
+                        <?php foreach ($sizes as $key => $size) { ?>
+                            <li <?php if($key == 0) { ?>class="active"<?php } ?> >
+                                <input type="hidden" name="<?php echo 'size-'.$size['aufriProductSizeName']; ?>"
+                                value=<?php echo $size['aufriProductSizeName']; ?>>
+                                <a href="javascript:void(0)"><?php echo $size['aufriProductSizeName']; ?></a>
+                            </li>
+                        <?php
+                        } ?>
                     </ul>
                     <!-- end product size -->
                     <br>
-                    <h5> Enter Your Event Date:</h5>
-
-
+                    <h5> Enter Your Event Dates:</h5>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="text" value="<?php if(!empty($session['product_del_date'])) { echo $session['product_del_date']; } ?>"
+                            class="col-md-6" id="delivery-date" placeholder="Start date" readonly/>
+                            <input type="text" value="<?php if(!empty($session['product_return_date'])) { echo $session['product_return_date']; } ?>"
+                             class="col-md-6" id="return-date" placeholder="End date" readonly disabled />
+                        </div>
+                    </div>
+                    <div class="cal_header">Pick a delivery date 1-2 days before your event.</div>
                 </div>
 
                 <div class="col-md-9 col-sm-9 no-padding margin-five">
                     <!-- add to bag button -->
-                    <a class="highlight-button-dark btn btn-medium button" href="shop-cart.html"><i class="icon-basket"></i> Add To Cart</a>
+                    <button id="add-to-cart" class="highlight-button-dark btn btn-medium button" disabled><i class="icon-basket"></i> Add To Cart</button>
                     <!-- end add to bag button -->
                 </div>
-
+                <form action="<?php echo $this->url('product_landing', array('category' => $prevoius['category'],
+                   'subCategory' => $prevoius['subCategory'], 'subCategoryName' => $prevoius['subCategoryName'],
+                   'productId' => $product->getProductId()));?>" method="post" id="add-to-cart-form">
+                    <input type="hidden" id="product-size" name="product-size" />
+                    <input type="hidden" id="product-del-date" name="product-del-date" />
+                    <input type="hidden" id="product-return-date" name="product-return-date" />
+                </fom>
              <div class="col-md-8 col-sm-9 product-details-social no-padding">
 
                          <!-- modal popup #2 -->
