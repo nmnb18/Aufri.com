@@ -74,9 +74,11 @@
                     <br/>
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="text" value="<?php if(!empty($session['product_del_date'])) { echo $session['product_del_date']; } ?>"
+                            <input type="text" value="<?php if(!empty($session['cart'][$product->getProductId()]['product_del_date'])) {
+                                echo $session['cart'][$product->getProductId()]['product_del_date']; } ?>"
                             class="col-md-6" id="delivery-date" placeholder="Start date" readonly/>
-                            <input type="text" value="<?php if(!empty($session['product_return_date'])) { echo $session['product_return_date']; } ?>"
+                            <input type="text" value="<?php if(!empty($session['cart'][$product->getProductId()]['product_return_date'])) {
+                                echo $session['cart'][$product->getProductId()]['product_return_date']; } ?>"
                              class="col-md-6" id="return-date" placeholder="End date" readonly disabled />
                         </div>
                     </div>

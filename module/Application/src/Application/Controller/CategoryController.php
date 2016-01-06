@@ -53,7 +53,9 @@ class CategoryController extends AbstractAppController
         $subCategoryTable = $this->getServiceLocator()->get('SubcategoryTable');
         $subCategory = $subCategoryTable->getMany(array('aufri_product_subcategory_gender' => $gender,
         'aufri_product_subcategory_category_id_fk' => $categoryType))->toArray();
+
         // get category wise Products
+        
         $productTable = $this->getServiceLocator()->get('ProductsTable');
         $products = $productTable->getMany(array('aufri_products_subcategory' => $categoryId, 'aufri_products_size' => $size))->toArray();
         $view = array(

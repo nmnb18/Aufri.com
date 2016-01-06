@@ -17,7 +17,6 @@ class ProductController extends AbstractAppController
 
     public function indexAction() {
         $session = $this->getSession();
-        $session['cart_count'] = 0;
         $category = $this->params('category', false);
         $subCategory = $this->params('subCategory', false);
         $subCategoryName = $this->params('subCategoryName', false);
@@ -46,11 +45,22 @@ class ProductController extends AbstractAppController
         $data = $request->getPost()->toArray();
         if ($request->isPost()) {
             $session = $this->getSession();
-            $session['product_id'] = $productId;
-            $session['product_size'] = $data['product-size'];
-            $session['product_del_date'] = $data['product-del-date'];
-            $session['product_return_date'] = $data['product-return-date'];
-            $session['cart_count'] = $session['cart_count'] + 1;
+            if(!isset($session['aufrecart'])) {
+                $session['aufrecart'] = array();
+            }
+            $session['cart'] = array(
+                'productId' => $productId,
+                'quantity' => 1,
+                'product_size' => $data['product-size'],
+                'product_del_date' => $data['product-del-date'],
+                'product_return_date' => $data['product-return-date']
+            );
+            array_push($session['aufrecart'], $session['cart']);
+            if(!isset($session['cart_count'])) {
+                $session['cart_count'] = 1;
+            } else {
+                $session['cart_count']++;
+            }
         }
         $view = array(
             'prevoius' => $prevoius,

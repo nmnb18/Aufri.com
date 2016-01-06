@@ -196,8 +196,23 @@ abstract class AbstractAppController extends AbstractActionController
     {
         $sessionManager = $this->getSessionManager();
         $sessionManager->start();
+        $sessionManager->destroy();
         Container::setDefaultManager($sessionManager);
         return new Container('aufre_session');
+    }
+
+    public function getCartProducts()
+    {
+        $session = $this->getSession();
+        $productIdArray = array();
+        if (isset($session['aufrecart'])) {
+            foreach ($session['aufrecart'] as $aufreCart) {
+                array_push($productIdArray, $aufreCart['productId']);
+            }
+            $productTable = $this->getServiceLocator()->get('ProductsTable');
+            $products = $productTable->getMany(array('aufri_products_id' => array_unique($productIdArray)))->toArray();
+            return $products;
+        }
     }
 
     public function getSessionManager()
