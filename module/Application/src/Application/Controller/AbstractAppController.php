@@ -206,12 +206,39 @@ abstract class AbstractAppController extends AbstractActionController
         $session = $this->getSession();
         $productIdArray = array();
         if (isset($session['aufrecart'])) {
-            foreach ($session['aufrecart'] as $aufreCart) {
-                array_push($productIdArray, $aufreCart['productId']);
-            }
             $productTable = $this->getServiceLocator()->get('ProductsTable');
-            $products = $productTable->getMany(array('aufri_products_id' => array_unique($productIdArray)))->toArray();
-            return $products;
+            $productsArray = array();
+            $sizeArray = array();
+            $sizeTable = $this->getServiceLocator()->get('SizeTable');
+            $sizeBookingTable = $this->getServiceLocator()->get('SizeBookingTable');
+            foreach ($session['aufrecart'] as $aufreCart) {
+                $products = $productTable->getOne(array('aufri_products_id' => $aufreCart['productId']));
+
+                $sizes = $sizeTable->getMany(array('aufri_product_id_fk' => $aufreCart['productId']))->toArray();
+                foreach($sizes as $size) {
+                    $sizeArray[$size['aufriProductSizeName']] = array();
+                    $sizeBooked = $sizeBookingTable->getMany(array('aufri_product_size_booking_productid' => $aufreCart['productId'],
+                    'aufri_product_size_booking_size' => $size['aufriProductSizeName']))->toArray();
+                    foreach($sizeBooked as $bookedSize) {
+                        array_push($sizeArray[$size['aufriProductSizeName']], $bookedSize['aufriProductSizeBookingDates']);
+                    }
+                }
+                $product = array(
+                    'id' => $products->getProductId(),
+                    'name' => $products->getProductName(),
+                    'size' => $aufreCart['product_size'],
+                    'returnDate' => $aufreCart['product_return_date'],
+                    'bookingDate' => $aufreCart['product_del_date'],
+                    'quantity' => $aufreCart['quantity'],
+                    'rent' => $products->getProductRent(),
+                    'deposit' => $products->getProductSecurity(),
+                    'actualCost' => $products->getProductActualcost(),
+                    'availabelSizes' => $sizes,
+                    'bookedDates' => json_encode($sizeArray)
+                );
+                array_push($productsArray, $product);
+            }
+            return $productsArray;
         }
     }
 

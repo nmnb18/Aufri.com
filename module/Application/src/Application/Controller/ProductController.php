@@ -11,6 +11,7 @@ class ProductController extends AbstractAppController
     {
         if (!isset($variables['navigation'])) {
             $variables['navigation'] = $this->getNavigation();
+            $variables['cartproducts'] = $this->getCartProducts();
         }
         return parent::renderView($variables, $options);
     }

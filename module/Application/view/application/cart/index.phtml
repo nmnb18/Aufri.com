@@ -1,0 +1,162 @@
+<!-- head section -->
+<section class="content-top-margin page-title page-title-small bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-sm-12 wow fadeInUp" data-wow-duration="300ms">
+                <!-- page title -->
+                <h1 class="black-text">Shopping Cart</h1>
+                <!-- end page title -->
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-12 breadcrumb text-uppercase wow fadeInUp xs-display-none" data-wow-duration="600ms">
+                <!-- breadcrumb -->
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li>Shopping Cart</li>
+                </ul>
+                <!-- end breadcrumb -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end head section -->
+
+<!-- content section -->
+<section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 shop-cart-table">
+                <?php
+                    if(!empty($cartProducts)) {
+                ?>
+                <table class="table shop-cart text-center">
+                    <thead>
+                        <tr>
+                            <th class="first"></th>
+                            <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Product</th>
+                            <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Deposit</th>
+                            <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Rent</th>
+                            <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Sub Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $total = 0;
+                            foreach($cartProducts as $cartItem) {
+                                $total = $total + $cartItem['rent'] + $cartItem['deposit'];
+                        ?>
+                        <tr class="main-details">
+                            <td class="product-thumbnail text-left">
+                                <a href="shop-single-product.html"><img src="http://placehold.it/120x120" alt="" ></a>
+                            </td>
+                            <td class="text-left">
+                                <a href="shop-single-product.html"><?php echo $cartItem['name'];?></a>
+                                <span class="text-uppercase display-block text-small margin-two">Size: <?php echo $cartItem['size'];?></span>
+								<span class="text-uppercase display-block text-small margin-two">Booking Date : <?php echo $cartItem['bookingDate']; ?></span>
+                                <a href="javascript:void(0)" class="text-small editCart"><i class="fa fa-edit black-text"></i> Edit</a>
+                            </td>
+                            <td class="text-left">
+                                <?php echo $cartItem['deposit']; ?>
+                            </td>
+                           <td class="text-left">
+                                <?php echo $cartItem['rent']; ?>
+                            </td>
+                            <td class="product-subtotal text-left"><?php echo $cartItem['rent'] + $cartItem['deposit']; ?></td>
+                            <td class="product-remove text-center">
+                                <a href="javascript:void(0)"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                        <tr class="hidden-details c--hide">
+                            <td>
+                            <!-- product size -->
+                                <ul class="size clearfix cart-size-details">
+                                    <input type="hidden" value=<?php echo $cartItem['bookedDates']; ?> class="bookedDates"/>
+                                    <?php foreach ($cartItem['availabelSizes'] as $key => $size) { ?>
+                                        <li <?php if($key == 0) { ?>class="active"<?php } ?> >
+                                            <input type="hidden" name="<?php echo 'size-'.$size['aufriProductSizeName']; ?>"
+                                            value=<?php echo $size['aufriProductSizeName']; ?>>
+                                            <a href="javascript:void(0)"><?php echo $size['aufriProductSizeName']; ?></a>
+                                        </li>
+                                    <?php
+                                    } ?>
+                                </ul>
+                            </td>
+                            <td>
+                                <input type="text" value="<?php echo $cartItem['bookingDate']; ?>"
+                                    class="delivery-date" placeholder="Start date" readonly/>
+                            </td>
+                            <td>
+                                <input type="text" value="<?php echo $cartItem['returnDate']; ?>"
+                                    class="return-date" placeholder="End date" readonly disabled />
+                            </td>
+                        </tr>
+                        <?php
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-12 cupon padding-five border-top border-bottom">
+                <button class="highlight-button btn btn-small no-margin pull-left">Empty Cart</button>
+                <button class="highlight-button btn btn-small no-margin pull-right continue-shopping">Continue Shopping</button>
+                <button class="highlight-button btn btn-small no-margin pull-right">Update Shopping Cart</button>
+            </div>
+            <div class="col-sm-12 padding-five no-padding-bottom">
+                <div class="col-md-5 col-sm-5 calculate no-padding-left xs-margin-bottom-ten xs-no-padding">
+                    <div class="panel panel-default border margin-five no-margin-top">
+                        <div class="panel-heading no-padding" id="headingOne" role="tablist">
+                            <a href="#collapse-two-link1" data-parent="#collapse-two" data-toggle="collapse" class="collapsed">
+                                <h4 class="panel-title no-border black-text font-weight-600 letter-spacing-2">Coupon Code <span class="pull-right"><i class="fa fa-plus"></i></span></h4>
+                            </a>
+                        </div>
+                        <div class="panel-collapse collapse" id="collapse-two-link1" style="height: 0px;">
+                            <div class="panel-body">
+                                <form action="#">
+                                    <div class="form-wrap">
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Enter Your Coupon code">
+                                            <button class="highlight-button btn btn-small no-margin pull-left">Apply Code</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-sm-7 col-md-offset-1 no-padding-right xs-no-padding">
+                    <table class="table cart-total">
+                        <tbody>
+                            <tr>
+                                <th class="padding-two text-right no-padding-right text-uppercase font-weight-600 letter-spacing-2 text-small xs-no-padding">Cart Subtotal</th>
+                                <td class="padding-two text-uppercase text-right no-padding-right font-weight-600 black-text xs-no-padding"><?php echo $total; ?></td>
+                            </tr>
+                            <tr>
+                                <th class="padding-two text-right no-padding-right text-uppercase font-weight-600 letter-spacing-2 text-small xs-no-padding">Shipping and Handling</th>
+                                <td class="padding-two text-uppercase text-right no-padding-right font-weight-600 black-text text-small xs-no-padding">Free</td>
+                            </tr>
+                            <tr>
+                                <td class="padding-one no-padding-right xs-no-padding" colspan="2">
+                                    <hr>
+                                </td>
+                            </tr>
+                            <tr class="total">
+                                <th class="padding-two text-uppercase text-right no-padding-right font-weight-600 text-large xs-no-padding">Order Total</th>
+                                <td class="padding-two text-uppercase text-right no-padding-right font-weight-600 black-text text-large no-letter-spacing xs-no-padding">$800</td>
+                            </tr>
+                            <tr>
+                                <td class="padding-one no-padding-right xs-no-padding" colspan="2">
+                                    <hr class="no-margin-bottom">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a class="highlight-button-black-background btn no-margin pull-right checkout-btn" href="shop-checkout.html">Proceed to Checkout</a>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
+</section>
+<!-- end content section -->

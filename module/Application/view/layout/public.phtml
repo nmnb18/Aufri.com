@@ -97,31 +97,36 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->cartproducts)) {
                                 <!-- end nav shopping bag -->
                                 <!-- shopping bag content -->
                                 <div class="cart-content">
-                                    <ul class="cart-list">
-                                        <?php
-                                            $total = 0;
-                                            foreach($cartItems as $item) {
-                                            $total = $total + $item['aufriProductsRent'];
-                                        ?>
-                                        <li>
-                                            <a title="Remove item" class="remove" href="#">×</a>
-                                            <a href="#">
-                                                <img width="90" height="90" alt="" src="http://placehold.it/90x90"><?php echo $item['aufriProductsName']?>
-                                            </a>
-                                            <span class="quantity">1 × <span class="amount"><?php echo $item['aufriProductsRent']?></span></span>
-                                            <a href="#">Edit</a>
-                                        </li>
-                                        <?php
-                                            }
-                                        ?>
-                                    </ul>
-                                    <p class="total">Subtotal: <span class="amount"><?php echo $total; ?></span></p>
-                                    <p class="buttons">
-                                        <a href="shop-cart.html" class="btn btn-very-small-white no-margin-bottom margin-seven pull-left no-margin-lr">View Cart</a>
-                                        <a href="shop-checkout.html" class="btn btn-very-small-white no-margin-bottom margin-seven no-margin-right pull-right">Checkout</a>
-                                    </p>
-                                </div>
-                                <!-- end shopping bag content -->
+                                    <?php if (!empty($cartItems)) { ?>
+                                        <ul class="cart-list">
+                                            <?php
+                                                $total = 0;
+                                                foreach($cartItems as $item) {
+                                                $total = $total +  $item['rent'] + $item['deposit'];
+                                            ?>
+                                            <li>
+                                                <a title="Remove item" class="remove" href="#">×</a>
+                                                <a href="#">
+                                                    <img width="90" height="90" alt="" src="http://placehold.it/90x90">
+                                                    <?php echo $item['name']?>
+                                                </a>
+                                                <span class="quantity"><?php echo $item['quantity']; ?> × <span class="amount">
+                                                    <?php echo $item['rent'] + $item['deposit']?> </span></span>
+                                                <a href="#">Edit</a>
+                                            </li>
+                                            <?php
+                                                }
+                                            ?>
+                                        </ul>
+                                        <p class="total">Subtotal: <span class="amount"><?php echo $total; ?></span></p>
+                                        <p class="buttons">
+                                            <a href="<?php echo $this->url('cart_landing'); ?>" class="btn btn-very-small-white no-margin-bottom margin-seven pull-left no-margin-lr">View Cart</a>
+                                            <a href="shop-checkout.html" class="btn btn-very-small-white no-margin-bottom margin-seven no-margin-right pull-right">Checkout</a>
+                                        </p>
+                                    <?php } else { ?>
+                                        <p class="total"><span>Your Bag is Empty</span></p>
+                                        <?php } ?>
+                                </div>                                <!-- end shopping bag content -->
                             </div>
                         </div>
                         <!-- end search and cart  -->

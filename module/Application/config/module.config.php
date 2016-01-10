@@ -73,6 +73,16 @@ return array(
                     )
                 )
             ),
+            'cart_landing' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/shop/product/shopping/cart',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Cart',
+                        'action' => 'index'
+                    )
+                )
+            ),
             'ajax_sort_product' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
@@ -117,7 +127,8 @@ return array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Auth' => 'Application\Controller\AuthController',
             'Application\Controller\Product' => 'Application\Controller\ProductController',
-            'Application\Controller\Category' => 'Application\Controller\CategoryController'
+            'Application\Controller\Category' => 'Application\Controller\CategoryController',
+            'Application\Controller\Cart' => 'Application\Controller\CartController'
         )
     ),
     'view_manager' => array(

@@ -7,6 +7,10 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->session)) {
 if (isset($this->viewModel()->getCurrent()->getChildren()[0]->navigation)) {
     $navigation = $this->viewModel()->getCurrent()->getChildren()[0]->navigation;
 }
+
+if (isset($this->viewModel()->getCurrent()->getChildren()[0]->cartproducts)) {
+    $cartItems = $this->viewModel()->getCurrent()->getChildren()[0]->cartproducts;
+}
 ?>
 <html lang="en">
     <head>
@@ -37,8 +41,7 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->navigation)) {
         <!-- responsive -->
         <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/responsive.css'?>" />
 
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/reset.css'?>">
+        <link rel="stylesheet" href="<?php echo $this->basePath() . '/css/datepicker.css'?>">
         <!-- Le styles -->
         <?php
         echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
@@ -94,21 +97,35 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->navigation)) {
                                 <!-- end nav shopping bag -->
                                 <!-- shopping bag content -->
                                 <div class="cart-content">
-                                    <ul class="cart-list">
-                                        <li>
-                                            <a title="Remove item" class="remove" href="#">×</a>
-                                            <a href="#">
-                                                <img width="90" height="90" alt="" src="http://placehold.it/90x90">Leather Craft
-                                            </a>
-                                            <span class="quantity">1 × <span class="amount">$160</span></span>
-                                            <a href="#">Edit</a>
-                                        </li>
-                                    </ul>
-                                    <p class="total">Subtotal: <span class="amount">$160</span></p>
-                                    <p class="buttons">
-                                        <a href="shop-cart.html" class="btn btn-very-small-white no-margin-bottom margin-seven pull-left no-margin-lr">View Cart</a>
-                                        <a href="shop-checkout.html" class="btn btn-very-small-white no-margin-bottom margin-seven no-margin-right pull-right">Checkout</a>
-                                    </p>
+                                    <?php if (!empty($cartItems)) { ?>
+                                        <ul class="cart-list">
+                                            <?php
+                                                $total = 0;
+                                                foreach($cartItems as $item) {
+                                                $total = $total +  $item['rent'] + $item['deposit'];
+                                            ?>
+                                            <li>
+                                                <a title="Remove item" class="remove" href="#">×</a>
+                                                <a href="#">
+                                                    <img width="90" height="90" alt="" src="http://placehold.it/90x90">
+                                                    <?php echo $item['name']?>
+                                                </a>
+                                                <span class="quantity"><?php echo $item['quantity']; ?> × <span class="amount">
+                                                    <?php echo $item['rent'] + $item['deposit']?> </span></span>
+                                                <a href="#">Edit</a>
+                                            </li>
+                                            <?php
+                                                }
+                                            ?>
+                                        </ul>
+                                        <p class="total">Subtotal: <span class="amount"><?php echo $total; ?></span></p>
+                                        <p class="buttons">
+                                            <a href="<?php echo $this->url('cart_landing'); ?>" class="btn btn-very-small-white no-margin-bottom margin-seven pull-left no-margin-lr">View Cart</a>
+                                            <a href="shop-checkout.html" class="btn btn-very-small-white no-margin-bottom margin-seven no-margin-right pull-right">Checkout</a>
+                                        </p>
+                                    <?php } else { ?>
+                                        <p class="total"><span>Your Bag is Empty</span></p>
+                                        <?php } ?>
                                 </div>
                                 <!-- end shopping bag content -->
                             </div>
@@ -338,7 +355,6 @@ if (isset($this->viewModel()->getCurrent()->getChildren()[0]->navigation)) {
             ->prependFile($this->basePath() . '/js/jquery-ui.js')
             ->prependFile($this->basePath() . '/js/jquery.min.js');
     ?>
-
 
     </body>
 </html>
