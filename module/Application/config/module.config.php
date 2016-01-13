@@ -96,6 +96,29 @@ return array(
                     )
                 )
             ),
+            'delete_cart_item' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/shop/cart/product/delete/:itemId',
+                    'constraints' => array(
+                        'key' => '[a-zA-Z0-9_-]+'
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Cart',
+                        'action' => 'delete'
+                    )
+                )
+            ),
+            'edit_cart' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/shop/products/cart/edit/',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Cart',
+                        'action' => 'editCart'
+                    )
+                )
+            ),
         )
     ),
     'service_manager' => array(

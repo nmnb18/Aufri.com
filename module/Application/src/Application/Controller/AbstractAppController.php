@@ -205,6 +205,7 @@ abstract class AbstractAppController extends AbstractActionController
     {
         $session = $this->getSession();
         $productIdArray = array();
+        $index = 0;
         if (isset($session['aufrecart'])) {
             $productTable = $this->getServiceLocator()->get('ProductsTable');
             $productsArray = array();
@@ -224,6 +225,7 @@ abstract class AbstractAppController extends AbstractActionController
                     }
                 }
                 $product = array(
+                    'index' => $index,
                     'id' => $products->getProductId(),
                     'name' => $products->getProductName(),
                     'size' => $aufreCart['product_size'],
@@ -236,6 +238,7 @@ abstract class AbstractAppController extends AbstractActionController
                     'availabelSizes' => $sizes,
                     'bookedDates' => json_encode($sizeArray)
                 );
+                $index++;
                 array_push($productsArray, $product);
             }
             return $productsArray;

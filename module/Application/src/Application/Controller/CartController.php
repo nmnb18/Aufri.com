@@ -22,4 +22,28 @@ class CartController extends AbstractAppController
             'cartProducts' => $cartProducts
         ));
     }
+    public function editCartAction()
+    {
+        $request = $this->serviceLocator->get('request');
+        $data = $request->getPost()->toArray();
+        if($request->isPost()) {
+            $session = $this->getSession();
+            $session['aufrecart'][$data['product-index']] = array(
+                'productId' => $data['product-id'],
+                'quantity' => 1,
+                'product_size' => $data['product-size'],
+                'product_del_date' => $data['product-del-date'],
+                'product_return_date' => $data['product-return-date']
+            );
+        }
+        return $this->redirect()->toRoute('cart_landing');
+    }
+    public function deleteAction()
+    {
+        $session = $this->getSession();
+        $itemId = $this->params('itemId', false);
+        unset($session['aufrecart'][$itemId]);
+        $session['cart_count'] = $session['cart_count'] - 1;
+        return $this->redirect()->toRoute('cart_landing');
+    }
 }

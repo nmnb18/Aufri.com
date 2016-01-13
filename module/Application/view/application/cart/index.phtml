@@ -64,7 +64,9 @@
                             </td>
                             <td class="product-subtotal text-left"><?php echo $cartItem['rent'] + $cartItem['deposit']; ?></td>
                             <td class="product-remove text-center">
-                                <a href="javascript:void(0)"><i class="fa fa-times"></i></a>
+                                <a href="<?php echo $this->url('delete_cart_item', array('itemId' => $cartItem['index']));?>">
+                                    <i class="fa fa-times"></i>
+                                </a>
                             </td>
                         </tr>
                         <tr class="hidden-details c--hide">
@@ -82,20 +84,32 @@
                                     } ?>
                                 </ul>
                             </td>
-                            <td>
+                            <td colspan=2>
                                 <input type="text" value="<?php echo $cartItem['bookingDate']; ?>"
                                     class="delivery-date" placeholder="Start date" readonly/>
                             </td>
-                            <td>
+                            <td colspan=2>
                                 <input type="text" value="<?php echo $cartItem['returnDate']; ?>"
                                     class="return-date" placeholder="End date" readonly disabled />
                             </td>
+                            <td>
+                            <input type="hidden" value="<?php echo $cartItem['index'];?>" class="cart-index"/>
+                            <input type="hidden" value="<?php echo $cartItem['id'];?>" class="cart-product-id"/>
+                                <button class="highlight-button btn btn-small no-margin pull-left update-cart-button">Update Cart</button>
+                            <td>
                         </tr>
                         <?php
                             }
                         ?>
                     </tbody>
                 </table>
+                <form action="<?php echo $this->url('edit_cart'); ?>" method="post" id="update-cart-form">
+                    <input type="hidden" name="product-id" id="product-id" />
+                    <input type="hidden" name="product-index" id="product-index" />
+                    <input type="hidden" id="product-size" name="product-size" />
+                    <input type="hidden" id="product-del-date" name="product-del-date" />
+                    <input type="hidden" id="product-return-date" name="product-return-date" />
+                </fom>
             </div>
             <div class="col-sm-12 cupon padding-five border-top border-bottom">
                 <button class="highlight-button btn btn-small no-margin pull-left">Empty Cart</button>

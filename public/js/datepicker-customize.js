@@ -11,12 +11,22 @@ $(document).ready(function(){
     });
     $('.cart-size-details li').on('click', function() {
         var $size = $(this);
-        $('.size-details li.active').removeClass('active');
+        $('.cart-size-details li.active').removeClass('active');
         $size.addClass('active');
         setDatePicker();
     });
     $('#add-to-cart').on('click', function() {
         $('form#add-to-cart-form').submit();
+    });
+    $('.update-cart-button').on('click', function() {
+        $this = $(this);
+        $updateCart = $this.parents('tr');
+        $('#product-index').val($updateCart.find('.cart-index').val());
+        $('#product-size').val($updateCart.find('li.active > input').val());
+        $('#product-del-date').val($updateCart.find('.delivery-date').val());
+        $('#product-return-date').val($updateCart.find('.return-date').val());
+        $('#product-id').val($updateCart.find('.cart-product-id').val());
+        $('form#update-cart-form').submit();
     });
     setDatePicker();
 
