@@ -3,6 +3,9 @@ $(document).ready(function(){
     $( "#return-date, .return-date" ).datepicker({
         dateFormat: "dd-mm-yy"
     });
+    $('#checkoutBtn').on('click', function() {
+        $('#billing-form').submit();
+    });
     $('.size-details li').on('click', function() {
         var $size = $(this);
         $('.size-details li.active').removeClass('active');
@@ -35,8 +38,8 @@ $(document).ready(function(){
     function setDatePicker() {
         $("#delivery-date").datepicker({
             dateFormat: "dd-mm-yy",
-            minDate: 0,
-            maxDate: "+4m",
+            minDate: new Date($('#startDate').val()),
+            maxDate: new Date($('#endDate').val()),
             onSelect: function(text, obj) {
                 var returnDate = 4;
                 var currentDate = $("#delivery-date").datepicker("getDate") ;

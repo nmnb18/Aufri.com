@@ -141,6 +141,17 @@ class Module {
                     $resultSetPrototype->setArrayObjectPrototype(new Model\SizeBooking());
                     return new \Zend\Db\TableGateway\TableGateway(Model\SizeBookingTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
                 },
+                'ProductImageTable' => function ($sm) {
+                    $tableGateway = $sm->get('ProductImageTableGateway');
+                    $table = new Model\ProductImageTable($tableGateway);
+                    return $table;
+                },
+                'ProductImageTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('dbAdapter');
+                    $resultSetPrototype = new \Zend\Db\ResultSet\ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\ProductImage());
+                    return new \Zend\Db\TableGateway\TableGateway(Model\ProductImageTable::TABLE_NAME, $dbAdapter, null, $resultSetPrototype);
+                },
             )
         );
     }

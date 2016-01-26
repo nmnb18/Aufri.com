@@ -1,0 +1,60 @@
+<section class="wow fadeIn">
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-md-6 col-sm-10 col-xs-11 center-col login-box">
+                <!-- form title  -->
+                <h2>Sign Up</h2>
+                <!-- end form title  -->
+
+                <div class="separator-line bg-black no-margin-lr margin-zero"></div>
+                <form action="<?php echo $this->url('register'); ?>" method="post">
+                    <div class="form-group no-margin-bottom">
+                       <div class="col-md-13 no-padding-left sm-no-padding">
+                        <label>* Name:</label>
+                        <input type="text" name="name">
+                    </div>
+					</div>
+                    <div class="col-md-5 no-padding-right no-padding">
+                        <label>* Mobile No.:</label>
+                        <input type="tel" name="mobile">
+                    </div>
+					<div class="col-md-7 no-padding-right sm-no-padding">
+                        <label>* E-Mail.:</label>
+                        <input type="text" name="email">
+                    </div>
+                    <div class="col-md-12 no-padding">
+                        <label>* Password:</label>
+                        <input type="password" name="password">
+                    </div>
+                    <div class="col-md-12 no-padding">
+                        <label>* Address:</label>
+                        <input type="text" name="address">
+                        <input type="text" name="address2" style="margin-top: -20px;">
+                    </div>
+					 <div class="col-md-6 no-padding">
+                        <label>* Land Mark:</label>
+                        <input type="text" name="landmark">
+
+                    </div>
+
+                    <div class="col-md-6 no-padding-right sm-no-padding">
+                        <label>* Pincode:</label>
+                        <input type="text" name="pincode">
+                    </div>
+                   <div class="form-group no-margin-bottom">
+                   <div class="col-md-13 no-padding-right no-padding">
+				   <label>* City:</label>
+				   <input type="text" name="city" value="Delhi/NCR" readonly>
+                   </div>
+                    </div>
+
+                    <button class="btn highlight-button-dark btn-small btn-round margin-five no-margin-right" type="submit">Sign Up</button>
+                    <a href="<?php echo $this->url('login');?>" class="display-block text-uppercase">Login ?</a>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

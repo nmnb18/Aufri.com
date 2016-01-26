@@ -1,0 +1,219 @@
+<?php
+    $name = '';
+    $email = '';
+    $phoneno = '';
+    $addressDesc = '';
+    $city = '';
+    $pincode = '';
+    $landmark = '';
+    if(!empty($user)) {
+        $name = $user->getUserName();
+        $email = $user->getUserEmail();
+        $phoneno = $user->getUserPhoneNo();
+        $addressDesc = $address->getAddressAddress();
+        $city = $address->getAddressCity();
+        $pincode = $address->getAddressPincode();
+        $landmark = $address->getAddressLandmark();
+    }
+?>
+<!-- head section -->
+        <section class="content-top-margin page-title page-title-small bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-7 col-sm-12 wow fadeInUp" data-wow-duration="300ms">
+                        <!-- page title -->
+                        <h1 class="black-text">Checkout</h1>
+                        <!-- end page title -->
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-sm-12 breadcrumb text-uppercase wow fadeInUp xs-display-none" data-wow-duration="600ms">
+                        <!-- breadcrumb -->
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Shopping Cart</a></li>
+                            <li>Checkout</li>
+                        </ul>
+                        <!-- end breadcrumb -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end head section -->
+
+        <section>
+            <div class="container clearfix">
+                <div class="row margin-seven no-margin-top">
+                  <div class="col-md-5 col-xs-20 alert-style4 pull-left">
+                        <div class="alert alert-warning border text-uppercase black-text letter-spacing-1 text-small">Returning customer?
+                            <a href="<?php echo $this->url('login'); ?>" class="font-weight-700 text-decoration-underline" style="margin-left: 60px; font-weight: bold;">Click here to login</a></div>
+                    </div>
+                    <div class="col-md-5 col-xs-20 alert-style4 pull-right">
+                        <div class="alert alert-warning border text-uppercase black-text letter-spacing-1 text-small" role="alert">Have a coupon? <a href="#" class="font-weight-700 text-decoration-underline" style="margin-left: 60px;">Click here to enter your code</a></div>
+                    </div>
+                </div>
+                <div class="row margin-five no-margin-top">
+                    <div class="col-md-5 col-sm-12 pull-left sm-margin-bottom-seven">
+                        <p class="black-text font-weight-600 text-uppercase text-large">Billing Address</p>
+                        <form id="billing-form" method="post" action="<?php echo $this->url('place_order'); ?>" name="billing-form">
+                            <div class="col-md-13 no-padding-left sm-no-padding">
+                                <label>* Name:</label>
+                                <input type="text" name="name" value=<?php echo $name;?>>
+                            </div>
+                            <div class="col-md-5 no-padding-right no-padding">
+                                <label>* Mobile No.:</label>
+                                <input type="tel" name="mobile" value=<?php echo $phoneno;?>>
+                            </div>
+							<div class="col-md-7 no-padding-right sm-no-padding">
+                                <label>* E-Mail.:</label>
+                                <input type="text" name="email" value=<?php echo $email;?>>
+                            </div>
+
+                            <div class="col-md-12 no-padding">
+                                <label>* Address:</label>
+                                <input type="text" name="address" value=<?php echo $addressDesc;?>>
+                                <input type="text" name="Address2" style="margin-top: -20px;">
+                            </div>
+							 <div class="col-md-6 no-padding">
+                                <label>* Land Mark:</label>
+                                <input type="text" name="landmark" value=<?php echo $landmark;?>>
+
+                            </div>
+
+                            <div class="col-md-6 no-padding-right sm-no-padding">
+                                <label>* Pincode:</label>
+                                <input type="text" name="pincode" value=<?php echo $pincode;?>>
+                            </div>
+
+                           <div class="col-md-6 no-padding-right no-padding">
+						   <label>* City:</label>
+						   <input type="text" name="city" value="Delhi/NCR" readonly>
+                           </div>
+
+                        </form>
+                    </div>
+					<br><br><br>
+                    <div class="col-md-6 col-sm-12">
+                        <table class="table cart-total">
+                            <tbody>
+                                <tr>
+                                    <th class="padding-two text-right no-padding-right text-uppercase font-weight-600 letter-spacing-2 text-small xs-no-padding">Cart Subtotal</th>
+                                    <td class="padding-two text-uppercase text-right no-padding-right font-weight-600 black-text xs-no-padding">$<?php echo $total; ?></td>
+                                </tr>
+                                <tr>
+                                    <th class="padding-two text-right no-padding-right text-uppercase font-weight-600 letter-spacing-2 text-small xs-no-padding">Shipping and Handling</th>
+                                    <td class="padding-two text-uppercase text-right no-padding-right font-weight-600 black-text text-small xs-no-padding">Free</td>
+                                </tr>
+								 <tr>
+                                    <th class="padding-two text-right no-padding-right text-uppercase font-weight-600 letter-spacing-2 text-small xs-no-padding">Payment Method</th>
+                                    <td class="padding-two text-uppercase text-right no-padding-right font-weight-600 black-text text-small xs-no-padding">Cash on Delivery</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="padding-one no-padding-right xs-no-padding">
+                                        <hr>
+                                    </td>
+                                </tr>
+                                <tr class="total">
+                                    <th class="padding-two text-uppercase text-right no-padding-right font-weight-600 text-large xs-no-padding">Order Total</th>
+                                    <td class="padding-two text-uppercase text-right no-padding-right font-weight-600 black-text text-large no-letter-spacing xs-no-padding">$<?php echo $total; ?></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="padding-one no-padding-right xs-no-padding">
+                                        <hr class="no-margin-bottom">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="javascript:void(0)" id="checkoutBtn" class="highlight-button-black-background btn no-margin pull-right checkout-btn xs-width-100 xs-text-center">Place Order</a>
+                    </div>
+                </div>
+                <div class="row margin-five sm-margin-bottom-seven">
+                    <div class="col-sm-12 shop-cart-table">
+                        <?php
+                            if(!empty($cartProducts)) {
+                        ?>
+                        <table class="table shop-cart text-center">
+                            <thead>
+                                <tr>
+                                    <th class="first"></th>
+                                    <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Product</th>
+                                    <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Deposit</th>
+                                    <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Rent</th>
+                                    <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Sub Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $total = 0;
+                                    foreach($cartProducts as $cartItem) {
+                                        $total = $total + $cartItem['rent'] + $cartItem['deposit'];
+                                ?>
+                                <tr class="main-details">
+                                    <td class="product-thumbnail text-left">
+                                        <a href="shop-single-product.html"><img src="http://placehold.it/120x120" alt="" ></a>
+                                    </td>
+                                    <td class="text-left">
+                                        <a href="shop-single-product.html"><?php echo $cartItem['name'];?></a>
+                                        <span class="text-uppercase display-block text-small margin-two">Size: <?php echo $cartItem['size'];?></span>
+        								<span class="text-uppercase display-block text-small margin-two">Booking Date : <?php echo $cartItem['bookingDate']; ?></span>
+                                        <a href="javascript:void(0)" class="text-small editCart"><i class="fa fa-edit black-text"></i> Edit</a>
+                                    </td>
+                                    <td class="text-left">
+                                        <?php echo $cartItem['deposit']; ?>
+                                    </td>
+                                   <td class="text-left">
+                                        <?php echo $cartItem['rent']; ?>
+                                    </td>
+                                    <td class="product-subtotal text-left"><?php echo $cartItem['rent'] + $cartItem['deposit']; ?></td>
+                                    <td class="product-remove text-center">
+                                        <a href="<?php echo $this->url('delete_cart_item', array('itemId' => $cartItem['index']));?>">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="hidden-details c--hide">
+                                    <td>
+                                    <!-- product size -->
+                                        <ul class="size clearfix cart-size-details">
+                                            <input type="hidden" value=<?php echo $cartItem['bookedDates']; ?> class="bookedDates"/>
+                                            <?php foreach ($cartItem['availabelSizes'] as $key => $size) { ?>
+                                                <li <?php if($key == 0) { ?>class="active"<?php } ?> >
+                                                    <input type="hidden" name="<?php echo 'size-'.$size['aufriProductSizeName']; ?>"
+                                                    value=<?php echo $size['aufriProductSizeName']; ?>>
+                                                    <a href="javascript:void(0)"><?php echo $size['aufriProductSizeName']; ?></a>
+                                                </li>
+                                            <?php
+                                            } ?>
+                                        </ul>
+                                    </td>
+                                    <td colspan=2>
+                                        <input type="text" value="<?php echo $cartItem['bookingDate']; ?>"
+                                            class="delivery-date" placeholder="Start date" readonly/>
+                                    </td>
+                                    <td colspan=2>
+                                        <input type="text" value="<?php echo $cartItem['returnDate']; ?>"
+                                            class="return-date" placeholder="End date" readonly disabled />
+                                    </td>
+                                    <td>
+                                    <input type="hidden" value="<?php echo $cartItem['index'];?>" class="cart-index"/>
+                                    <input type="hidden" value="<?php echo $cartItem['id'];?>" class="cart-product-id"/>
+                                        <button class="highlight-button btn btn-small no-margin pull-left update-cart-button">Update Cart</button>
+                                    <td>
+                                </tr>
+                                <?php
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                        <form action="<?php echo $this->url('edit_cart'); ?>" method="post" id="update-cart-form">
+                            <input type="hidden" name="product-id" id="product-id" />
+                            <input type="hidden" name="product-index" id="product-index" />
+                            <input type="hidden" id="product-size" name="product-size" />
+                            <input type="hidden" id="product-del-date" name="product-del-date" />
+                            <input type="hidden" id="product-return-date" name="product-return-date" />
+                        </fom>
+                        <?php } ?>
+                    </div>
+                </div>
+
+            </div>
+        </section>

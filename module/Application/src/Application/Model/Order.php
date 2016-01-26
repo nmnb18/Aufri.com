@@ -11,6 +11,7 @@ class Order extends AbstractDbModel {
     protected $aufriOrdersShopkeeperIdFk;
     protected $aufriOrdersUserIdFk;
     protected $aufriOrdersDate;
+    protected $aufriProductOrderSize;
     protected $aufriOrdersCouponIdFk;
     protected $aufriOrdersStatus;
 
@@ -56,5 +57,8 @@ class Order extends AbstractDbModel {
     }
     public function setOrderStatus($aufriOrdersStatus) {
         return $this->aufriOrdersStatus = $aufriOrdersStatus;
+    }
+    public function setProductOrderSize($aufriProductOrderSize) {
+        return $this->aufriProductOrderSize = $aufriProductOrderSize;
     }
 }

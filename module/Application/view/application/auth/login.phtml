@@ -1,50 +1,45 @@
-<?php
-/**
-* Login page to login through email id and password
-* @author Deepika Verma <deepika.verma@optimusinfo.com>
-*/
-$form->setAttribute('action', $this->url('auth', array('action' => 'login')));
-$form->prepare();
-echo $this->form()->openTag($form);
-?>
-<div class="container">
-    <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <div class="panel panel-info" >
-            <div class="panel-heading">
-                <div class="panel-title">Sign In</div>
-            </div>
+<!-- end head section -->
 
-            <div class="panel-body" >
 
-                <div class="pd10">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-user"></i>
-                    </span>
-                    <?php echo $this->formElement($form->get('email')); ?>
-                </div>
-                <span class="alert-danger">
-                    <?php echo $this->formElementerrors($form->get('email')); ?>
-                </span>
-                </div>
+<section class="wow fadeIn">
+    <div class="container">
 
-                <div class="pd10">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-user"></i>
-                    </span>
-                    <?php echo $this->formElement($form->get('password')); ?>
-                </div>
-                <span class="alert-danger">
-                    <?php echo $this->formElementerrors($form->get('password')); ?>
-                </span>
-                </div>
-                <div class="col-md-3 col-md-offset-9">
-                    <?php echo $this->formRow($form->get('submit')); ?>
 
-                </div>
-                <?php echo $this->form()->closeTag(); ?>
+        <div class="row">
+            <div class="col-md-6 col-sm-10 col-xs-11 center-col login-box">
+                <!-- form title  -->
+                <h2>Login </h2>
+                <!-- end form title  -->
+
+                <div class="separator-line bg-black no-margin-lr margin-zero"></div>
+                <form action="<?php echo $this->url('login');?>" method="post">
+                    <div class="form-group no-margin-bottom">
+                        <!-- label  -->
+                        <label for="username" class="text-uppercase" color="#449d44"><b>Email</b></label>
+                        <!-- end label  -->
+                        <!-- input  -->
+                        <input type="text" name="email" id="username" class="input-round big-input">
+                        <!-- end input  -->
+                    </div>
+                    <div class="form-group no-margin-bottom">
+                        <!-- label  -->
+                        <label for="password" class="text-uppercase"><b>Password</b></label>
+                        <!-- end label  -->
+                        <!-- input  -->
+                        <input type="password" name="password" id="password" class="input-round big-input">
+                        <!-- end input  -->
+                    </div>
+
+                    <button class="btn highlight-button-dark btn-small btn-round margin-five no-margin-right" type="submit">Login</button>
+                       <!-- <a href="login.html" class="display-block text-uppercase">Forgot Password ?</a> -->
+					   <a href="<?php echo $this->url('register'); ?>" class="display-block text-uppercase" color="#449d44">
+                           New User - Sign Up
+                       </a>
+                    </form>
+
+
+                </form>
             </div>
         </div>
     </div>
-</div>
+</section>

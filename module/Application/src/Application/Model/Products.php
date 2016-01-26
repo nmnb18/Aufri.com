@@ -8,7 +8,7 @@ class Products extends AbstractDbModel {
 
     protected $aufriProductsId;
     protected $aufriProductsName;
-    protected $aufriProductsImageIdFk;
+    protected $aufriProductsImage;
     protected $aufriProductsShopkeeperIdFk;
     protected $aufriProductsGender;
     protected $aufriProductsSize;
@@ -36,7 +36,7 @@ class Products extends AbstractDbModel {
         return $this->aufriProductsName;
     }
     public function getProductImage() {
-        return $this->aufriProductsImageIdFk;
+        return $this->aufriProductsImage;
     }
     public function getProductShopkeeper() {
         return $this->aufriProductsShopkeeperIdFk;
@@ -102,8 +102,8 @@ class Products extends AbstractDbModel {
     public function setProductName($aufriProductsName) {
         return $this->aufriProductsName = $aufriProductsName;
     }
-    public function setProductImage($aufriProductsImageIdFk) {
-        return $this->aufriProductsImageIdFk = $aufriProductsImageIdFk;
+    public function setProductImage($aufriProductsImage) {
+        return $this->aufriProductsImage = $aufriProductsImage;
     }
     public function setProductShopkeeper($aufriProductsShopkeeperIdFk) {
         return $this->aufriProductsShopkeeperIdFk = $aufriProductsShopkeeperIdFk;

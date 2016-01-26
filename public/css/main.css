@@ -527,7 +527,6 @@ nav .container{ display: table-cell; vertical-align: middle; height: 80px; posit
 ====================================== */
 
 /* page titles */
-.content-top-margin { margin-top: 81px;}
 .page-title { padding: 80px 0}
 .page-title h1 { letter-spacing: 6px; font-weight: 600; font-size: 20px; margin-bottom: 5px}
 .page-title span {letter-spacing: 1px; font-weight: 400; font-size: 14px;}
@@ -2043,4 +2042,11 @@ thead th.first { padding-left: 0 !important; }
 .demo-figure {background:#ffe400; text-transform: uppercase; font-size: 13px; padding: 10px 25px; color: #393939; font-weight: 600; letter-spacing:3px}
 .c--hide {
     display: none;
+}
+.noMargin {
+    padding-top: 120px;
+}
+section {
+    padding: 30px 0px;
+    margin-top: 0px;
 }

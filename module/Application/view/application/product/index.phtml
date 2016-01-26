@@ -27,11 +27,20 @@
         <div class="row">
             <!-- product images -->
             <div class="col-md-6 col-sm-12 zoom-gallery sm-margin-bottom-ten">
-                <a href="http://placehold.it/700x583"><img src="http://placehold.it/700x583" alt=""/></a>
+                <a href="http://admin.aufre.com/upload/Products/<?php echo $product->getProductImage(); ?>">
+                    <img src="http://admin.aufre.com/upload/Products/<?php echo $product->getProductImage(); ?>" alt=""/>
+                </a>
                 <div class="products-thumb text-center">
-                    <a href="http://placehold.it/700x583"><img src="http://placehold.it/700x583" alt=""/></a>
-                    <a href="http://placehold.it/700x583"><img src="http://placehold.it/700x583" alt=""/></a>
-                    <a href="http://placehold.it/700x583"><img src="http://placehold.it/700x583" alt=""/></a>
+                    <?php foreach ($productImages as $key => $image) {
+                        if ($key > 1) {
+                    ?>
+                    <a href="http://admin.aufre.com/upload/Products/<?php echo $image['aufriProductImagesName']; ?>">
+                        <img src="http://admin.aufre.com/upload/Products/<?php echo $image['aufriProductImagesName']; ?>" alt=""/>
+                    </a>
+                    <?php
+                        }
+                    }
+                    ?>
                 </div>
             </div>
             <!-- end product images -->
@@ -59,6 +68,8 @@
                     <!-- product size -->
                     <ul class="size clearfix size-details">
                         <input type="hidden" value=<?php echo $bookedDates;?> id="bookedDates"/>
+                        <input type="hidden" value=<?php echo $product->getProductFromdate(); ?> id="startDate" />
+                        <input type="hidden" value=<?php echo $product->getProductTodate(); ?> id="endDate" />
                         <?php foreach ($sizes as $key => $size) { ?>
                             <li <?php if($key == 0) { ?>class="active"<?php } ?> >
                                 <input type="hidden" name="<?php echo 'size-'.$size['aufriProductSizeName']; ?>"

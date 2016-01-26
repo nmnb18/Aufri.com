@@ -1,49 +1,88 @@
 <?php
 
-/**
- * Auth controller to add city*
- * @author chandrika sharma <chandrika.sharma@optimusinfo.com>
- */
-
 namespace Application\Controller;
 
 use Zend\View\Model\ViewModel;
 use Zend\Cache\Storage\Adapter;
 use Application\Model\User;
+use Application\Model\Address;
 use Application\Model\UserTable;
 use Zend\Crypt\Password\Bcrypt;
 use Application\Controller\AbstractAppController;
-use Application\Model\UserRole;
-use Application\Form\LoginForm;
-use Application\Form\ForgotPasswordForm;
 
-/**
- * Auth controller class
- * includes methods for login authentication
- *  * @author chandrika sharma <chandrika.sharma@optimusinfo.com>
- * */
 class AuthController extends AbstractAppController
 {
 
+    public function renderView($variables = null, $options = null)
+    {
+        if (!isset($variables['navigation'])) {
+            $variables['navigation'] = $this->getNavigation();
+            $variables['cartproducts'] = $this->getCartProducts();
+        }
+        return parent::renderView($variables, $options);
+    }
+    public function indexAction()
+    {
+        return $this->renderView();
+    }
     /**
      * Main function for login
      * @return TRUE
      * */
     public function loginAction()
-    {   // login form object
-        $loginForm = new LoginForm();
+    {
         $request = $this->getServiceLocator()->get('request');
         $data = $request->getPost()->toArray();
-        //set the post data to form
-        $loginForm->setData($data);
         if ($request->isPost()) {
-            if ($loginForm->isValid()) {
-                $this->validateForm($data, $loginForm);
+            $user = new User();
+            $bcrypt = new Bcrypt();
+            $userTable = $this->getServiceLocator()->get('UserTable');
+            $user = $userTable->getOne(array('aufri_users_email' => $data['email']));
+            if (!empty($user) && !empty($data['password'])) {
+                if ($bcrypt->verify($data['password'], $user->getUserPassword())) {
+                    $this->updateSessionWithUser($user, false);
+                    $this->setSuccessMessage('Login Success');
+                    $this->redirect()->toRoute('home');
+                }
+            } else {
+                $this->setErrorMessage('Invalid Login Details');
             }
         }
-        return $this->renderView(array('form' => $loginForm));
+        return $this->renderView();
     }
+    public function registerAction()
+    {
+        $request = $this->getServiceLocator()->get('request');
+        $data = $request->getPost()->toArray();
+        if ($request->isPost()) {
 
+            $bcrypt = new Bcrypt();
+            $userTable = $this->getServiceLocator()->get('UserTable');
+            $user = $userTable->getOne(array('aufri_users_email' => $data['email']));
+            if (!empty($user)) {// email already exist
+                $this->setErrorMessage('Email Already exsit');
+                return $this->renderView();
+            }
+            $addressTable = $this->getServiceLocator()->get('AddressTable');
+            $address = new Address();
+            $user = new User();
+            $address->setAddressCity($data['city']);
+            $address->setAddressPincode($data['pincode']);
+            $address->setAddressAddress($data['address']);
+            $address->setAddressLandmark($data['landmark']);
+            $address = $addressTable->save($address);
+            $user->setUserEmail($data['email']);
+            if(!empty($data['password'])) {
+                $user->setUserPassword($bcrypt->create($data['password']));
+            }
+            $user->setUserPhoneNo($data['mobile']);
+            $user->setUserName($data['name']);
+            $user->setUserAddressIdFk($address->getAddressId());
+            $userTable->save($user);
+            $this->setSuccessMessage('Profile Saved, now you can login');
+        }
+        return $this->renderView();
+    }
 
     public function logoutAction()
     {
@@ -54,36 +93,6 @@ class AuthController extends AbstractAppController
         return $this->redirect()->toRoute('home');
         return false;
     }
-
-    /**
-     * Function to validate login form
-     * @param Array  $data
-     * @param Object $loginForm
-     * @return TRUE
-     * */
-    public function validateForm($data, $loginForm)
-    {
-        $user = new User();
-        $bcrypt = new Bcrypt();
-        $userTable = $this->getServiceLocator()->get('UserTable');
-        $shopkeeperTable = $this->getServiceLocator()->get('ShopkeeperTable');
-        $userRoleTable = $this->getServiceLocator()->get('UserRoleTable');
-        $user = $userTable->getOne(array('aufri_users_email' => $data['email']));
-        $userPassword = $user->getUserPassword();
-        if (!empty($user) && !empty($data['password'])) {
-            if ($bcrypt->verify($data['password'], $userPassword)) {
-                $this->updateSessionWithUser($user, false);
-                //if($role === 1) {
-                    return $this->redirect()->toRoute('admin_home');
-                //} else if($role === 2) {
-                //    return $this->redirect()->toRoute('shopkeeper_home');
-                //}
-            }
-        } else {
-            $this->setErrorMessage('Invalid login credentials');
-        }
-    }
-
     /**
      * Function to set user session with userId and email
      * @param Object  $user
@@ -96,6 +105,7 @@ class AuthController extends AbstractAppController
         $session = $this->getSession();
         $session['user_id'] = $user->getUserId();
         $session['user_email'] = $user->getUserEmail();
+        $session['user_name'] = $user->getUserName();
     }
 
 }

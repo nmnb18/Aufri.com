@@ -34,6 +34,8 @@ class ProductController extends AbstractAppController
         $sizeTable = $this->getServiceLocator()->get('SizeTable');
         $sizes = $sizeTable->getMany(array('aufri_product_id_fk' => $productId))->toArray();
         $sizeBookingTable = $this->getServiceLocator()->get('SizeBookingTable');
+        $productImagesTable = $this->getServiceLocator()->get('ProductImageTable');
+        $productImages = $productImagesTable->getMany(array('aufri_product_images_productid' => $productId))->toArray();
         foreach($sizes as $size) {
             $sizeArray[$size['aufriProductSizeName']] = array();
             $sizeBooked = $sizeBookingTable->getMany(array('aufri_product_size_booking_productid' => $productId,
@@ -67,6 +69,7 @@ class ProductController extends AbstractAppController
             'prevoius' => $prevoius,
             'product' => $product,
             'sizes' => $sizes,
+            'productImages' => $productImages,
             'bookedDates' => json_encode($sizeArray)
         );
         return $this->renderView($view);

@@ -119,6 +119,76 @@ return array(
                     )
                 )
             ),
+            'checkout' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/shop/products/checkout/',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Checkout',
+                        'action' => 'index'
+                    )
+                )
+            ),
+            'login' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/shop/user/login',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Auth',
+                        'action' => 'login'
+                    )
+                )
+            ),
+            'register' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/shop/user/register',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Auth',
+                        'action' => 'register'
+                    )
+                )
+            ),
+            'place_order' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/shop/user/place/order',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Order',
+                        'action' => 'placeOrder'
+                    )
+                )
+            ),
+            'about_us' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/shop/user/about/us',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Static',
+                        'action' => 'aboutUs'
+                    )
+                )
+            ),
+            'how_it_works' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/shop/user/how/it/works',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Static',
+                        'action' => 'howItWorks'
+                    )
+                )
+            ),
+            'rent_via_us' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/shop/user/rent/viaus',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Static',
+                        'action' => 'rentViaUs'
+                    )
+                )
+            ),
         )
     ),
     'service_manager' => array(
@@ -151,7 +221,10 @@ return array(
             'Application\Controller\Auth' => 'Application\Controller\AuthController',
             'Application\Controller\Product' => 'Application\Controller\ProductController',
             'Application\Controller\Category' => 'Application\Controller\CategoryController',
-            'Application\Controller\Cart' => 'Application\Controller\CartController'
+            'Application\Controller\Cart' => 'Application\Controller\CartController',
+            'Application\Controller\Checkout' => 'Application\Controller\CheckoutController',
+            'Application\Controller\Order' => 'Application\Controller\OrderController',
+            'Application\Controller\Static' => 'Application\Controller\StaticController',
         )
     ),
     'view_manager' => array(
